@@ -325,6 +325,12 @@
         <!-- custom-chart js -->
         <script src="../static/js/pages/dashboard-main.js"></script>
         <script src="../static/js/custom.js"></script>
+        <script>
+			document.getElementById(download).addEventListener('click' , function(){
+				var table2excel = new Table2Excel();
+  				table2excel.export(document.querySelectorAll("table"));
+			});
+		</script>
 </body>
 <!-- Mirrored from technext.github.io/flat_able/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Aug 2022 05:38:50 GMT -->
 </html>

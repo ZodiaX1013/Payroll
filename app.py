@@ -1038,7 +1038,9 @@ def payslip():
 
 @app.route("/paysheet", methods=["GET" , "POST"])
 def paysheet():
-    if request.method == "POST":
+
+    # For Pdf Generate
+    if request.method == "POST" and request.form['action'] == 'pdf':
         try:
             connection = mysql.connector.connect(host='localhost',
                                             database='payroll',
@@ -1061,8 +1063,30 @@ def paysheet():
             connection.close()
             print("MySQL connection is closed")
 
+    # For Excel Generate
 
+    if request.method == "POST" and request.form['action'] == 'excel':
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                            database='payroll',
+                                            user='google',
+                                            password='password') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
 
+            # query1 = "SELECT * FROM paysheet"
+            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
+            cursor.execute(query1)
+            data = cursor.fetchall()
+            print(data)
+            session["data"] = data
+            return redirect(url_for('download', data = data))
+        except Error as e:
+            print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
 
 
 
@@ -1156,7 +1180,7 @@ def download():
         ],
         'no-outline': None
     }
-
+    
     pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True)
     # return render_template('paysheet2.html',filename='css/style.css', data=data)
     p = "./paysheet.pdf"
