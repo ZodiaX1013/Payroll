@@ -453,34 +453,59 @@
 
 			<div class="col-sm-12">
 				<h5 class="mb-3">Daily Leave Input</h5>
-				{% if data %}
 				<div class="card">
 					<div class="card-body">
                         <h6 class="mb-3"><b><u> Employee Details </u></b></h6>
 						<!-- Employee Form -->
                         <!-- <form action="#" id="leave5"> -->
                             <div class="form-row">
+								{% if personal %}
                                 <div class="form-group col-md-6">
                                     <label>Employee ID</label>
-                                    <input type="text" name="eid" class="form-control" id="eid" value="" placeholder="Enter Employee ID" required>
+                                    <input type="text" name="eid" class="form-control" id="eid" value="{{personal[0][0]}}" placeholder="Enter Employee ID" required>
                                 </div>
+								
                                 <div class="form-group col-md-6">
+                                    <label>Position</label>
+                                    <input type="text" name="pos" class="form-control" id="pos" value="{{personal[0][3]}}" placeholder="Enter Position">
+									
+                                </div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Last Name</label>
+										<input type="text" name="lname" class="form-control" id="lname" value="{{personal[0][2]}}" placeholder="Enter Last Name">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>First Name</label>
+										<input type="text" name="fname" class="form-control" id="fname" value="{{personal[0][1]}}" placeholder="Enter First Name">
+									</div>
+								</div>
+								{% else %}
+								<div class="form-group col-md-6">
+									<label>Employee ID</label>
+                                    <input type="text" name="eid" class="form-control" id="eid" value="" placeholder="Enter Employee ID" required>
+								</div>
+								<div class="form-group col-md-6">
                                     <label>Position</label>
                                     <input type="text" name="pos" class="form-control" id="pos" placeholder="Enter Position">
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>Last Name</label>
-                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>First Name</label>
-                                    <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
-                                </div>
-                            </div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>Last Name</label>
+										<input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label>First Name</label>
+										<input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
+									</div>
+								</div>
+								{% endif %}
                         <!-- </form> -->
                         <!-- End Employee Form -->
 					</div>
@@ -513,7 +538,17 @@
 						<!-- Employee Form -->
                         <!-- <form action="#" id="leave6"> -->
                             <div class="form-row">
+								{% if leaves %}
                                 <div class="form-group col-md-6">
+                                    <label>Balance Casual Leave</label>
+                                    <input type="text" name="cas" class="form-control" id="cas" placeholder="Casual Leave" value="{{leaves[0][0]}}" readonly>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Balance Sick Leave</label>
+                                    <input type="text" name="sick" class="form-control" id="sick" placeholder="Sick Leave" value="{{leaves[0][0]}}" readonly>
+                                </div>
+								{% else %}
+								<div class="form-group col-md-6">
                                     <label>Balance Casual Leave</label>
                                     <input type="text" name="cas" class="form-control" id="cas" placeholder="Casual Leave" value="" readonly>
                                 </div>
@@ -521,6 +556,7 @@
                                     <label>Balance Sick Leave</label>
                                     <input type="text" name="sick" class="form-control" id="sick" placeholder="Sick Leave" value="" readonly>
                                 </div>
+								{% endif %}
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
@@ -555,109 +591,6 @@
                         <!-- End Common Form -->
 					</div>
 				</div>
-				{% else %}
-				<div class="card">
-					<div class="card-body">
-                        <h6 class="mb-3"><b><u> Employee Details </u></b></h6>
-						<!-- Employee Form -->
-                        <!-- <form action="#" id="leave5"> -->
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Employee ID</label>
-                                    <input type="text" name="eid" class="form-control" id="eid" value="" placeholder="Enter Employee ID" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Position</label>
-                                    <input type="text" name="pos" class="form-control" id="pos" placeholder="Enter Position">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>Last Name</label>
-                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Enter Last Name">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>First Name</label>
-                                    <input type="text" name="fname" class="form-control" id="fname" placeholder="Enter First Name">
-                                </div>
-                            </div>
-                        <!-- </form> -->
-                        <!-- End Employee Form -->
-					</div>
-                    <div class="card-body">
-                        <h6 class="mb-3"><b><u> Leave Register </u></b></h6>
-						<!-- Leave Table -->
-                        <!-- <h4>Table Here</h4> -->
-						<table class="table table-striped col-md-12">
-							{% if heading %}
-							<tr>
-								{% for header in heading %}
-								<th>
-									{{header}}
-								</th>
-								{% endfor %}
-							</tr>
-							{% for row in data %}
-							<tr>
-								{% for cell in row %}
-								<td>{{cell}}</td>
-								{% endfor %}
-							</tr>
-							{% endfor %}
-							{% endif %}
-						</table>
-                        <!-- End Leave Table -->
-					</div>
-                    <div class="card-body">
-                        <h6 class="mb-3"><b><u> Leave Taken </u></b></h6>
-						<!-- Employee Form -->
-                        <!-- <form action="#" id="leave6"> -->
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Balance Casual Leave</label>
-                                    <input type="text" name="cas" class="form-control" id="cas" placeholder="Casual Leave" value="" readonly>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Balance Sick Leave</label>
-                                    <input type="text" name="sick" class="form-control" id="sick" placeholder="Sick Leave" value="" readonly>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>Date</label>
-                                    <input type="date" name="dt" class="form-control" id="dt" placeholder="Enter Date">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label>Types</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>select</option>
-                                        <option>Absent</option>
-                                        <option>Local Leave</option>
-                                        <option>Maternity Leave</option>
-                                        <option>Sick Leave</option>
-                                        <option>Study Leave</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label>Leaves</label>
-                                    <input type="number" name="leave" class="form-control" id="leave" min="0" max="" placeholder="Enter Leave">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label></label> <br> <br>
-                                    <label><h5> Day/s </h5></label>
-                                </div>
-                            </div>
-                        <!-- </form> -->
-                        <!-- End Common Form -->
-					</div>
-				</div>
-				{% endif %}
 			</div>
 		</form>
 		</div>

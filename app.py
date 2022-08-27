@@ -901,6 +901,7 @@ def dashboard():
 @app.route("/leave", methods=["GET" , "POST", "PUT"])
 def leave():
     if request.method == 'POST':
+        eid = request.form['eid']
         try:
             connection = mysql.connector.connect(host='localhost',
                                                 database='payroll',
@@ -934,9 +935,9 @@ def leave():
 
             print(table_data)
 
-            EID = request.form['eid']
-            print(EID)
-            query3 = f"SELECT Localleave, Sickleave FROM employee WHERE EmployeeID = '{EID}'"
+            
+            print(eid)
+            query3 = f"SELECT Localleave, Sickleave FROM employee WHERE EmployeeID = '{eid}'"
             print(query3)
             cursor.execute(query3)
             leaves = cursor.fetchall()
@@ -952,11 +953,13 @@ def leave():
             # print(leave_data[0])
             # print(leaves[0][0])
 
-            query4 = f"SELECT FirstName, LastName, Position FROM employee WHERE EmployeeID = '{EID}'"
+            query4 = f"SELECT EmployeeID, FirstName, LastName, Position FROM employee WHERE EmployeeID = '{eid}'"
             cursor.execute(query4)
             personal_data = cursor.fetchall()
+            print(personal_data)
+            print(personal_data[0][0])
 
-            return render_template("leave2.html", heading = heading_data, data = table_data, leaves = leaves, EID=EID,personal = personal_data )
+            return render_template("leave.html", heading = heading_data, data = table_data, leaves = leaves, eid=eid,personal = personal_data )
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
