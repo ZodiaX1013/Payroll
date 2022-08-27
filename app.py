@@ -50,7 +50,7 @@ def home():
             print("IN ELSE")
             flash(f'Wrong email and password', 'success')
             return redirect(url_for('login'))
-            # flash("Wrong Credentials")
+            flash("Wrong Credentials")
             # return render_template("login.html")
     print("OUT IF")
     return render_template("login.html")
