@@ -28,6 +28,7 @@
     <link href="{{ url_for('static', filename='css/style.css', _external=True) }}" rel="stylesheet" >
     <!-- <link rel="stylesheet" href="../static/css/style.css" , _external="true"> -->
     <script src="https://kit.fontawesome.com/e6163d7cbc.js" crossorigin="anonymous"></script>
+    <script src="../static/js/table2excel.js"></script>
     
     
 
@@ -166,7 +167,7 @@
                                 <!-- <h6 class="mb-3"><b><u> Leave Register </u></b></h6> -->
                                 <!-- Leave Table -->
                                 <!-- <h4>Table Here</h4> -->
-                                <table class="table table-striped" style="width: 100%;">
+                                <table class="table table-striped" id="excel" style="width: 100%;">
                                     <!-- <table style="width: 100%;"> -->
                                     <tr>
                                         <!-- <th></th> -->
@@ -305,6 +306,8 @@
                                     
                                 </table>
                                 <!-- End Leave Table -->
+
+                                <button id="download">Download</button>
                             </div>
                         </div>
                     </div>
@@ -326,9 +329,9 @@
         <script src="../static/js/pages/dashboard-main.js"></script>
         <script src="../static/js/custom.js"></script>
         <script>
-			document.getElementById(download).addEventListener('click' , function(){
+			document.getElementById('download').addEventListener('click' , function(){
 				var table2excel = new Table2Excel();
-  				table2excel.export(document.querySelectorAll("table"));
+  				table2excel.export(document.querySelectorAll("#excel"));
 			});
 		</script>
 </body>

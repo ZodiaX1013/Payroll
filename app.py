@@ -1,8 +1,11 @@
 from audioop import add
 from doctest import REPORT_CDIFF
+import email
 from email.headerregistry import Address
+from fnmatch import fnmatch
 from genericpath import exists
 from importlib.metadata import requires
+from itertools import count
 import os
 from re import sub
 import re
@@ -19,7 +22,7 @@ import os
 import mysql.connector
 from mysql.connector import *
 import random, string
-from datetime import date
+from datetime import date, datetime
 import pdfkit
 # from flask_wkhtmltopdf import Wkhtmltopdf
 
@@ -77,6 +80,7 @@ def employee():
     if request.method == "POST" and request.form['action'] == 'search':
         eid = request.form["eid"]
         try:
+            print("in Search")
             connection = mysql.connector.connect(host='localhost',
                                                 database='payroll',
                                                 user='google',
@@ -86,6 +90,7 @@ def employee():
             data = [eid]
             cursor.execute(query,data)
             emp_data = cursor.fetchall()
+            salary = []
             print(emp_data)
             # print(emp_data[1])
             # for i in range(len(emp_data)):
@@ -103,7 +108,8 @@ def employee():
 
     # Save To Database
 
-    elif request.method == "POST" and request.form['action']== 'save':
+    if request.method == "POST" and request.form['action']== 'save':
+        print("in Save")
         eid = request.form["eid"]
         fname = request.form["fname"]
         lname = request.form["lname"]
@@ -124,7 +130,7 @@ def employee():
         bank_ac = request.form["bac"]
         code = request.form["code"]
         # report = request.form["rpt"]
-        report = None
+        report = ""
         nps = request.form["optradio2"]
         car = request.form["car"]
         hire = request.form["hire"]
@@ -162,7 +168,7 @@ def employee():
                                                 user='google',
                                                 password='password') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
-            query2 = """INSERT INTO employee (
+            query2 =""" INSERT INTO employee (
                 EmployeeID,
                 FirstName,
                 LastName,
@@ -258,19 +264,69 @@ def employee():
                 %s,
                 %s,
                 %s,
-                %s,
-              );
-            """
+                %s
+              );"""
+            
+            # print(eid)
+            # print(fname)
+            # print(lname)
+            # print(title)
+            # print(dob)
+            # print(clocked)
+            # print(address)
+            # print(city)
+            # print(country)
+            # print(phone)
+            # print(mobile)
+            # print(fax)
+            # print(mail)
+            # print(nic)
+            # print(tax)
+            # print(bank)
+            # print(bank_ac)
+            # print(code)
+            # print(report)
+            # print(nps)
+            # print(car)
+            # print(hire)
+            # print(salary)
+            # print(position)
+            # print(dep)
+            # print(sdep)
+            # print(paye)
+            # print(per)
+            # print(lleave)
+            # print(sleave)
+            # print(fallow)
+            # print(tmode)
+            # print(tallow)
+            # print(expatriate)
+            # print(edf)
+            # print(months)
+            # print(medf)
+            # print(house)
+            # print(erel)
+            # print(mrel)
+            # print(payment)
+            # print(medical)
+            # print(working)
+            # print(lwork)
+            # print(spbonus)
+            # print(wdays)
+            # print()
+
             if image and allowed_file(image.filename):
                 print("In Image If")
                 filename = secure_filename(image.filename)
                 filename=''.join(random.choices(string.ascii_lowercase +string.digits, k=20))
                 picture = Image.open(image)
-                picture.save(os.path.join(app.config['UPLOAD_FOLDER'],filename+'.jpg'), "JPEG", optimize = True, quality = 30)
+                picture.save(os.path.join(app.config['UPLOAD_FOLDER'],filename+'.jpeg'), "JPEG", optimize = True, quality = 30)
                 print(filename)
-            data1 = [eid, fname, lname, title, dob, clocked, address, city, country, phone, mobile, fax, mail,filename, nic, tax, bank, bank_ac, code, report, nps, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays]
-            # cursor.execute(query2, data1)
-            print("Insert Query Seccessfully")
+            # data1 = [eid, fname, lname, title, dob, clocked, address, city, country, phone, mobile, fax, mail,filename, nic, tax, bank, bank_ac, code, report, nps, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays]
+            data1 = [eid, fname, lname, title, dob, clocked, address, city, country, phone, mobile, fax, mail, filename, nic, tax, bank, bank_ac, code, report, nps, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays]
+            print("Before Query")
+            cursor.execute(query2, data1)
+            print("Insert Query Successfully")
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
@@ -1079,7 +1135,7 @@ def paysheet():
             data = cursor.fetchall()
             print(data)
             session["data"] = data
-            return redirect(url_for('download', data = data))
+            return render_template("paysheet2.html", data=data)
         except Error as e:
             print("Error While connecting to MySQL : ", e)
         finally:
