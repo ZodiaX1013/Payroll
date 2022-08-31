@@ -158,7 +158,7 @@ def employee():
         if working == "No":
             lwork = request.form["lwork"]
         else:
-            lwork = None
+            lwork = "0000-00-00"
         spbonus = request.form["spbonus"]
         wdays = request.form["wday"]
 
@@ -1082,7 +1082,7 @@ def payslip():
         data = cursor.fetchall()
         print(data)
         session["data"] = data
-        return render_template("payslip.html", data=data)
+        return render_template("payslip2.html", data=data)
     except Error as e:
         print("Error While connecting to MySQL : ", e )
     finally:
@@ -1090,7 +1090,7 @@ def payslip():
         cursor.close()
         connection.close()
         print("MySQL connection is closed")
-    return render_template("payslip.html")
+    return render_template("payslip2.html")
 
 @app.route("/paysheet", methods=["GET" , "POST"])
 def paysheet():
