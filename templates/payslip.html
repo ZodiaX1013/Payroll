@@ -155,65 +155,10 @@
             <!-- [ breadcrumb ] end -->
             <!-- [ Main Content ] start -->
             <!-- <form action=""> -->
-                <div class="">
-                    <div class="card">
-                        <div class="card-header">
-                            <center><h4>MAXCITY ASSET MANAGERS LTD</h4>
-                            <h5>Paysheet for the month of July 2022</h5>
-                            </center>
-                            <div class="card-body">
-                                <!-- <h6 class="mb-3"><b><u> Leave Register </u></b></h6> -->
-                                <!-- Leave Table -->
-                                <!-- <h4>Table Here</h4> -->
-                                <table class="table table-striped" style="width: 100%;">
-                                    <!-- <table style="width: 100%;"> -->
-                                    <tr>
-                                        <!-- <th></th> -->
-                                        <th>Employee</th>
-                                        <th>Basic</th>
-                                        <th>Arrears</th>
-                                        <th>Overseas</th>
-                                        <th>Travel Allow</th>
-                                        <th>Other Allow</th>
-                                        <th>Gross</th>
-                                        <th>PAYE</th>
-                                        <th>CSG Emp</th>
-                                        <th>NSF Emp</th>
-                                        <th>Med Con</th>
-                                        <th>S.Levy</th>
-                                        <th>Net Pay</th>
-                                    </tr>
-                                    <tr style="font-weight: bold ;">
-                                        <td> Management MCPF Dept</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    {% for row in data %}
-                                    <tr>
-                                        {% for cell in row %}
-                                        <td>{{cell}}</td>
-                                        {% endfor %}
-                                    </tr>
-                                    {% endfor %}
-                                    </table>
-                                <!-- End Leave Table -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <h2>Download File</h2>
 <p>
-    <a href="{{url_for('paysheet')}}"> Download </a>
+    <a href="{{url_for('payslip')}}"> Download </a>
 </p>
             <!-- </form> -->
             <!-- [ Main Content ] end -->

@@ -847,14 +847,38 @@ def salary():
         other = request.form["oalw2"]
         gross = request.form["grs"]
         paye = request.form["paye"]
-        csg = request.form["nps"]
-        nsf = request.form["nsf"]
+        csg = request.form["nps"] 
+        nsf = request.form["nsf"] #nsf = nps = 213
         medical = request.form["med2"]
         levy = request.form["levy"]
         net = request.form["npay"]
-        # car = request.form["car"]
+        car = request.form["car"]
         # net = int(tnet) + int(car)
         # print(net)
+        edf = request.form["edf"]
+        ot = request.form["ot2"]
+        transport = request.form["tran2"]
+        eoy = request.form["eoy"]
+        leaveRef = request.form["lref2"]
+        speBonus = request.form["spbonus2"]
+        speProBonus = request.form["spbonus3"]
+        fixedAlw = request.form["falw2"]
+        DiscBonus = request.form["dbns2"]
+        AttendanceBns = request.form["atbns2"]
+        loan = request.form["lrep"]
+        lateness = request.form["am4"]
+        otherDeduction = request.form["oded2"]
+        payable = request.form["pay"]
+        deduction = request.form["ded"]
+        ot1hour = request.form["hr1"]
+        ot1amt = request.form["am1"]
+        ot2hour = request.form["hr2"]
+        ot2amt = request.form["am2"]
+        ot3hour = request.form["hr3"]
+        ot3amt = request.form["am3"]
+        educationRel = request.form["edu"]
+        latehr = request.form["hr4"]
+
         try:
             connection = mysql.connector.connect(host='localhost',
                                                 database='payroll',
@@ -862,22 +886,46 @@ def salary():
                                                 password='password') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
-            query = """INSERT INTO paysheet (
+            # Payable Table
+            query11 = """INSERT INTO payable (
                 EmployeeID,
-                EmployeeName,
                 BasicSalary,
-                Arrears,
-                Overseas,
-                TravelAllow,
+                Overtime,
                 OtherAllow,
-                Gross,
+                Transport,
+                Arrears,
+                EOY,
+                LeaveRef,
+                SpeBonus,
+                SpeProBonus,
+                FixedAllow,
+                DiscBonus,
+                TaxAllow,
+                NTaxAllow,
+                AttBonus,
+                Loan,
                 PAYE,
-                CSG,
+                Lateness,
+                NPS,
+                OtherDed,
                 NSF,
                 Medical,
+                EDF,
+                travel,
+                car,
                 SLevy,
-                Net,
-                Date
+                EducationRelief,
+                gross,
+                Payable,
+                Deduction,
+                NetPay,
+                OT1hr,
+                OT1amt,
+                OT2hr,
+                OT2amt,
+                OT3hr,
+                OT3amt,
+                LatenessHr
               )
             VALUES (
                 %s,
@@ -893,12 +941,82 @@ def salary():
                 %s,
                 %s,
                 %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
                 %s
               );"""
+            
+            data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr]
+
+            cursor.execute(query11 , data3)
+            print("Payable Query Executed")
+
+            # Paysheet Table
+            query10 = """INSERT INTO paysheet (
+                EmployeeID,
+                EmployeeName,
+                BasicSalary,
+                Arrears,
+                Overseas,
+                TravelAllow,
+                OtherAllow,
+                Gross,
+                PAYE,
+                CSG,
+                NSF,
+                Medical,
+                SLevy,
+                Net,
+                Date,
+                department
+              )
+            VALUES (
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s,
+                %s
+              );"""
+            
             cdate = date.today()
-            data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net,cdate]
-            cursor.execute(query, data2)
+            dep = "Demo"
+            data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net, cdate, dep]
+            cursor.execute(query10, data2)
             print("Insert Query Execute successfully")
+
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
@@ -1068,28 +1186,50 @@ def process_salary():
 
 @app.route("/payslip", methods=["GET" , "POST"])
 def payslip():
+    if request.method == "POST":
+        try:
+            connection = mysql.connector.connect(host='localhost',
+                                            database='payroll',
+                                            user='google',
+                                            password='password') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
 
-    try:
-        connection = mysql.connector.connect(host='localhost',
-                                        database='payroll',
-                                        user='google',
-                                        password='password') # @ZodiaX1013
-        cursor = connection.cursor(buffered=True)
+            # query1 = "SELECT * FROM paysheet"
+            query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
+            cursor.execute(query1)
+            data1 = cursor.fetchall()
+            
+            print(data1)
+            for i in range(len(data1)):
+                print("i : " , i)
+                # print("j : ", j)
+                data = ''.join(data1[i])
 
-        # query1 = "SELECT * FROM paysheet"
-        query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
-        cursor.execute(query1)
-        data = cursor.fetchall()
-        print(data)
-        session["data"] = data
-        return render_template("payslip2.html", data=data)
-    except Error as e:
-        print("Error While connecting to MySQL : ", e )
-    finally:
-        connection.commit()
-        cursor.close()
-        connection.close()
-        print("MySQL connection is closed")
+                print("After Join \n" , data1)
+
+            query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
+            cursor.execute(query2)
+            data2 = cursor.fetchall()
+
+            print(data2)
+            for i in range(len(data1)):
+                print("i : " , i)
+                # print("j : ", j)
+                data = ''.join(data1[i])
+
+            print("After Join \n" , data2)
+
+            session["data1"] = data1
+            session["data2"] = data2
+            return "Successful"
+            # return render_template("payslip2.html", data1=data1, data2=data2)
+        except Error as e:
+            print("Error While connecting to MySQL : ", e )
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
     return render_template("payslip2.html")
 
 @app.route("/paysheet", methods=["GET" , "POST"])

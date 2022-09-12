@@ -530,8 +530,8 @@
                                 <!-- </div> -->
                             </table>
                             <table class="table table-striped col-md-6" id="excel" style="width: 100%;">
-                                <!-- 2nd Table -->
-                                <!-- <div class="form-group col-md-6"> -->
+                                <!-- Deduction Table -->
+                                
                                     <tr>
                                         <th colspan="3" style="font-weight: bolder;"><center>DEDUCTIONS</center></th>
                                     </tr>
@@ -582,13 +582,13 @@
                                         <td colspan="2" style="text-align: center; font-weight: bold;">Total Deduction</td>
                                         <td>848.00</td>
                                     </tr>
-                                    
-                                <!-- </div> -->
                             </table>
                         </div>
 
+                        <!-- 2nd Employee Table -->
                         <br>
                         <br>
+                        {% for (emp,data) in (data1,data2) %}
                         <table class="table table-striped" style="width: 100%;">
                             <div class="form-row">
                                 <div class="form-group col-md-4"><b> MAXCITY ASSET MANAGERS LTD</b></div>
@@ -606,17 +606,19 @@
                             <br>
                             <div class="form-row">
                                 <div class="form-group col-md-2"><b> Name: </b></div>
-                                <div class="form-group col-md-4">Khodabux Muhammad Faarooq Azhar </div>
+                                <div class="form-group col-md-4">{{}}</div>
                                 <div class="form-group col-md-2"><b> Job Title: </b></div>
-                                <div class="form-group col-md-4">Front Desk Executive</div>
+                                <div class="form-group col-md-4">{{}}</div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2"><b> NIC </b></div>
-                                <div class="form-group col-md-4">K300993461213C</div>
+                                <div class="form-group col-md-4">{{}}</div>
                                 <div class="form-group col-md-2"><b> Department: </b></div>
-                                <div class="form-group col-md-4"> ADMINISTRATION</div>
+                                <div class="form-group col-md-4">{{}}</div>
                             </div>
                         </table>
+                        
+                        <!-- Dynamic Data -->
                         <div class="form-row">
                             <table class="table table-striped col-md-6" id="excel" style="width: 100%;">
                                 
@@ -627,19 +629,19 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Basic Salary</td>
-                                        <td>17,400.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Allowance</td>
-                                        <td>700.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">End Of Year Bonus</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Travel Allowance</td>
-                                        <td>1,200.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Overtime</td>
@@ -648,35 +650,35 @@
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@1.5</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@2.0</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@3.0</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;"> Arrears</td>
-                                        <td> 0.00 </td>
+                                        <td> {{}} </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Leave Refund</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Special Project Bonus</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <!-- <td></td> -->
                                         <td colspan="2" style="text-align: center; font-weight: bold;">Total : </td>
-                                        <td>19,300.00</td>
+                                        <td></td>
                                     </tr>
                                 <!-- </div> -->
                             </table>
@@ -688,55 +690,56 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">  Absense</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Income Tax (PAYE)</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Loan Repayment</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" > <br></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Deduction</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">CSG Employee</td>
-                                        <td>261.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">NPS Employee</td>
-                                        <td>174.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Medical</td>
-                                        <td>288.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="font-weight: bold;"><br> </td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Lateness</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Solidarity Levy </td>
-                                        <td>0.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center; font-weight: bold;"> Total Deduction</td>
-                                        <td>723.00</td>
+                                        <td>{{}}</td>
                                     </tr>
                                     
                                 <!-- </div> -->
                             </table>
                         </div>
+                        {% endfor %}
                     </div>
                     
                 </div>
