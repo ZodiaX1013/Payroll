@@ -353,6 +353,7 @@ function calculateSalary(){
   var travel = document.getElementById("travel").value
   var medical = document.getElementById('med2').value
   var edf = document.getElementById('edf').value
+  
   var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car)
   var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical)
   
