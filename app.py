@@ -1195,11 +1195,15 @@ def payslip():
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
-            query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
+            print("Before Query1")
+            query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee WHERE EmployeeID = 'AB002' AND EmployeeID = 'AB003'"
             cursor.execute(query1)
             data1 = cursor.fetchall()
-            
+            print("After Query1")
+
             print(data1)
+
+            print("Before Query2")
             for i in range(len(data1)):
                 print("i : " , i)
                 # print("j : ", j)
@@ -1210,12 +1214,14 @@ def payslip():
             query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
             cursor.execute(query2)
             data2 = cursor.fetchall()
+            
+            print("After Query2")
 
             print(data2)
-            for i in range(len(data1)):
+            for i in range(len(data2)):
                 print("i : " , i)
                 # print("j : ", j)
-                data = ''.join(data1[i])
+                data = ''.join(data2[i])
 
             print("After Join \n" , data2)
 
@@ -1230,7 +1236,7 @@ def payslip():
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
-    return render_template("payslip2.html")
+    return render_template("payslip.html")
 
 @app.route("/paysheet", methods=["GET" , "POST"])
 def paysheet():
