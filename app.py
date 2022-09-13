@@ -12,7 +12,6 @@ from mysql.connector import *
 import random, string
 from datetime import date
 import pdfkit
-# from flask_wkhtmltopdf import Wkhtmltopdf
 
 UPLOAD_FOLDER = 'static/images/'
 WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
