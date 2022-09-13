@@ -1,20 +1,8 @@
-from audioop import add
-from doctest import REPORT_CDIFF
-import email
-from email.headerregistry import Address
-from fnmatch import fnmatch
-from genericpath import exists
-from importlib.metadata import requires
-from itertools import count
+
 import os
-from re import sub
-import re
-from tkinter import INSERT
-from turtle import down
-from unicodedata import name
-from urllib import response
-from django.shortcuts import render
-from flask import Flask, flash, request, redirect, url_for, render_template, session, make_response, send_file
+
+
+from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from sqlalchemy import true
 from werkzeug.utils import secure_filename
 from PIL import Image
@@ -22,7 +10,7 @@ import os
 import mysql.connector
 from mysql.connector import *
 import random, string
-from datetime import date, datetime
+from datetime import date
 import pdfkit
 # from flask_wkhtmltopdf import Wkhtmltopdf
 
