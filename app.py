@@ -17,6 +17,12 @@ import pdfkit
 UPLOAD_FOLDER = 'static/images/'
 WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
 
+# MySQL configurations
+app.config['MYSQL_DATABASE_USER'] = 'b58f7064154253'
+app.config['MYSQL_DATABASE_PASSWORD'] = '32de4f18'
+app.config['MYSQL_DATABASE_DB'] = 'heroku_dbb5a8d2e1d2fbf'
+app.config['MYSQL_DATABASE_HOST'] = 'us-cdbr-east-06.cleardb.net'
+
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -69,10 +75,10 @@ def employee():
         eid = request.form["eid"]
         try:
             print("in Search")
-            connection = mysql.connector.connect(host='localhost',
-                                                database='payroll',
-                                                user='google',
-                                                password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
             query = "SELECT * FROM employee WHERE EmployeeID = %s"
             data = [eid]
@@ -151,10 +157,10 @@ def employee():
         wdays = request.form["wday"]
 
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                                database='payroll',
-                                                user='google',
-                                                password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
             query2 =""" INSERT INTO employee (
                 EmployeeID,
@@ -747,10 +753,10 @@ def salary():
     if request.method == "POST" and request.form['action'] == 'search':
         eid = request.form["eid"]
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                                database='payroll',
-                                                user='google',
-                                                password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True) 
 
             query1 = "SELECT salary FROM employee WHERE EmployeeID = %s"
@@ -868,10 +874,10 @@ def salary():
         latehr = request.form["hr4"]
 
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                                database='payroll',
-                                                user='google',
-                                                password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
             # Payable Table
@@ -1018,10 +1024,10 @@ def salary():
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dashboard():
     try:
-        connection = mysql.connector.connect(host='localhost',
-                                            database='payroll',
-                                            user='google',
-                                            password='password') # @ZodiaX1013
+        connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
         cursor = connection.cursor(buffered=True) 
 
         # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
@@ -1065,10 +1071,10 @@ def leave():
     if request.method == 'POST':
         eid = request.form['eid']
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                                database='payroll',
-                                                user='google',
-                                                password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True) 
 
             # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
@@ -1176,10 +1182,10 @@ def process_salary():
 def payslip():
     if request.method == "POST":
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                            database='payroll',
-                                            user='google',
-                                            password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
@@ -1232,10 +1238,10 @@ def paysheet():
     # For Pdf Generate
     if request.method == "POST" and request.form['action'] == 'pdf':
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                            database='payroll',
-                                            user='google',
-                                            password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
@@ -1257,10 +1263,10 @@ def paysheet():
 
     if request.method == "POST" and request.form['action'] == 'excel':
         try:
-            connection = mysql.connector.connect(host='localhost',
-                                            database='payroll',
-                                            user='google',
-                                            password='password') # @ZodiaX1013
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
