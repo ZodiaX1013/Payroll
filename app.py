@@ -24,7 +24,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # wkhtmltopdf = Wkhtmltopdf(app)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
-# config = pdfkit.configuration(wkhtmltopdf='C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf')
+config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -1373,7 +1373,7 @@ def download():
         'no-outline': None
     }
     
-    pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True)
+    pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True, configuration=config)
     # return render_template('paysheet2.html',filename='css/style.css', data=data)
     p = "./paysheet.pdf"
 
