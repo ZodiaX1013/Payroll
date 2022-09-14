@@ -1373,7 +1373,8 @@ def download():
         'no-outline': None
     }
     
-    pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True, configuration=config)
+    # pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True, configuration=config)
+    pdfkit.from_string(rendered,'paysheet.pdf',False, options=options, configuration=config)
     # return render_template('paysheet2.html',filename='css/style.css', data=data)
     p = "./paysheet.pdf"
 
