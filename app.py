@@ -1,4 +1,6 @@
 import os
+import platform
+import subprocess
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from sqlalchemy import true
 from werkzeug.utils import secure_filename
@@ -9,10 +11,11 @@ from mysql.connector import *
 import random, string
 from datetime import date
 import pdfkit
+from urllib.request import Request, urlopen
 
 UPLOAD_FOLDER = 'static/images/'
-# WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
-WKHTMLTOPDF_PATH = 'https://digitalpayroll.herokuapp.com'
+WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+# WKHTMLTOPDF_PATH = 'https://digitalpayroll.herokuapp.com'
 
 app = Flask(__name__)
 app.secret_key = "secret key"
@@ -26,6 +29,7 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+         
 @app.route('/', methods=["GET" , "POST"])
 def home():
     if request.method == "POST":
@@ -39,7 +43,7 @@ def home():
             print("IN ELSE")
             flash(f'Wrong email and password', 'success')
             return redirect(url_for('login'))
-            flash("Wrong Credentials")
+            # flash("Wrong Credentials")
             # return render_template("login.html")
     print("OUT IF")
     return render_template("login.html")
@@ -1372,8 +1376,15 @@ def download():
     pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True)
     # return render_template('paysheet2.html',filename='css/style.css', data=data)
     p = "./paysheet.pdf"
+
+    # Web To PDF add-on
+    # request = Request('https://webtopdf.expeditedaddons.com/?api_key=' + '7ICQPX254F8J32ST6AO9NG09LZER1K4MVD6W7UYB358H01' + '&content=http%3A%2F%2Fwww.wikipedia.org&html_width=1024&margin=10&title=My+PDF+Title')
+
+    # response_body = urlopen(request).read()
+    # print(response_body)
+    
     return send_file(p, as_attachment=True)
 
-    
+
 if __name__ == "__main__":
     app.run(debug=true)
