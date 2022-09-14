@@ -21,27 +21,12 @@ app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # wkhtmltopdf = Wkhtmltopdf(app)
-
+pdfkit.configuration(wkhtmltopdf = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')], stdout=subprocess.PIPE).communicate()[0].strip())
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
 # config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-def _get_pdfkit_config():
-     """wkhtmltopdf lives and functions differently depending on Windows or Linux. We
-      need to support both since we develop on windows but deploy on Heroku.
-
-     Returns:
-         A pdfkit configuration
-     """
-     if platform.system() == 'Windows':
-         return pdfkit.configuration(wkhtmltopdf=os.environ.get('WKHTMLTOPDF_BINARY', 'C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe'))
-     else:
-         WKHTMLTOPDF_CMD = subprocess.Popen(['which', os.environ.get('WKHTMLTOPDF_BINARY', 'wkhtmltopdf')], stdout=subprocess.PIPE).communicate()[0].strip()
-         return pdfkit.configuration(wkhtmltopdf=WKHTMLTOPDF_CMD)
-         
-_get_pdfkit_config()
 
 @app.route('/', methods=["GET" , "POST"])
 def home():
