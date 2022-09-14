@@ -1,6 +1,4 @@
 import os
-import platform
-import subprocess
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from sqlalchemy import true
 from werkzeug.utils import secure_filename
@@ -11,7 +9,6 @@ from mysql.connector import *
 import random, string
 from datetime import date
 import pdfkit
-from urllib.request import Request, urlopen
 
 UPLOAD_FOLDER = 'static/images/'
 WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
@@ -24,7 +21,7 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 # wkhtmltopdf = Wkhtmltopdf(app)
 
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
-config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
+# config = pdfkit.configuration(wkhtmltopdf='./bin/wkhtmltopdf')
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -1373,8 +1370,8 @@ def download():
         'no-outline': None
     }
     
-    # pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True, configuration=config)
-    pdfkit.from_string(rendered,False, options=options, configuration=config)
+    pdfkit.from_string(rendered,'paysheet.pdf',options=options,verbose=True)
+    # pdfkit.from_string(rendered,False, options=options)
     # return render_template('paysheet2.html',filename='css/style.css', data=data)
     p = "./paysheet.pdf"
 
