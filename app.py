@@ -11,7 +11,7 @@ from datetime import date
 import pdfkit
 
 UPLOAD_FOLDER = 'static/images/'
-WKHTMLTOPDF_PATH = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf'
+WKHTMLTOPDF_PATH = './bin/wkhtmltopdf'
 # WKHTMLTOPDF_PATH = 'https://digitalpayroll.herokuapp.com'
 
 app = Flask(__name__)
