@@ -435,7 +435,7 @@ function calculateSalary(){
   var pgross = document.getElementById("pgrs").value
 
   // Net Ch
-  var netch = gross + pgross- IET
+  var netch = ParseInt(gross) + ParseInt(pgross) - ParseInt(IET)
   document.getElementById("netch").value = netch
 
   // Get Other Values
