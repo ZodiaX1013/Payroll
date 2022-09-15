@@ -430,7 +430,7 @@ function calculateSalary(){
   }
   // alert(slevy)
   var deduction = Math.round(paye + csg + nsf)
-  var net = Math.round(tgross - deduction - slevy)
+  var net = Math.round(tgross - deduction)
 
 
   // Net Ch

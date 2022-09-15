@@ -1,4 +1,6 @@
+import math
 import os
+from xml.dom.expatbuilder import parseString
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from sqlalchemy import true
 from werkzeug.utils import secure_filename
@@ -836,8 +838,9 @@ def salary():
         nsf = request.form["nsf"] #nsf = nps = 213
         medical = request.form["med2"]
         levy = request.form["levy"]
-        net = request.form["npay"]
+        tnet = request.form["npay"]
         car = request.form["car"]
+        net = int(tnet) - int(levy)
         # net = int(tnet) + int(car)
         # print(net)
         edf = request.form["edf"]
