@@ -397,6 +397,7 @@ function calculateSalary(){
   
   // NSF Calculation
   var nsf = parseInt(basic) * 0.01
+  var ivbt = parseInt(basic) * 0.01
   if(nsf > 213)
   {
     nsf = 213
@@ -438,6 +439,11 @@ function calculateSalary(){
   var netch = parseInt(gross) + parseInt(pgross) - parseInt(IET)
   document.getElementById("netch").value = netch
 
+
+  // NPS
+var nps
+nps = parseInt(basic) * 0.06
+
   // Get Other Values
   var localRef = document.getElementById('lref').value
   var fixAllow = document.getElementById('falw').value
@@ -464,6 +470,7 @@ function calculateSalary(){
   document.getElementById('dbns3').value = DiscBonus
   // NSF
   document.getElementById('nsf').value = nsf
+  document.getElementById('ivbt').value = Math.round(ivbt) 
   // other allow
   document.getElementById('oalw2').value = otherAllow
   document.getElementById('oalw3').value = otherAllow
@@ -503,6 +510,8 @@ function calculateSalary(){
   document.getElementById('late').value = late
   // NPS
   document.getElementById('nps').value = csg
+  document.getElementById('nps2').value = Math.round(nps)
+  document.getElementById('nsf2').value = 531
   // IET
   document.getElementById('iet').value = IET
   // payable
