@@ -432,6 +432,11 @@ function calculateSalary(){
   var deduction = Math.round(paye + csg + nsf)
   var net = Math.round(tgross - deduction - slevy)
 
+
+  // Net Ch
+  var netch = gross - IET
+  document.getElementById("netch").value = netch
+
   // Get Other Values
   var localRef = document.getElementById('lref').value
   var fixAllow = document.getElementById('falw').value
