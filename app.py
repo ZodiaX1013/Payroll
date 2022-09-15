@@ -867,6 +867,10 @@ def salary():
         educationRel = request.form["edu"]
         latehr = request.form["hr4"]
 
+        mon = request.form["mon"]
+        year = request.form["year"]
+
+
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
                                                 database='heroku_dbb5a8d2e1d2fbf',
@@ -913,9 +917,13 @@ def salary():
                 OT2amt,
                 OT3hr,
                 OT3amt,
-                LatenessHr
+                LatenessHr,
+                Month,
+                Year
               )
             VALUES (
+                %s,
+                %s,
                 %s,
                 %s,
                 %s,
@@ -956,7 +964,7 @@ def salary():
                 %s
               );"""
             
-            data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr]
+            data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year]
 
             cursor.execute(query11 , data3)
             print("Payable Query Executed")
@@ -977,7 +985,7 @@ def salary():
                 Medical,
                 SLevy,
                 Net,
-                Date,
+                Month,
                 department
               )
             VALUES (
@@ -999,9 +1007,8 @@ def salary():
                 %s
               );"""
             
-            cdate = date.today()
             dep = "Demo"
-            data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net, cdate, dep]
+            data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net, mon, dep]
             cursor.execute(query10, data2)
             print("Insert Query Execute successfully")
 

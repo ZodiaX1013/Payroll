@@ -397,7 +397,7 @@ function calculateSalary(){
   
   // NSF Calculation
   var nsf = parseInt(basic) * 0.01
-  var ivbt = parseInt(basic) * 0.01
+  var ivbt = parseInt(basic) * 0.015
   if(nsf > 213)
   {
     nsf = 213
@@ -405,6 +405,17 @@ function calculateSalary(){
   else
   {
     nsf = nsf
+  }
+
+  // NSF For Employer
+  var ensf = parseInt(basic) * 0.025
+  if(ensf > 513)
+  {
+    ensf = 513
+  }
+  else
+  {
+    ensf = ensf
   }
 
   // S.Levy Calculation
@@ -511,7 +522,7 @@ nps = parseInt(basic) * 0.06
   // NPS
   document.getElementById('nps').value = csg
   document.getElementById('nps2').value = Math.round(nps)
-  document.getElementById('nsf2').value = 531
+  document.getElementById('nsf2').value = Math.round(ensf)
   // IET
   document.getElementById('iet').value = IET
   // payable
