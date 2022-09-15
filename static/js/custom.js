@@ -492,6 +492,7 @@ function calculateSalary(){
   // special bonus
   document.getElementById('spbonus2').value = special
   document.getElementById('spbonus3').value = special
+  document.getElementById('spbonus4').value = special
   // lateness
   document.getElementById('late').value = late
   // NPS
