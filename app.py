@@ -807,6 +807,15 @@ def salary():
             for i in range(len(education)):
                 edu = ''.join(education[i])
 
+            query10 = "SELECT PAYE FROM payable WHERE EmployeeID = %s"
+            cursor.execute(query10, data)
+            paye = cursor.fetchall()
+            for i in range(len(paye)):
+                paye = ''.join(paye[i])
+            
+            
+
+
             return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
@@ -870,6 +879,7 @@ def salary():
         mon = request.form["mon"]
         year = request.form["year"]
 
+        unqcode = lname + mon
 
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
@@ -878,96 +888,113 @@ def salary():
                                                 password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
-            # Payable Table
-            query11 = """INSERT INTO payable (
-                EmployeeID,
-                BasicSalary,
-                Overtime,
-                OtherAllow,
-                Transport,
-                Arrears,
-                EOY,
-                LeaveRef,
-                SpeBonus,
-                SpeProBonus,
-                FixedAllow,
-                DiscBonus,
-                TaxAllow,
-                NTaxAllow,
-                AttBonus,
-                Loan,
-                PAYE,
-                Lateness,
-                NPS,
-                OtherDed,
-                NSF,
-                Medical,
-                EDF,
-                travel,
-                car,
-                SLevy,
-                EducationRelief,
-                gross,
-                Payable,
-                Deduction,
-                NetPay,
-                OT1hr,
-                OT1amt,
-                OT2hr,
-                OT2amt,
-                OT3hr,
-                OT3amt,
-                LatenessHr,
-                Month,
-                Year
-              )
-            VALUES (
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s
-              );"""
-            
-            data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year]
+            query12 = "SELECT UNQ FROM payable"
+            cursor.execute(query12)
 
-            cursor.execute(query11 , data3)
-            print("Payable Query Executed")
+            UNQ = cursor.fetchall()
+            for i in range(len(UNQ)):
+                udata = ''.join(UNQ[i])
+            con
+            for i in udata:
+                if unqcode == i:
+                    con = 1
+                    break
+                else:
+                    con = 0
+                
+            # Payable Table
+            if con == 0:
+                query11 = """INSERT INTO payable (
+                    EmployeeID,
+                    BasicSalary,
+                    Overtime,
+                    OtherAllow,
+                    Transport,
+                    Arrears,
+                    EOY,
+                    LeaveRef,
+                    SpeBonus,
+                    SpeProBonus,
+                    FixedAllow,
+                    DiscBonus,
+                    TaxAllow,
+                    NTaxAllow,
+                    AttBonus,
+                    Loan,
+                    PAYE,
+                    Lateness,
+                    NPS,
+                    OtherDed,
+                    NSF,
+                    Medical,
+                    EDF,
+                    travel,
+                    car,
+                    SLevy,
+                    EducationRelief,
+                    gross,
+                    Payable,
+                    Deduction,
+                    NetPay,
+                    OT1hr,
+                    OT1amt,
+                    OT2hr,
+                    OT2amt,
+                    OT3hr,
+                    OT3amt,
+                    LatenessHr,
+                    Month,
+                    Year,
+                    UNQ
+                )
+                VALUES (
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s
+                );"""
+                
+                data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, unqcode]
+
+                cursor.execute(query11 , data3)
+                print("Payable Query Executed")
 
             # Paysheet Table
             query10 = """INSERT INTO paysheet (
