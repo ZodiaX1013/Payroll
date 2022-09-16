@@ -354,9 +354,10 @@ function calculateSalary(){
   var travel = document.getElementById("travel").value
   var medical = document.getElementById('med2').value
   var edf = document.getElementById('edf').value
+  var transport = document.getElementById('tran').value
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow) + parseInt(special_pro_bonus)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
+  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
   
   var temp = basic * 0.06
   var payable
@@ -388,7 +389,7 @@ function calculateSalary(){
   }
   else
   {
-    paye = (parseInt(gross) - parseInt(cIET)) * 0.1 
+    tpaye = (parseInt(gross) - parseInt(cIET)) * 0.1 
     csg = Math.round( parseInt(basic) * 0.015 )
     paye = Math.round(tpaye)
   }
@@ -458,7 +459,7 @@ nps = parseInt(basic) * 0.06
   
   var DiscBonus = document.getElementById('dbns').value
   var attendance = document.getElementById('atbns').value
-  var transport = document.getElementById('tran').value
+  
   var sick = document.getElementById('sref').value
   var special = document.getElementById('sbns').value
   var odeduction = document.getElementById('oded').value
