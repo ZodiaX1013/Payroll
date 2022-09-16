@@ -453,7 +453,15 @@ function calculateSalary(){
 
   // NPS
 var nps
-nps = parseInt(basic) * 0.06
+if(basic > 50000)
+{
+  nps = parseInt(basic) * 0.06
+}
+else
+{
+  nps = parseInt(basic) * 0.03
+}
+
 
   // Get Other Values
   var localRef = document.getElementById('lref').value
