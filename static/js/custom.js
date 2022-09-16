@@ -463,6 +463,11 @@ nps = parseInt(basic) * 0.06
   var odeduction = document.getElementById('oded').value
   var late = document.getElementById('am4').value
 
+  // Paye Of PAYE Calculation
+  var previous_paye = document.getElementById("ppaye").value
+
+  var pPAYE = parseInt(previous_paye) + parseInt(paye)
+  payable_paye = parseInt(pPAYE) - parseInt(previous_paye)
 
   // Fill Readonly Field
   // fix allow
@@ -506,8 +511,8 @@ nps = parseInt(basic) * 0.06
   document.getElementById('lref3').value = localRef
   // paye
   document.getElementById('paye').value = paye
-  document.getElementById('paye2').value = paye
-  document.getElementById('paye3').value = paye
+  document.getElementById('paye2').value = pPAYE
+  document.getElementById('paye3').value = payable_paye
   // s.levy
   document.getElementById('levy').value = slevy
   // special bonus
