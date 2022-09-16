@@ -1,3 +1,4 @@
+from errno import EISDIR
 import math
 import os
 from xml.dom.expatbuilder import parseString
@@ -9,7 +10,7 @@ import os
 import mysql.connector
 from mysql.connector import *
 import random, string
-from datetime import date
+from datetime import date, datetime
 import pdfkit
 # from flask_wkhtmltopdf import Wkhtmltopdf
 
@@ -807,16 +808,54 @@ def salary():
             for i in range(len(education)):
                 edu = ''.join(education[i])
 
-            query10 = "SELECT PAYE FROM payable WHERE EmployeeID = %s"
-            cursor.execute(query10, data)
+            today = datetime.date.today()
+            first_day = today.replace(day=1)
+            last_month = first_day - datetime.timedelta(days=1)
+            lfirst_day = last_month.replace(day=1)
+            llast_month = lfirst_day - datetime.timedelta(days=1)
+            req_month = llast_month.strftime("%m")
+            str_month
+
+            if req_month == 1:
+                str_month = "January"
+            elif req_month == 2:
+                str_month = "February"
+            elif req_month == 3:
+                str_month = "March"
+            elif req_month == 4:
+                str_month = "April"
+            elif req_month == 5:
+                str_month = "May"
+            elif req_month == 6:
+                str_month = "June"
+            elif req_month == 7:
+                str_month = "July"
+            elif req_month == 8:
+                str_month = "August"
+            elif req_month == 9:
+                str_month = "September"
+            elif req_month == 10:
+                str_month = "October"
+            elif req_month == 11:
+                str_month = "November"
+            elif req_month == 12:
+                str_month = "December"
+
+            data1 = [eid , str_month ]
+            query10 = "SELECT PAYE FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query10, data1)
             paye = cursor.fetchall()
             for i in range(len(paye)):
                 paye = ''.join(paye[i])
             
+            query10 = "SELECT gross FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query10, data1)
+            gross = cursor.fetchall()
+            for i in range(len(gross)):
+                gross = ''.join(gross[i])
             
 
-
-            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu)
+            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:

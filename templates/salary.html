@@ -955,8 +955,13 @@
 											<input type="text" name="falw3" id="falw3" class="form-control" placeholder="Fixed Allowance" readonly>
 										</div>
 										<div class="form-group col-md-4">
+											{% if gross %}
+											<label style="color: black;"> Previous Gross</label>
+											<input type="text" name="pgrs" id="pgrs" value="{{gross}}" class="form-control" placeholder="Previous Gross" readonly>
+											{% else %}
 											<label style="color: black;"> Previous Gross</label>
 											<input type="text" name="pgrs" id="pgrs" value="0" class="form-control" placeholder="Previous Gross" readonly>
+											{% endif %}
 										</div>
 										
 									</div>
@@ -1019,8 +1024,13 @@
 											<input type="text" name="atbns3" id="atbns3" class="form-control" placeholder="Attendance Bonus" readonly>
 										</div>
 										<div class="form-group col-md-4">
+											{% if paye %}
+											<label style="color: red;"> Previous PAYE</label>
+											<input type="text" name="ppaye" id="ppaye" value="{{paye}}" class="form-control" placeholder="Previous PAYE" readonly>
+											{% else %}
 											<label style="color: red;"> Previous PAYE</label>
 											<input type="text" name="ppaye" id="ppaye" value="0" class="form-control" placeholder="Previous PAYE" readonly>
+											{% endif %}
 										</div>
 									</div>
 									<div class="form-row">
