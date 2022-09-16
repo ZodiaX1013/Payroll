@@ -380,14 +380,14 @@ function calculateSalary(){
   var paye
   if( basic > 50000 )
   {
-    tpaye = (parseInt(gross) - parseInt(IET)) * 0.15
+    tpaye = (parseInt(gross) - parseInt(cIET)) * 0.15
     // alert(paye)
     csg = Math.round( parseInt(basic) * 0.03 )
     paye = Math.round(tpaye)
   }
   else
   {
-    paye = (parseInt(gross) - parseInt(IET)) * 0.1 
+    paye = (parseInt(gross) - parseInt(cIET)) * 0.1 
     csg = Math.round( parseInt(basic) * 0.015 )
     paye = Math.round(tpaye)
   }
@@ -422,7 +422,7 @@ function calculateSalary(){
   var slevy
   if( emo > 3000000)
   {
-    levy = ( parseInt(gross) - parseInt(IET) - (3000000/13) ) * 0.25
+    levy = ( parseInt(gross) - parseInt(cIET) - (3000000/13) ) * 0.25
     var emo2 = parseInt(emo) * 0.1
     if(emo2 > levy)
     {
@@ -444,7 +444,7 @@ function calculateSalary(){
   var pgross = document.getElementById("pgrs").value
 
   // Net Ch
-  var netch = parseInt(gross) + parseInt(pgross) - parseInt(IET)
+  var netch = parseInt(gross) + parseInt(pgross) - parseInt(cIET)
   document.getElementById("netch").value = netch
 
 
