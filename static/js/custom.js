@@ -341,6 +341,7 @@ function calculateSalary(){
   var tax = document.getElementById('amt1').value
   var ntax = document.getElementById('amt2').value
   var education = document.getElementById('edu').value
+  var fixAllow = document.getElementById('falw').value
 
   overseas = parseInt(tax) + parseInt(ntax)
 
@@ -354,8 +355,8 @@ function calculateSalary(){
   var medical = document.getElementById('med2').value
   var edf = document.getElementById('edf').value
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow)
+  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow)
   
   var temp = basic * 0.06
   var payable
@@ -457,7 +458,7 @@ nps = parseInt(basic) * 0.06
 
   // Get Other Values
   var localRef = document.getElementById('lref').value
-  var fixAllow = document.getElementById('falw').value
+  
   var DiscBonus = document.getElementById('dbns').value
   var attendance = document.getElementById('atbns').value
   var transport = document.getElementById('tran').value
