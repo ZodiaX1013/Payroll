@@ -349,14 +349,14 @@ function calculateSalary(){
   var ot1 = document.getElementById('am1').value
   var ot2 = document.getElementById('am2').value
   var ot3 = document.getElementById('am3').value
-
+  var special_pro_bonus = document.getElementById("spbonus3").value
   var overtime = parseInt(ot1) + parseInt(ot2) + parseInt(ot3)
   var travel = document.getElementById("travel").value
   var medical = document.getElementById('med2').value
   var edf = document.getElementById('edf').value
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus)
+  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow) + parseInt(special_pro_bonus)
   
   var temp = basic * 0.06
   var payable
