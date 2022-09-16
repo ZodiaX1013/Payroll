@@ -369,6 +369,7 @@ function calculateSalary(){
     payable = parseInt(gross)  - parseInt(car) + parseInt(ntax)
   }
   
+  // IET Calculation
   var pIET = document.getElementById("iet").value
   var TIET = parseInt(edf) + parseInt(education)
   var cIET = Math.round(TIET / 13)
