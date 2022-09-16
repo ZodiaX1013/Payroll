@@ -816,29 +816,29 @@ def salary():
             llast_month = lfirst_day - datetime.timedelta(days=1)
             req_month = llast_month.strftime("%m")
             str_month = " "
-            if req_month == 1:
+            if req_month == '1'.zfill(2):
                 str_month = "January"
-            elif req_month == 2:
+            elif req_month == '2'.zfill(2):
                 str_month = "February"
-            elif req_month == 3:
+            elif req_month == '3'.zfill(2):
                 str_month = "March"
-            elif req_month == 4:
+            elif req_month == '4'.zfill(2):
                 str_month = "April"
-            elif req_month == 5:
+            elif req_month == '5'.zfill(2):
                 str_month = "May"
-            elif req_month == 6:
+            elif req_month == '6'.zfill(2):
                 str_month = "June"
-            elif req_month == 7:
+            elif req_month == '7'.zfill(2):
                 str_month = "July"
-            elif req_month == 8:
+            elif req_month == '8'.zfill(2):
                 str_month = "August"
-            elif req_month == 9:
+            elif req_month == '9'.zfill(2):
                 str_month = "September"
-            elif req_month == 10:
+            elif req_month == '10'.zfill(2):
                 str_month = "October"
-            elif req_month == 11:
+            elif req_month == '11'.zfill(2):
                 str_month = "November"
-            elif req_month == 12:
+            elif req_month == '12'.zfill(2):
                 str_month = "December"
 
             data1 = [eid , str_month ]
