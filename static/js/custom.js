@@ -409,9 +409,9 @@ function calculateSalary(){
 
   // NSF For Employer
   var ensf = parseInt(basic) * 0.025
-  if(ensf > 513)
+  if(ensf > 531)
   {
-    ensf = 513
+    ensf = 531
   }
   else
   {
