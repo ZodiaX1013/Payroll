@@ -924,7 +924,7 @@ def salary():
         mon = request.form["mon"]
         year = request.form["year"]
 
-        unqcode = lname + mon
+        unqcode = lname + " " + mon
 
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
