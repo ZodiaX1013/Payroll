@@ -383,14 +383,14 @@ function calculateSalary(){
   var paye
   if( basic > 50000 )
   {
-    tpaye = (parseInt(gross) - parseInt(cIET)) * 0.15
+    tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.15
     // alert(paye)
     csg = Math.round( parseInt(basic) * 0.03 )
     paye = Math.round(tpaye)
   }
   else
   {
-    tpaye = (parseInt(gross) - parseInt(cIET)) * 0.1 
+    tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.1 
     csg = Math.round( parseInt(basic) * 0.015 )
     paye = Math.round(tpaye)
   }
@@ -420,12 +420,12 @@ function calculateSalary(){
 
   // S.Levy Calculation
 
-  var emo = parseInt(gross) * 13
+  var emo = parseInt(tgross) * 13
   var levy
   var slevy
   if( emo > 3000000)
   {
-    levy = ( parseInt(gross) - parseInt(cIET) - (3000000/13) ) * 0.25
+    levy = ( parseInt(tgross) - parseInt(cIET) - (3000000/13) ) * 0.25
     var emo2 = parseInt(emo) * 0.1
     if(emo2 > levy)
     {
@@ -442,7 +442,7 @@ function calculateSalary(){
   }
   // alert(slevy)
   var deduction = Math.round(paye + csg + nsf)
-  var net = Math.round(tgross - deduction)
+  var net = Math.round(payable - deduction)
 
   var pgross = document.getElementById("pgrs").value
 
@@ -536,9 +536,9 @@ nps = parseInt(basic) * 0.06
   // Net Pay
   document.getElementById('npay').value = net
   // Gross
-  document.getElementById('grs').value = gross
+  document.getElementById('grs').value = tgross
   // Current Gross
-  document.getElementById('cgrs').value = gross
+  document.getElementById('cgrs').value = tgross
 
 }
 
