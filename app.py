@@ -923,7 +923,7 @@ def salary():
 
         mon = request.form["mon"]
         year = request.form["year"]
-
+        IET = request.form["iet"]
         unqcode = lname + " " + mon
 
         try:
@@ -992,6 +992,7 @@ def salary():
                     LatenessHr,
                     Month,
                     Year,
+                    IET,
                     UNQ
                 )
                 VALUES (
@@ -1035,10 +1036,11 @@ def salary():
                     %s,
                     %s,
                     %s,
+                    %s,
                     %s
                 );"""
                 
-                data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, unqcode]
+                data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, IET, unqcode]
 
                 cursor.execute(query11 , data3)
                 print("Payable Query Executed")
