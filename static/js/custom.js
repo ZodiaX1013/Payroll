@@ -532,10 +532,9 @@ nps = parseInt(basic) * 0.06
   // Net Pay
   document.getElementById('npay').value = net
   // Gross
-  document.getElementById('grs').value = tgross
+  document.getElementById('grs').value = gross
   // Current Gross
   document.getElementById('cgrs').value = gross
-
 
 }
 
