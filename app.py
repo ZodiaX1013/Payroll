@@ -815,7 +815,7 @@ def salary():
             lfirst_day = last_month.replace(day=1)
             llast_month = lfirst_day - datetime.timedelta(days=1)
             req_month = llast_month.strftime("%m")
-
+            str_month = " "
             if req_month == 1:
                 str_month = "January"
             elif req_month == 2:
