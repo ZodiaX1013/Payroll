@@ -369,15 +369,11 @@ function calculateSalary(){
     payable = parseInt(gross)  - parseInt(car) + parseInt(ntax)
   }
   
-
+  var pIET = document.getElementById("iet").value
   var TIET = parseInt(edf) + parseInt(education)
-  var IET = Math.round(TIET / 13)
-  // alert(IET)
-  // alert(IET)
-  // alert(edf)
-  // alert(education )
-  // var IET = IET /13
-  // alert(IET)
+  var cIET = Math.round(TIET / 13)
+  var IET = parseInt(pIET) + parseInt(cIET)
+  
   // PAYE and CSG Calculation
   var tpaye
   var csg

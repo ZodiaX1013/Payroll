@@ -975,8 +975,13 @@
 											<input type="text" name="dbns3" id="dbns3" class="form-control" placeholder="Disc Bonus" readonly>
 										</div>
 										<div class="form-group col-md-4">
+											{% if IET %}
+											<label style="color: red;">IET</label>
+											<input type="text" name="iet" id="iet" value="{{IET}}" class="form-control" placeholder="IET" readonly>
+											{% else %}
 											<label style="color: red;">IET</label>
 											<input type="text" name="iet" id="iet" class="form-control" placeholder="IET" readonly>
+											{% endif %}
 										</div>
 										
 										

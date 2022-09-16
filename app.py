@@ -854,8 +854,14 @@ def salary():
             for i in range(len(gross)):
                 gross = ''.join(gross[i])
             
+            query10 = "SELECT IET FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query10, data1)
+            IET = cursor.fetchall()
+            for i in range(len(IET)):
+                IET = ''.join(IET[i])
+            
 
-            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross)
+            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
