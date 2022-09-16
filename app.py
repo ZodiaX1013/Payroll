@@ -937,9 +937,11 @@ def salary():
             cursor.execute(query12)
 
             UNQ = cursor.fetchall()
+            print(UNQ)
             for i in range(len(UNQ)):
                 udata = ''.join(UNQ[i])
-            con
+            print(udata)
+            con = 0
             for i in udata:
                 if unqcode == i:
                     con = 1
