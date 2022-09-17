@@ -810,7 +810,7 @@ def salary():
                 edu = ''.join(education[i])
 
             query10 = "SELECT Medicalrel FROM employee WHERE EmployeeID = %s"
-            cursor.execute(query9, data)
+            cursor.execute(query10, data)
             mrel = cursor.fetchall()
             for i in range(len(mrel)):
                 mrel = ''.join(mrel[i])
