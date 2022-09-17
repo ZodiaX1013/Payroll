@@ -1314,7 +1314,7 @@ def payslip():
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
-    return render_template("payslip.html")
+    return render_template("payslip2.html")
 
 @app.route("/paysheet", methods=["GET" , "POST"])
 def paysheet():
