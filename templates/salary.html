@@ -780,10 +780,10 @@
 											</div>
 											<div class="form-group col-md-4">
 												{% if med %}
-													<label>Medical</label>
+													<label style="color: red;">Medical</label>
 													<input type="text" name="med2" id="med2" value="{{med}}" class="form-control" placeholder="Medical" readonly>
 												{% else %}
-													<label>Medical</label>
+													<label style="color: red;">Medical</label>
 													<input type="text" name="med2" id="med2" value="{{med}}" class="form-control" placeholder="Medical" readonly>
 												{% endif %}
 											</div>
@@ -894,8 +894,13 @@
 												<input type="text" name="nps" id="nps" class="form-control" placeholder="NPS" readonly>
 											</div>
 											<div class="form-group col-md-4">
-												<label>Gross</label>
-												<input type="text" name="grs" id="grs" class="form-control" placeholder="Gross" readonly>
+												{% if mrel %}
+												<label>Medical Relief</label>
+												<input type="text" name="mrel" id="mrel" value="{{mrel}}" class="form-control" placeholder="Gross" readonly>
+												{% else %}
+												<label>Medical Relief</label>
+												<input type="text" name="mrel" id="mrel" value="0" class="form-control" placeholder="Gross" readonly>
+												{% endif%}
 											</div>
 											<!-- <div class="form-group col-md-4">
 												<label style="color: red;">IET</label>

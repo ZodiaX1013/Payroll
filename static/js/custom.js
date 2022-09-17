@@ -355,6 +355,7 @@ function calculateSalary(){
   var medical = document.getElementById('med2').value
   var edf = document.getElementById('edf').value
   var transport = document.getElementById('tran').value
+  var mrel = document.getElementById("mrel").value
   // alert(transport)
   
   var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
@@ -373,7 +374,7 @@ function calculateSalary(){
   
   // IET Calculation
   var pIET = document.getElementById("iet").value
-  var TIET = parseInt(edf) + parseInt(education)
+  var TIET = parseInt(edf) + parseInt(education) + parseInt(mrel)
   var cIET = Math.round(TIET / 13)
   var IET = parseInt(pIET) + parseInt(cIET)
   

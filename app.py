@@ -809,6 +809,12 @@ def salary():
             for i in range(len(education)):
                 edu = ''.join(education[i])
 
+            query10 = "SELECT Educationrel FROM employee WHERE EmployeeID = %s"
+            cursor.execute(query9, data)
+            mrel = cursor.fetchall()
+            for i in range(len(mrel)):
+                edu = ''.join(mrel[i])
+
             today = datetime.date.today()
             first_day = today.replace(day=1)
             last_month = first_day - datetime.timedelta(days=1)
@@ -842,26 +848,26 @@ def salary():
                 str_month = "December"
 
             data1 = [eid , str_month ]
-            query10 = "SELECT PAYE FROM payable WHERE EmployeeID = %s AND Month = %s"
-            cursor.execute(query10, data1)
+            query11 = "SELECT PAYE FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query11, data1)
             paye = cursor.fetchall()
             for i in range(len(paye)):
                 paye = ''.join(paye[i])
             
-            query10 = "SELECT gross FROM payable WHERE EmployeeID = %s AND Month = %s"
-            cursor.execute(query10, data1)
+            query12 = "SELECT gross FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query12, data1)
             gross = cursor.fetchall()
             for i in range(len(gross)):
                 gross = ''.join(gross[i])
             
-            query10 = "SELECT IET FROM payable WHERE EmployeeID = %s AND Month = %s"
-            cursor.execute(query10, data1)
+            query13 = "SELECT IET FROM payable WHERE EmployeeID = %s AND Month = %s"
+            cursor.execute(query13, data1)
             IET = cursor.fetchall()
             for i in range(len(IET)):
                 IET = ''.join(IET[i])
             
 
-            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET)
+            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET, mrel=mrel)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
