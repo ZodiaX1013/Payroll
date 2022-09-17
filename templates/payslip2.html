@@ -446,6 +446,7 @@
                         <!-- <span class="d-block m-t-5">use class <code>table-striped</code> inside table element</span> -->
                     </div>
                     <div class="card-body" id="exportContent">
+                    {% if data1 And data2 %}
                     {% for i in range(1) %}
                         {% for (emp,data) in (data1,data2) %}
                         <table class="table table-striped" style="width: 100%;">
@@ -601,7 +602,8 @@
                         {% endfor %}
                     {% endfor %}
                     </div>  
-                    <!-- <div class="card-body" id="exportContent">
+                    {% else %}
+                        <div class="card-body" id="exportContent">
                         <table class="table table-striped" style="width: 100%;">
                                 <div class="form-row">
                                     
@@ -620,41 +622,41 @@
                                 <br>
                                 <div class="form-row">
                                     <div class="form-group col-md-2"><b> Name: </b></div>
-                                    <div class="form-group col-md-4">Anthonee Francois Louis </div>
+                                    <div class="form-group col-md-4"> </div>
                                     <div class="form-group col-md-2"><b> Job Title: </b></div>
-                                    <div class="form-group col-md-4">Maintenance Officer (Electrical)</div>
+                                    <div class="form-group col-md-4"></div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-2"><b> NIC </b></div>
-                                    <div class="form-group col-md-4">A150386460782A</div>
+                                    <div class="form-group col-md-4"></div>
                                     <div class="form-group col-md-2"><b> Department: </b></div>
-                                    <div class="form-group col-md-4"> MCS PL - Maintenance</div>
+                                    <div class="form-group col-md-4"></div>
                                 </div>
-                        </table> -->
+                        </table>
 
                         <!-- 1st Table -->
 
                         <div class="form-row">
-                            <!-- <table class="table table-striped col-md-6" id="excel" style="width: 100%;">
+                            <table class="table table-striped col-md-6" id="excel" style="width: 100%;">
                           
                                     <tr>
                                         <th colspan="3" style="font-weight: bolder;"><center>EARNINGS</center></th>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Basic Salary</td>
-                                        <td>23150.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Allowance</td>
-                                        <td>700.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">End Of Year Bonus</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Travel Allowance</td>
-                                        <td>2132.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Overtime</td>
@@ -663,93 +665,96 @@
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@1.5</td>
-                                        <td>8.00</td>
-                                        <td>1336.00</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@2.0</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@3.0</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;"> Arrears</td>
-                                        <td> 0.00 </td>
+                                        <td> </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Leave Refund</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Special Project Bonus</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center; font-weight: bold;">total : </td>
-                                        <td>27318.00</td>
+                                        <td></td>
                                     </tr>
-                            </table> -->
+                            </table>
 
                             <!-- Deduction Table -->
 
-                            <!-- <table class="table table-striped col-md-6" id="excel" style="width: 100%;">    
+                            <table class="table table-striped col-md-6" id="excel" style="width: 100%;">    
                                     <tr>
                                         <th colspan="3" style="font-weight: bolder;"><center>DEDUCTIONS</center></th>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Absense</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Income Tax (PAYE)</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Loan Repayment</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" > <br></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Deduction</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">CSG Employee</td>
-                                        <td>347.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">NPS Employee</td>
-                                        <td>213.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Medical</td>
-                                        <td>288.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3"><br> </td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Lateness</td>
-                                        <td>0.00</td>
-                                        <td>0.00</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Solidarity Levy</td>
-                                        <td>0.00</td>
+                                        <td></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center; font-weight: bold;">Total Deduction</td>
-                                        <td>848.00</td>
+                                        <td></td>
                                     </tr>
-                            </table> -->
+                            </table>
                         </div>                        
                     </div>
+                    {% endif %}
+                    
+                    
                     
                 </div>
             </div>
