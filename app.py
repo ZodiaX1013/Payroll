@@ -1281,12 +1281,12 @@ def payslip():
             print(data1)
 
             print("Before Query2")
-            for i in range(len(data1)):
-                print("i : " , i)
-                # print("j : ", j)
-                data1 = ''.join(data1[i])
+            # for i in range(len(data1)):
+            #     print("i : " , i)
+            #     # print("j : ", j)
+            #     data1 = ''.join(data1[i])
 
-                print("After Join \n" , data1)
+            #     print("After Join \n" , data1)
 
             query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
             cursor.execute(query2)
@@ -1295,10 +1295,10 @@ def payslip():
             print("After Query2")
 
             print(data2)
-            for i in range(len(data2)):
-                print("i : " , i)
-                # print("j : ", j)
-                data2 = ''.join(data2[i])
+            # for i in range(len(data2)):
+            #     print("i : " , i)
+            #     # print("j : ", j)
+            #     data2 = ''.join(data2[i])
 
             print("After Join \n" , data2)
 
