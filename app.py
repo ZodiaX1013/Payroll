@@ -783,7 +783,7 @@ def salary():
             cursor.execute(query5, data)
             med = cursor.fetchall()
             for i in range(len(med)):
-                med2 = ''.join(med[i])
+                med = ''.join(med[i])
             
             query6 = "SELECT Travelallow FROM employee WHERE EmployeeID = %s"
             cursor.execute(query6, data)
@@ -809,11 +809,11 @@ def salary():
             for i in range(len(education)):
                 edu = ''.join(education[i])
 
-            query10 = "SELECT Educationrel FROM employee WHERE EmployeeID = %s"
+            query10 = "SELECT Medicalrel FROM employee WHERE EmployeeID = %s"
             cursor.execute(query9, data)
             mrel = cursor.fetchall()
             for i in range(len(mrel)):
-                edu = ''.join(mrel[i])
+                mrel = ''.join(mrel[i])
 
             today = datetime.date.today()
             first_day = today.replace(day=1)
@@ -867,7 +867,7 @@ def salary():
                 IET = ''.join(IET[i])
             
 
-            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med2, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET, mrel=mrel)
+            return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET, mrel=mrel)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
