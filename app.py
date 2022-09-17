@@ -892,7 +892,7 @@ def salary():
         overseas = int(tax) + int(ntax)
         travel = request.form["travel"]
         other = request.form["oalw2"]
-        gross = request.form["grs"]
+        gross = request.form["cgrs"]
         paye = request.form["paye"]
         csg = request.form["nps"] 
         nsf = request.form["nsf"] #nsf = nps = 213
