@@ -358,8 +358,8 @@ function calculateSalary(){
   var mrel = document.getElementById("mrel").value
   // alert(transport)
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(mrel) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(mrel) + parseInt(fixAllow) + parseInt(special_pro_bonus)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) +  parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
+  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) +  parseInt(fixAllow) + parseInt(special_pro_bonus)
   
   var temp = basic * 0.06
   var payable
