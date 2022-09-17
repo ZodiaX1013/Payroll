@@ -779,7 +779,7 @@ def salary():
             for i in range(len(medf)):
                 edf = ''.join(medf[i])
 
-            query5 = "SELECT Medicalrel FROM employee WHERE EmployeeID = %s"
+            query5 = "SELECT medical FROM employee WHERE EmployeeID = %s"
             cursor.execute(query5, data)
             med = cursor.fetchall()
             for i in range(len(med)):
