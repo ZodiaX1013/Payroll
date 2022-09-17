@@ -1321,28 +1321,29 @@ def paysheet():
 
     # For Pdf Generate
     if request.method == "POST" and request.form['action'] == 'pdf':
-        # try:
-        #     connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
-        #                                         database='heroku_dbb5a8d2e1d2fbf',
-        #                                         user='b58f7064154253',
-        #                                         password='32de4f18') # @ZodiaX1013
-        #     cursor = connection.cursor(buffered=True)
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
 
-        #     # query1 = "SELECT * FROM paysheet"
-        #     query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
-        #     cursor.execute(query1)
-        #     data = cursor.fetchall()
-        #     print(data)
-        #     session["data"] = data
-        #     return redirect(url_for('download', data = data))
-        # except Error as e:
-        #     print("Error While connecting to MySQL : ", e)
-        # finally:
-        #     connection.commit()
-        #     cursor.close()
-        #     connection.close()
-        #     print("MySQL connection is closed")
-        return render_template("paysheet2.html")
+            # query1 = "SELECT * FROM paysheet"
+            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
+            cursor.execute(query1)
+            data = cursor.fetchall()
+            print(data)
+            session["data"] = data
+            return render_template("paysheet2.html", data=data)
+            # return redirect(url_for('download', data = data))
+        except Error as e:
+            print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+        
 
     # For Excel Generate
 
