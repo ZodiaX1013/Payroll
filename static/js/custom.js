@@ -358,8 +358,8 @@ function calculateSalary(){
   var mrel = document.getElementById("mrel").value
   // alert(transport)
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(medical) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(medical) + parseInt(fixAllow) + parseInt(special_pro_bonus)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(tax) + parseInt(mrel) + parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
+  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(travel) + parseInt(otherAllow) + parseInt(overseas) + parseInt(mrel) + parseInt(fixAllow) + parseInt(special_pro_bonus)
   
   var temp = basic * 0.06
   var payable
@@ -442,7 +442,7 @@ function calculateSalary(){
     slevy = 0
   }
   // alert(slevy)
-  var deduction = Math.round(paye + csg + nsf)
+  var deduction = Math.round(paye + csg + nsf + parseInt(medical))
   var net = Math.round(payable - deduction)
 
   var pgross = document.getElementById("pgrs").value
