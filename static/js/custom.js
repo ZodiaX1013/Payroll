@@ -545,8 +545,9 @@ else
   // Net Pay
   document.getElementById('npay').value = net
   // Gross
-  document.getElementById('grs').value = tgross
+  // document.getElementById('grs').value = tgross
   // Current Gross
+  alert(tgross)
   document.getElementById('cgrs').value = tgross
 
 }
