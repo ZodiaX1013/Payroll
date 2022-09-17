@@ -1272,41 +1272,41 @@ def payslip():
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
-            # print("Before Query1")
-            # query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee WHERE EmployeeID = 'AB002' AND EmployeeID = 'AB003'"
-            # cursor.execute(query1)
-            # data1 = cursor.fetchall()
-            # print("After Query1")
+            print("Before Query1")
+            query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
+            cursor.execute(query1)
+            data1 = cursor.fetchall()
+            print("After Query1")
 
-            # print(data1)
+            print(data1)
 
-            # print("Before Query2")
-            # for i in range(len(data1)):
-            #     print("i : " , i)
-            #     # print("j : ", j)
-            #     data = ''.join(data1[i])
+            print("Before Query2")
+            for i in range(len(data1)):
+                print("i : " , i)
+                # print("j : ", j)
+                data1 = ''.join(data1[i])
 
-            #     print("After Join \n" , data1)
+                print("After Join \n" , data1)
 
-            # query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
-            # cursor.execute(query2)
-            # data2 = cursor.fetchall()
+            query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
+            cursor.execute(query2)
+            data2 = cursor.fetchall()
             
-            # print("After Query2")
+            print("After Query2")
 
-            # print(data2)
-            # for i in range(len(data2)):
-            #     print("i : " , i)
-            #     # print("j : ", j)
-            #     data = ''.join(data2[i])
+            print(data2)
+            for i in range(len(data2)):
+                print("i : " , i)
+                # print("j : ", j)
+                data2 = ''.join(data2[i])
 
-            # print("After Join \n" , data2)
+            print("After Join \n" , data2)
 
-            # session["data1"] = data1
-            # session["data2"] = data2
+            session["data1"] = data1
+            session["data2"] = data2
             # return "Successful"
-            # return render_template("payslip2.html", data1=data1, data2=data2)
-            return render_template("payslip2.html")
+            return render_template("payslip2.html", data1=data1, data2=data2)
+            # return render_template("payslip2.html")
         except Error as e:
             print("Error While connecting to MySQL : ", e )
         finally:
