@@ -1306,7 +1306,7 @@ def payslip():
 
             # session["data1"] = data1
             # session["data2"] = data2
-            return "Successful"
+            return data2
             # return render_template("payslip2.html", data1=data1, data2=data2)
             # return render_template("payslip2.html")
         except Error as e:
