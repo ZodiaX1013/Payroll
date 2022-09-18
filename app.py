@@ -1272,7 +1272,7 @@ def payslip():
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
-            print("Before Query1")
+            # print("Before Query1")
             query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
             cursor.execute(query1)
             data1 = cursor.fetchall()
@@ -1280,7 +1280,7 @@ def payslip():
 
             print(data1)
 
-            print("Before Query2")
+            # print("Before Query2")
             # for i in range(len(data1)):
             #     print("i : " , i)
             #     # print("j : ", j)
@@ -1300,7 +1300,7 @@ def payslip():
             #     # print("j : ", j)
             #     data2 = ''.join(data2[i])
 
-            print("After Join \n" , data2)
+            # print("After Join \n" , data2)
 
             session["data1"] = data1
             session["data2"] = data2
