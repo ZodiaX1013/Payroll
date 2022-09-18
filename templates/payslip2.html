@@ -450,8 +450,9 @@
                     </div>
                     <div class="card-body" id="exportContent">
                     {% if data1 and data2 %}
-                    {% for i in range(1) %}
-                        {% for (emp,data) in (data1,data2) %}
+                    
+                    {% for (emp,data) in itertools.zip_longest(data1,data2) %}
+                        {% for (i,j) in itertools.zip_longest(emp,data) %}
                         <table class="table table-striped" style="width: 100%;">
                             <div class="form-row">
                                 <div class="form-group col-md-4"><b> MAXCITY ASSET MANAGERS LTD</b></div>
@@ -469,15 +470,15 @@
                             <br>
                             <div class="form-row">
                                 <div class="form-group col-md-2"><b> Name: </b></div>
-                                <div class="form-group col-md-4">{{emp[0]}} + {{emp[1]}}</div>
+                                <div class="form-group col-md-4">{{i}} + {{i}}</div>
                                 <div class="form-group col-md-2"><b> Job Title: </b></div>
-                                <div class="form-group col-md-4">{{emp[3]}}</div>
+                                <div class="form-group col-md-4">{{i}}</div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-2"><b> NIC </b></div>
-                                <div class="form-group col-md-4">{{emp[2]}}</div>
+                                <div class="form-group col-md-4">{{i}}</div>
                                 <div class="form-group col-md-2"><b> Department: </b></div>
-                                <div class="form-group col-md-4">{{emp[4]}}</div>
+                                <div class="form-group col-md-4">{{i}}</div>
                             </div>
                         </table>
 
@@ -492,19 +493,19 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Basic Salary</td>
-                                        <td>{{data[0]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Allowance</td>
-                                        <td>{{data[1]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">End Of Year Bonus</td>
-                                        <td>{{data[2]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Travel Allowance</td>
-                                        <td>{{data[3]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Overtime</td>
@@ -513,30 +514,30 @@
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@1.5</td>
-                                        <td>{{data[4]}}</td>
-                                        <td>{{data[5]}}</td>
+                                        <td>{{j}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@2.0</td>
-                                        <td>{{data[6]}}</td>
-                                        <td>{{data[7]}}</td>
+                                        <td>{{j}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">@3.0</td>
-                                        <td>{{data[8]}}</td>
-                                        <td>{{data[9]}}</td>
+                                        <td>{{j}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;"> Arrears</td>
-                                        <td> {{data[10]}} </td>
+                                        <td> {{j}} </td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Leave Refund</td>
-                                        <td>{{data[11]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Special Project Bonus</td>
-                                        <td>{{data[12]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td></td>
@@ -553,46 +554,46 @@
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">  Absense</td>
-                                        <td>{{data[13]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Income Tax (PAYE)</td>
-                                        <td>{{data[14]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Loan Repayment</td>
-                                        <td>{{data[15]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" > <br></td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Other Deduction</td>
-                                        <td>{{data[16]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">CSG Employee</td>
-                                        <td>{{data[17]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">NPS Employee</td>
-                                        <td>{{data[18]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Medical</td>
-                                        <td>{{data[19]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" style="font-weight: bold;"><br> </td>
                                     </tr>
                                     <tr>
                                         <td style="font-weight: bold;">Lateness</td>
-                                        <td>{{data[20]}}</td>
-                                        <td>{{data[21]}}</td>
+                                        <td>{{j}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="font-weight: bold;">Solidarity Levy </td>
-                                        <td>{{data[22]}}</td>
+                                        <td>{{j}}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="2" style="text-align: center; font-weight: bold;"> Total Deduction</td>
@@ -603,7 +604,6 @@
                             </table>
                         </div>
                         {% endfor %}
-                    {% endfor %}
                     </div>  
                     {% else %}
                         <div class="card-body" id="exportContent">
