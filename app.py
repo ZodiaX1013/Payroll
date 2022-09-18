@@ -1278,6 +1278,7 @@ def payslip():
             query1 = "SELECT FirstName FROM employee"
             cursor.execute(query1)
             data1 = cursor.fetchall()
+            print(data1)
             for i in range(len(data1)):
                 data2 = ''.join(data1[i])
 
