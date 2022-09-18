@@ -1281,7 +1281,7 @@ def payslip():
             print(data1)
             for i in range(len(data1)):
                 data2 = ''.join(data1[i])
-                data1.append(data2)
+                data2.append(data2)
                 # print(data1)
 
             print(data1)            
