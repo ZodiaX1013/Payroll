@@ -1281,9 +1281,10 @@ def payslip():
             print(data1)
             for i in range(len(data1)):
                 data2 = ''.join(data1[i])
-                print(data2)
+                data1.append(data2)
+                print(data1)
 
-            print(data2)            
+            print(data1)            
             print("After Query1")
 
 
