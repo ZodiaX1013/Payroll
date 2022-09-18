@@ -1279,9 +1279,9 @@ def payslip():
             cursor.execute(query1)
             data1 = cursor.fetchall()
             for i in range(len(data1)):
-                data1 = ''.join(data1[i])
+                data2 = ''.join(data1[i])
 
-            print(data1)            
+            print(data2)            
             print("After Query1")
 
 
@@ -1290,13 +1290,13 @@ def payslip():
 
             #     print("After Join \n" , data1)
 
-            query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
-            cursor.execute(query2)
-            data2 = cursor.fetchall()
+            # query2 = "SELECT BasicSalary, OtherAllow, EOY, travel, OT1hr, OT1amt, OT2hr, OT2amt, OT3hr, OT3amt, Arrears, LeaveRef, SpeProBonus, Lateness, PAYE, Loan, OtherDed, NPS, NSF, Medical, LatenessHr, Lateness, SLevy FROM payable "
+            # cursor.execute(query2)
+            # data2 = cursor.fetchall()
             
-            print("After Query2")
+            # print("After Query2")
 
-            print(data2)
+            # print(data2)
             # for i in range(len(data2)):
             #     print("i : " , i)
             #     # print("j : ", j)
@@ -1304,8 +1304,8 @@ def payslip():
 
             # print("After Join \n" , data2)
 
-            session["data1"] = data1
-            session["data2"] = data2
+            # session["data1"] = data1
+            # session["data2"] = data2
             return "Successful"
             # return render_template("payslip2.html", data1=data1, data2=data2)
             # return render_template("payslip2.html")
