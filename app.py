@@ -1280,8 +1280,8 @@ def payslip():
             data1 = cursor.fetchall()
             print(data1)
             for i in range(len(data1)):
-                data2 = ''.join(data1[i])
-                data2.append(data2)
+                data1 = ''.join(data1[i])
+                data1.append(data1)
                 # print(data1)
 
             print(data1)            
