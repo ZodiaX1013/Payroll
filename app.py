@@ -1273,18 +1273,20 @@ def payslip():
 
             # query1 = "SELECT * FROM paysheet"
             # print("Before Query1")
-            query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
+            # query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
+
+            query1 = "SELECT FirstName FROM employee"
             cursor.execute(query1)
             data1 = cursor.fetchall()
+            for i in range(len(data1)):
+                data1 = ''.join(data1[i])
+
+            print(data1)            
             print("After Query1")
 
-            print(data1)
 
             # print("Before Query2")
-            # for i in range(len(data1)):
-            #     print("i : " , i)
-            #     # print("j : ", j)
-            #     data1 = ''.join(data1[i])
+            
 
             #     print("After Join \n" , data1)
 
@@ -1304,8 +1306,8 @@ def payslip():
 
             session["data1"] = data1
             session["data2"] = data2
-            # return "Successful"
-            return render_template("payslip2.html", data1=data1, data2=data2)
+            return "Successful"
+            # return render_template("payslip2.html", data1=data1, data2=data2)
             # return render_template("payslip2.html")
         except Error as e:
             print("Error While connecting to MySQL : ", e )
