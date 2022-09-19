@@ -1268,16 +1268,16 @@ def process_salary():
 
                 # print("\n", emp_data2)
 
-                car = emp_data2[0]
-                basic = emp_data2[1]
-                fixAllow = emp_data2[2]
-                travel = emp_data2[3]
-                edf = emp_data2[4]
-                house = emp_data2[5]
-                education = emp_data2[6]
-                Medicalrel = emp_data2[7]
-                medical = emp_data2[8]
-                SpeProBns = emp_data2[9]
+                car = int(emp_data2[0])
+                basic = int(emp_data2[1])
+                fixAllow = int(emp_data2[2])
+                travel = int(emp_data2[3])
+                edf = int(emp_data2[4])
+                house = int(emp_data2[5])
+                education = int(emp_data2[6])
+                Medicalrel = int(emp_data2[7])
+                medical = int(emp_data2[8])
+                SpeProBns = int(emp_data2[9])
 
                 # Not Defined Values
                 arrears = 0
