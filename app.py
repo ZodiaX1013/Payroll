@@ -1298,65 +1298,65 @@ def process_salary():
                 temp = basic * 0.06
 
                 if temp > overseas:
-                    payable = gross - car
+                    payable = round(gross - car)
                 else:
-                    payable = gross - car + ntax
+                    payable = round(gross - car + ntax)
                 
                 # For IET
-                IET = (edf + education + Medicalrel) / 13
+                IET = round( (edf + education + Medicalrel) / 13)
 
                 # For PAYE and CSG
 
                 if basic > 50000:
-                    PAYE = (tgross - IET) * 0.15
-                    CSG = basic * 0.03
+                    PAYE = round( (tgross - IET) * 0.15)
+                    CSG = round( basic * 0.03)
                 else:
-                    PAYE = (tgross - IET) * 0.1
-                    CSG = basic * 0.015
+                    PAYE = round((tgross - IET) * 0.1)
+                    CSG = round(basic * 0.015)
                 
                 # For NSF
-                nsf = basic * 0.01
-                IVBT = basic * 0.015
+                nsf = round(basic * 0.01)
+                IVBT = round(basic * 0.015)
 
                 if nsf > 213:
                     nsf = 213
                 else:
-                    nsf = nsf
+                    nsf = round(nsf)
                 
                 # NSF For employer
 
-                ensf = basic * 0.025
+                ensf = round(basic * 0.025)
                 if ensf > 531:
                     ensf = 531
                 else:
-                    ensf = ensf
+                    ensf = round(ensf)
                 
                 # S.Levy
                 # emo = emolument
-                emo = tgross * 13
+                emo = round(tgross * 13)
                 if emo > 3000000:
-                    levy = (tgross - IET - (3000000/13)) * 0.25
+                    levy = round((tgross - IET - (3000000/13)) * 0.25)
 
-                    emo2 = emo * 0.1
+                    emo2 = round(emo * 0.1)
                     if emo2 > levy:
-                        slevy = levy
+                        slevy = round(levy)
                     else:
-                        slevy = emo2
+                        slevy = round(emo2)
                 else:
                     slevy = 0
                 
                 # Deduction
-                deduction = PAYE + CSG + nsf + medical
-                net = payable - deduction
+                deduction = round(PAYE + CSG + nsf + medical)
+                net = round(payable - deduction)
 
                 # NetCh in PAYE
-                netch = tgross + pgross - IET
+                netch = round(tgross + pgross - IET)
 
                 # NPS
                 if basic > 50000:
-                    nps = basic * 0.06
+                    nps = round(basic * 0.06)
                 else:
-                    nps = basic * 0.03
+                    nps = round(basic * 0.03)
                 
                 insert_query = """
                     INSERT INTO salary(
