@@ -1255,6 +1255,8 @@ def process_salary():
                 cursor.execute(query2, data)
                 emp_data = cursor.fetchall()
                 print("Employee Data : \n " , emp_data)
+
+                print("\n", emp_data[0])
                 return "Fetch"
             else:
                 print("Do Something Else")
