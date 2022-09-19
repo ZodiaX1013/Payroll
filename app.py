@@ -1,16 +1,12 @@
-from errno import EISDIR
-import math
 import os
-from xml.dom.expatbuilder import parseString
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
-from sqlalchemy import true
 from werkzeug.utils import secure_filename
 from PIL import Image
 import os
 import mysql.connector
 from mysql.connector import *
 import random, string
-from datetime import date, datetime
+from datetime import datetime
 import pdfkit
 import datetime
 # from flask_wkhtmltopdf import Wkhtmltopdf
@@ -1279,13 +1275,21 @@ def payslip():
             cursor.execute(query1)
             data1 = cursor.fetchall()
             print(data1)
-            data2 = []
+            tdata1 = []
+            fname = []
             for i in range(len(data1)):
-                data1 = ' '.join(data1[i])
-                data2.append(data1)
-                # print(data1)
+                print("i : " , i)
+                # print("j : ", j)
+                tdata1 = ''.join(data1[i])
+                print("Data :" + tdata1)
+                fname.append(tdata1)
 
-            print(data2)            
+            # for i in range(len(data1)):
+            #     tdata1 = ''.join(data1[i])
+            #     data2.append(data1)
+            #     # print(data1)
+
+            print(fname)            
             print("After Query1")
 
 
@@ -1310,7 +1314,7 @@ def payslip():
 
             # session["data1"] = data1
             # session["data2"] = data2
-            return data2
+            return fname
             # return render_template("payslip2.html", data1=data1, data2=data2)
             # return render_template("payslip2.html")
         except Error as e:
