@@ -1257,7 +1257,7 @@ def process_salary():
                 print("Employee Data : \n " , emp_data)
 
                 print("\n", emp_data[0])
-                emp_data2 = list(emp_data)
+                emp_data2 = list(emp_data[0])
 
                 print("\n", emp_data2)
                 return "Fetch"
