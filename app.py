@@ -1296,7 +1296,7 @@ def payslip():
             # print("Before Query1")
             # query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
 
-            query1 = "SELECT FirstName FROM employee"
+            query1 = "SELECT EmployeeID FROM employee"
             cursor.execute(query1)
             data1 = cursor.fetchall()
             print(data1)
