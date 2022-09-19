@@ -1,3 +1,4 @@
+from logging import basicConfig
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from werkzeug.utils import secure_filename
@@ -108,7 +109,10 @@ def employee():
         mobile = request.form["mob"]
         fax = request.form["fax"]
         mail = request.form["mail"]
-        eimage = request.files["img"]
+        if request.files["img"]:
+            eimage = request.files["img"]
+        else:
+            eimage = ""
         nic = request.form["nic"]
         tax = request.form["tax"]
         bank = request.form["bank"]
@@ -299,14 +303,17 @@ def employee():
             # print(spbonus)
             # print(wdays)
             # print()
-            image = eimage.convert('RGB')
-            if image and allowed_file(image.filename):
-                print("In Image If")
-                filename = secure_filename(image.filename)
-                filename=''.join(random.choices(string.ascii_lowercase +string.digits, k=20))
-                picture = Image.open(image)
-                picture.save(os.path.join(app.config['UPLOAD_FOLDER'],filename+'.jpeg'), "JPEG", optimize = True, quality = 30)
-                print(filename)
+            if(eimage != ""):
+                image = eimage.convert('RGB')    
+                if image and allowed_file(image.filename):
+                    print("In Image If")
+                    filename = secure_filename(image.filename)
+                    filename=''.join(random.choices(string.ascii_lowercase +string.digits, k=20))
+                    picture = Image.open(image)
+                    picture.save(os.path.join(app.config['UPLOAD_FOLDER'],filename+'.jpeg'), "JPEG", optimize = True, quality = 30)
+                    print(filename)
+            else:
+                filename = ""
             # data1 = [eid, fname, lname, title, dob, clocked, address, city, country, phone, mobile, fax, mail,filename, nic, tax, bank, bank_ac, code, report, nps, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays]
             data1 = [eid, fname, lname, title, dob, clocked, address, city, country, phone, mobile, fax, mail, filename, nic, tax, bank, bank_ac, code, report, nps, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays]
             print("Before Query")
@@ -901,7 +908,7 @@ def salary():
         # print(net)
         edf = request.form["edf"]
         ot = request.form["ot2"]
-        transport = request.form["tran2"]
+        travel = request.form["tran2"]
         eoy = request.form["eoy"]
         leaveRef = request.form["lref2"]
         speBonus = request.form["spbonus2"]
@@ -1042,7 +1049,7 @@ def salary():
                     %s
                 );"""
                 
-                data3 = [eid, basic, ot, other, transport, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, IET, unqcode]
+                data3 = [eid, basic, ot, other, travel, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, IET, unqcode]
 
                 cursor.execute(query11 , data3)
                 print("Payable Query Executed")
@@ -1235,32 +1242,204 @@ def process_salary():
                                                 user='b58f7064154253',
                                                 password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
-            if eid == "ALL":
-                print("Do Somthing")
+            if eid == "PP01":
+                # print("Do Somthing")
                 # query1 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee"
-                query1 = "SELECT EmployeeID FROM employee"
-                cursor.execute(query1)
-                data1 = cursor.fetchall()
+                # query1 = "SELECT EmployeeID FROM employee"
+                # cursor.execute(query1)
+                # data1 = cursor.fetchall()
 
-                tdata1 = []
-                employee_id = []
-                for i in range(len(data1)):
-                    tdata1 = ''.join(data1[i])
-                    employee_id.append(tdata1)
-                print(employee_id)
+                # tdata1 = []
+                # employee_id = []
+                # for i in range(len(data1)):
+                #     tdata1 = ''.join(data1[i])
+                #     employee_id.append(tdata1)
+                # print(employee_id)
                 # print(data1)
 
-                query2 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
-                data = [employee_id[1]]
+                query2 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
+                data = [eid]
                 cursor.execute(query2, data)
                 emp_data = cursor.fetchall()
-                print("Employee Data : \n " , emp_data)
+                # print("Employee Data : \n " , emp_data)
 
-                print("\n", emp_data[0])
+                # print("\n", emp_data[0])
                 emp_data2 = list(emp_data[0])
 
-                print("\n", emp_data2)
-                return "Fetch"
+                # print("\n", emp_data2)
+
+                car = emp_data2[0]
+                basic = emp_data2[1]
+                fixAllow = emp_data2[2]
+                travel = emp_data2[3]
+                edf = emp_data2[4]
+                house = emp_data2[5]
+                education = emp_data2[6]
+                Medicalrel = emp_data2[7]
+                medical = emp_data2[8]
+                SpeProBns = emp_data2[9]
+
+                # Not Defined Values
+                arrears = 0
+                OT = 0
+                otherAllow = 0
+                tax = 0
+                ntax = 0
+                overseas = tax + ntax
+                pgross = 0
+                # Calculation Of All Salary
+                # Get Elements
+
+
+                # Calcutations
+                gross = basic + arrears + OT + travel + otherAllow + tax + car + fixAllow + SpeProBns + travel
+                tgross = basic + arrears + OT + travel + otherAllow + overseas + fixAllow + SpeProBns
+
+                temp = basic * 0.06
+
+                if temp > overseas:
+                    payable = gross - car
+                else:
+                    payable = gross - car + ntax
+                
+                # For IET
+                IET = (edf + education + Medicalrel) / 13
+
+                # For PAYE and CSG
+
+                if basic > 50000:
+                    PAYE = (tgross - IET) * 0.15
+                    CSG = basic * 0.03
+                else:
+                    PAYE = (tgross - IET) * 0.1
+                    CSG = basic * 0.015
+                
+                # For NSF
+                nsf = basic * 0.01
+                IVBT = basic * 0.015
+
+                if nsf > 213:
+                    nsf = 213
+                else:
+                    nsf = nsf
+                
+                # NSF For employer
+
+                ensf = basic * 0.025
+                if ensf > 531:
+                    ensf = 531
+                else:
+                    ensf = ensf
+                
+                # S.Levy
+                # emo = emolument
+                emo = tgross * 13
+                if emo > 3000000:
+                    levy = (tgross - IET - (3000000/13)) * 0.25
+
+                    emo2 = emo * 0.1
+                    if emo2 > levy:
+                        slevy = levy
+                    else:
+                        slevy = emo2
+                else:
+                    slevy = 0
+                
+                # Deduction
+                deduction = PAYE + CSG + nsf + medical
+                net = payable - deduction
+
+                # NetCh in PAYE
+                netch = tgross + pgross - IET
+
+                # NPS
+                if basic > 50000:
+                    nps = basic * 0.06
+                else:
+                    nps = basic * 0.03
+                
+                insert_query = """
+                    INSERT INTO salary(
+                    EmployeeID,
+                    BasicSalary,
+                    FixedAllow,
+                    
+                    Overtime,
+                    
+                    NSFEmpee,
+                    OtherAllow,
+                    TaxablelAllow,
+                    Medical,
+                    
+                    NTaxableAllow,
+                    EDF,
+                    Arrears,
+                    
+                    TravelAllow,
+                    
+                    
+                    CarBenefit,
+                    
+                    SLevy,
+                    
+
+                    EducationRel,
+                    SpeProBns,
+                    NPS,
+                    MedicalRel,
+                    Payable,
+                    Deduction,
+                    NetPay,
+                    CurrentGross,
+                    PrevGross,
+                    IET,
+                    NetCh,
+                    CurrentPAYE,
+                    
+                    
+                    eCSG,
+                    eNSF,
+                    eLevy
+                    )
+
+                    VALUES(
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s
+                    );
+                    """
+                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, nps, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT]
+                
+                cursor.execute(insert_query, data1)
+                print("Insert Query Run Successfully")
+
+                return "Success
             else:
                 print("Do Something Else")
         except Error as e:
