@@ -1434,7 +1434,7 @@ def process_salary():
                     %s
                     );
                     """
-                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, nps, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT]
+                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
