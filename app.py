@@ -1284,13 +1284,31 @@ def payslip():
                 print("Data :" + tdata1)
                 fname.append(tdata1)
 
+            query2 = "SELECT LastName FROM employee"
+            cursor.execute(query2)
+            data2 = cursor.fetchall()
+            print(data2)
+            tdata2 = []
+            lname = []
+            for i in range(len(data2)):
+                print("i : " , i)
+                # print("j : ", j)
+                tdata2 = ''.join(data2[i])
+                print("Data :" + tdata2)
+                lname.append(tdata2)
+
+            flname = [i +j for i,j in zip(lname,fname)]
+            print(flname)
+            # for i in range(len(fname)):
+            #     tdata = ' '.join()
+
             # for i in range(len(data1)):
             #     tdata1 = ''.join(data1[i])
             #     data2.append(data1)
             #     # print(data1)
 
-            print(fname)            
-            print("After Query1")
+            # print(fname)            
+            # print("After Query1")
 
 
             # print("Before Query2")
@@ -1314,7 +1332,7 @@ def payslip():
 
             # session["data1"] = data1
             # session["data2"] = data2
-            return fname
+            return "Ready"
             # return render_template("payslip2.html", data1=data1, data2=data2)
             # return render_template("payslip2.html")
         except Error as e:
