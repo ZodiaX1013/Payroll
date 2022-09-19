@@ -1237,7 +1237,8 @@ def process_salary():
             cursor = connection.cursor(buffered=True)
             if eid == "ALL":
                 print("Do Somthing")
-                query1 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee"
+                # query1 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee"
+                query1 = "SELECT EmployeeID FROM employee"
                 cursor.execute(query1)
                 data1 = cursor.fetchall()
 
@@ -1296,7 +1297,7 @@ def payslip():
             # print("Before Query1")
             # query1 = "SELECT FirstName, LastName, NICno, position, department FROM employee"
 
-            query1 = "SELECT EmployeeID FROM employee"
+            query1 = "SELECT FirstName FROM employee"
             cursor.execute(query1)
             data1 = cursor.fetchall()
             print(data1)
