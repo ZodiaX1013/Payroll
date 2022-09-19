@@ -1439,7 +1439,7 @@ def process_salary():
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
 
-                return "Success
+                return "Success"
             else:
                 print("Do Something Else")
         except Error as e:
