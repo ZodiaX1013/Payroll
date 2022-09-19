@@ -108,7 +108,7 @@ def employee():
         mobile = request.form["mob"]
         fax = request.form["fax"]
         mail = request.form["mail"]
-        image = request.files["img"]
+        eimage = request.files["img"]
         nic = request.form["nic"]
         tax = request.form["tax"]
         bank = request.form["bank"]
@@ -299,7 +299,7 @@ def employee():
             # print(spbonus)
             # print(wdays)
             # print()
-
+            image = eimage.convert('RGB')
             if image and allowed_file(image.filename):
                 print("In Image If")
                 filename = secure_filename(image.filename)
