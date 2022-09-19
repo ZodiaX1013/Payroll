@@ -1227,6 +1227,31 @@ def lock_salary():
 
 @app.route("/process_salary", methods=["GET" , "POST"])
 def process_salary():
+    if request.method == "POST":
+        eid = request.form["eid"]
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_dbb5a8d2e1d2fbf',
+                                                user='b58f7064154253',
+                                                password='32de4f18') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+            if eid == "ALL":
+                print("Do Somthing")
+                query1 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee"
+                cursor.execute(query1)
+                data1 = cursor.fetchall()
+
+                print(data1)
+                return "Fetch"
+            else:
+                print("Do Something Else")
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")    
     return render_template("process.html")
 
 # @app.route("/paysheet", methods=["GET" , "POST"])
