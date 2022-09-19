@@ -1,3 +1,4 @@
+import json
 from logging import basicConfig
 import os
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
@@ -1440,9 +1441,9 @@ def process_salary():
                 print("Insert Query Run Successfully")
                 # return render_template("salary.html",sal = basic ,falw = fixAllow, ot = OT, nsf = nsf, olaw = otherAllow, tax = tax, med = medical, ntax = ntax, edf = edf, arr = arrears, travel = travel, car = car, slevy = slevy, edu = education, bonus = SpeProBns, csg = CSG, mrel = Medicalrel, pay = payable, ded = deduction, net = net, cgrs = tgross, pgrs = pgross, iet = IET, nch = netch, paye = PAYE, ensf = ensf, levy = IVBT)
                 print(data1)
-                str1 = " "
+                str1 = json.dumps(data1)
 
-                return (str1.join(data1))
+                return str1
             else:
                 print("Do Something Else")
         except Error as e:
