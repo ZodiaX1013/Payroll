@@ -1242,7 +1242,19 @@ def process_salary():
                 cursor.execute(query1)
                 data1 = cursor.fetchall()
 
-                print(data1)
+                tdata1 = []
+                employee_id = []
+                for i in range(len(data1)):
+                    tdata1 = ''.join(data1[i])
+                    employee_id.append(tdata1)
+                print(employee_id)
+                # print(data1)
+
+                query2 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, MonthlyEDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
+                data = [employee_id[1]]
+                cursor.execute(query2, data)
+                emp_data = cursor.fetchall()
+                print("Employee Data : \n " , emp_data)
                 return "Fetch"
             else:
                 print("Do Something Else")
