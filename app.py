@@ -1439,7 +1439,8 @@ def process_salary():
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
                 # return render_template("salary.html",sal = basic ,falw = fixAllow, ot = OT, nsf = nsf, olaw = otherAllow, tax = tax, med = medical, ntax = ntax, edf = edf, arr = arrears, travel = travel, car = car, slevy = slevy, edu = education, bonus = SpeProBns, csg = CSG, mrel = Medicalrel, pay = payable, ded = deduction, net = net, cgrs = tgross, pgrs = pgross, iet = IET, nch = netch, paye = PAYE, ensf = ensf, levy = IVBT)
-                return tuple(data1)
+                print(data1)
+                return "successful"
             else:
                 print("Do Something Else")
         except Error as e:
