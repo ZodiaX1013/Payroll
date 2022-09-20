@@ -619,7 +619,7 @@ function Export2Word(element, filename = 'paysheet'){
   
   css = (
     '<style>' +
-    '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+    '@page WordSection1{size: 595.35pt 841.95pt;mso-page-orientation: landscape;}' +
     'div.WordSection1 {page: WordSection1;}' +
     'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}'+
     '</style>'
