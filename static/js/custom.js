@@ -373,7 +373,7 @@ function calculateSalary(){
   }
   
   // IET Calculation
-  var pIET = document.getElementById("iet").value
+  var pIET = document.getElementById("piet").value
   var TIET = parseInt(edf) + parseInt(education) + parseInt(mrel)
   var cIET = Math.round(TIET / 13)
   var IET = parseInt(pIET) + parseInt(cIET)

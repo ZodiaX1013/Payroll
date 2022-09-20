@@ -1499,6 +1499,8 @@ def lock_salary():
 def process_salary():
     if request.method == "POST":
         eid = request.form["eid"]
+        month = request.form["mon"]
+        year = request.form["year"]
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
                                                 database='heroku_dbb5a8d2e1d2fbf',
@@ -1662,7 +1664,10 @@ def process_salary():
                     
                     eCSG,
                     eNSF,
-                    eLevy
+                    eLevy,
+                    
+                    Month,
+                    Year
                     )
 
                     VALUES(
@@ -1694,10 +1699,12 @@ def process_salary():
                     %s,
                     %s,
                     %s,
+                    %s,
+                    %s,
                     %s
                     );
                     """
-                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT]
+                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT, month, year]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
