@@ -539,6 +539,7 @@ else
   // IET
   document.getElementById('iet').value = IET
   // payable
+  alert(payable)
   document.getElementById('pay').value = payable
   // Deduction
   document.getElementById('ded').value = deduction
