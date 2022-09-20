@@ -1112,19 +1112,19 @@ def salary():
             for i in range(len(absence)):
                 absence = ''.join(absence[i])
 
-            query42 = "SELECT FirstName From employee WHERE EmployeeID = %s AND Month = %s"
+            query42 = "SELECT FirstName From employee WHERE EmployeeID = %s"
             cursor.execute(query42, data1)
             fname = cursor.fetchall()
             for i in range(len(fname)):
                 fname = ''.join(fname[i])
 
-            query43 = "SELECT LastName From employee WHERE EmployeeID = %s AND Month = %s"
+            query43 = "SELECT LastName From employee WHERE EmployeeID = %s"
             cursor.execute(query43, data1)
             lname = cursor.fetchall()
             for i in range(len(lname)):
                 lname = ''.join(lname[i])
 
-            query44 = "SELECT position From employee WHERE EmployeeID = %s AND Month = %s"
+            query44 = "SELECT position From employee WHERE EmployeeID = %s"
             cursor.execute(query44, data1)
             pos = cursor.fetchall()
             for i in range(len(pos)):
