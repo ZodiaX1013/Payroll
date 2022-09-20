@@ -554,14 +554,14 @@ else
 
 // Function For Export To Word File
 
-function Export2Word(element, filename = 'payslip'){
+function Export2Word(element, filename = 'paysheet'){
   var preHtml = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
   var postHtml = "</body></html>";
   var html = preHtml+document.getElementById(element).innerHTML+postHtml;
 
   css = (
     '<style>' +
-    '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+    '@page WordSection1{mso-page-orientation: landscape;}' +
     'div.WordSection1 {page: WordSection1;}' +
     'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}'+
     '</style>'
