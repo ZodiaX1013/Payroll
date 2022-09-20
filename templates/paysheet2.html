@@ -29,7 +29,17 @@
     <!-- <link rel="stylesheet" href="../static/css/style.css" , _external="true"> -->
     <script src="https://kit.fontawesome.com/e6163d7cbc.js" crossorigin="anonymous"></script>
     <script src="../static/js/table2excel.js"></script>
-    
+    <style>
+        table {
+          border-collapse: collapse;
+        }
+
+        td,th {
+            border: 1px gray solid;
+            padding: 4px;
+            width: 5em;
+        }
+    </style>
     
 
 </head>
@@ -163,19 +173,20 @@
                     </div>                
                 </div> -->
                 <div class="form-row">
-                <div class="">
                     <div class="card" id="exportContent">
                         <div class="card-header">
                             
                             <center><h4>MAXCITY ASSET MANAGERS LTD</h4>
                             <h5>Paysheet for the month of July 2022</h5>
                             </center>
+                            <div id="docx">
                             <div class="card-body">
                                 <!-- <h6 class="mb-3"><b><u> Leave Register </u></b></h6> -->
                                 <!-- Leave Table -->
                                 <!-- <h4>Table Here</h4> -->
-                                <table class="table table-striped" id="excel" style="width: 100%;">
+                                <!-- <table class="table table-striped" id="excel" style="width: 100%;"> -->
                                     <!-- <table style="width: 100%;"> -->
+                                <table>
                                     <tr>
                                         <!-- <th></th> -->
                                         <th>Employee</th>
@@ -326,6 +337,7 @@
 
                                 <button class="btn btn-primary" id="download">Excel Download</button>
                                 <button class="btn btn-secondary" onclick="Export2Word('exportContent');">Word Download</button>
+                                <!-- <button class="btn btn-primary" id="export">Export</button> -->
                             </div>
                         </div>
                     </div>
