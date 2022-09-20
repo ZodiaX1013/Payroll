@@ -1443,7 +1443,9 @@ def process_salary():
                 print(data1)
                 str1 = json.dumps(data1)
 
-                return str1
+                # return str1
+                msg = "Processing Complete"
+                return render_template("process.html", msg = msg)
             else:
                 print("Do Something Else")
         except Error as e:
@@ -1583,7 +1585,8 @@ def paysheet():
             cursor = connection.cursor(buffered=True)
 
             # query1 = "SELECT * FROM paysheet"
-            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
+            # query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
+            query1 = "SELECT BasicSalary, Overtime, LeaveRef, EOY, TravelAllow, OtherAllow, CurrentGross, Absences, CurrentPAYE, NPS, NSFEmpee, Medical, SLevy, Lateness, Deduction, NetPay FROM salary"
             cursor.execute(query1)
             data = cursor.fetchall()
             print(data)
