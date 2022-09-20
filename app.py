@@ -1287,7 +1287,7 @@ def salary():
                         eCSG = %s,
                         eNSF = %s,
                         eLevy = %s,
-                        Absences = %s,
+                        Absences = %s
                         WHERE 
                         UNQ = %s;"""
             data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, paye, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, ecsg, ensf, elevy, absence, UNQ ]
