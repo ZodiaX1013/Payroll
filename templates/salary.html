@@ -458,14 +458,19 @@
 								<input type="text" name="lname" id="lname" value="{{lname}}" class="form-control" placeholder="Enter Last Name">
 								{% else %}
 								<label>Last Name</label>
-								<input type="text" name="lname" id="lname" class="form-control" placeholder="Enter Last Name">
+								<input type="text" name="lname" id="lname" value="" class="form-control" placeholder="Enter Last Name">
 								{% endif %}
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
+								{% if pos %}
 								<label>Position</label>
-								<input type="text" name="pos" id="pos" class="form-control" placeholder="Enter Position">
+								<input type="text" name="pos" id="pos" value="{{pos}}" class="form-control" placeholder="Enter Position">
+								{% else %}
+								<label>Position</label>
+								<input type="text" name="pos" id="pos" value="" class="form-control" placeholder="Enter Position">
+								{% endif %}
 							</div>
 							<div class="form-group col-md-6">
 								{% if fname %}
@@ -473,7 +478,7 @@
 								<input type="text" name="fname" id="fname" value="{{fname}}" class="form-control" placeholder="Enter First Name">
 								{% else %}
 								<label>First Name</label>
-								<input type="text" name="fname" id="fname" class="form-control" placeholder="Enter First Name">
+								<input type="text" name="fname" id="fname" value="" class="form-control" placeholder="Enter First Name">
 								{% endif %}
 							</div>
 						</div>
