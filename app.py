@@ -1185,8 +1185,9 @@ def salary():
         elevy = request.form["ivbt"]
         absence = request.form["abs"]
         month = request.form["mon"]
-        
+        fname = request.form["fname"]
         eid = request.form["eid"]
+        UNQ = eid + " " + fname
         # lname = request.form["lname"]
         # print("Lname : ", lname)
         # print(lname)
@@ -1288,8 +1289,8 @@ def salary():
                         eLevy = %s,
                         Absences = %s,
                         WHERE 
-                        EmployeeID = %s OR Month = %s """
-            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, paye, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, ecsg, ensf, elevy, absence, eid, month ]
+                        UNQ = %s """
+            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, paye, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, ecsg, ensf, elevy, absence, UNQ ]
 
             cursor.execute(query1, data1)
             print("Database Updated Successfully")
@@ -1611,9 +1612,18 @@ def process_salary():
                 #     employee_id.append(tdata1)
                 # print(employee_id)
                 # print(data1)
+                query1 = "SELECT fname FROM employee WHERE EmployeeID = %s"
+                data = [eid]
+                cursor.execute(query1,data)
+                fname = cursor.fetchall()
+                
+                for i in range(len(fname)):
+                    fname = ''.join(fname[i])
+
+                UNQ = eid + " " + fname
 
                 query2 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
-                data = [eid]
+                
                 cursor.execute(query2, data)
                 emp_data = cursor.fetchall()
                 # print("Employee Data : \n " , emp_data)
@@ -1757,7 +1767,8 @@ def process_salary():
                     eLevy,
                     
                     Month,
-                    Year
+                    Year,
+                    UNQ
                     )
 
                     VALUES(
@@ -1791,10 +1802,11 @@ def process_salary():
                     %s,
                     %s,
                     %s,
+                    %s,
                     %s
                     );
                     """
-                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT, month, year]
+                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT, month, year, UNQ]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
