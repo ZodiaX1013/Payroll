@@ -555,7 +555,7 @@ else
 // Function For Export To Word File
 
 function Export2Word(element, filename = 'paysheet'){
-  css = (
+  var css = (
     '<style>' +
     '@page WordSection1{size: 1191pt 842pt;mso-page-orientation: landscape;}' +
     'div.WordSection1 {page: WordSection1;}' +
