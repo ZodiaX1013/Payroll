@@ -872,6 +872,7 @@ def salary():
             #     IET = ''.join(IET[i])
             
             data1 = [eid, month]
+            data2 = [eid]
             query1 = "SELECT BasicSalary From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query1, data1)
             basic = cursor.fetchall()
@@ -1113,19 +1114,19 @@ def salary():
                 absence = ''.join(absence[i])
 
             query42 = "SELECT FirstName From employee WHERE EmployeeID = %s"
-            cursor.execute(query42, data1)
+            cursor.execute(query42, data2)
             fname = cursor.fetchall()
             for i in range(len(fname)):
                 fname = ''.join(fname[i])
 
             query43 = "SELECT LastName From employee WHERE EmployeeID = %s"
-            cursor.execute(query43, data1)
+            cursor.execute(query43, data2)
             lname = cursor.fetchall()
             for i in range(len(lname)):
                 lname = ''.join(lname[i])
 
             query44 = "SELECT position From employee WHERE EmployeeID = %s"
-            cursor.execute(query44, data1)
+            cursor.execute(query44, data2)
             pos = cursor.fetchall()
             for i in range(len(pos)):
                 pos = ''.join(pos[i])
