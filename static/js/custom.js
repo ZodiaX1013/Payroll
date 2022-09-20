@@ -559,7 +559,15 @@ function Export2Word(element, filename = 'payslip'){
   var postHtml = "</body></html>";
   var html = preHtml+document.getElementById(element).innerHTML+postHtml;
 
-  var blob = new Blob(['\ufeff', html], {
+  css = (
+    '<style>' +
+    '@page WordSection1{size: 841.95pt 595.35pt;mso-page-orientation: landscape;}' +
+    'div.WordSection1 {page: WordSection1;}' +
+    'table{border-collapse:collapse;}td{border:1px gray solid;width:5em;padding:2px;}'+
+    '</style>'
+  );
+
+  var blob = new Blob(['\ufeff', css + html], {
       type: 'application/msword'
   });
   
