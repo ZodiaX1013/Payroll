@@ -1288,7 +1288,7 @@ def salary():
                         eLevy = %s,
                         Absences = %s,
                         WHERE 
-                        EmployeeID = %s AND Month = %s """
+                        EmployeeID = %s OR Month = %s """
             data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, paye, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, ecsg, ensf, elevy, absence, eid, month ]
 
             cursor.execute(query1, data1)
