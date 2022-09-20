@@ -751,6 +751,7 @@ def salary():
     # Search Data
     if request.method == "POST" and request.form['action'] == 'search':
         eid = request.form["eid"]
+        month = request.form["mon"]
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
                                                 database='heroku_dbb5a8d2e1d2fbf',
@@ -870,260 +871,260 @@ def salary():
             # for i in range(len(IET)):
             #     IET = ''.join(IET[i])
             
-            data1 = [eid]
-            query1 = "SELECT BasicSalary From salary WHERE EmployeeID = %s"
+            data1 = [eid, month]
+            query1 = "SELECT BasicSalary From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query1, data1)
             basic = cursor.fetchall()
             for i in range(len(basic)):
                 basic = ''.join(basic[i])
 
-            query2 = "SELECT FixedAllow From salary WHERE EmployeeID = %s"
+            query2 = "SELECT FixedAllow From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query2, data1)
             falw = cursor.fetchall()
             for i in range(len(falw)):
                 falw = ''.join(falw[i])
 
-            query3 = "SELECT OtherDeduction From salary WHERE EmployeeID = %s"
+            query3 = "SELECT OtherDeduction From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query3, data1)
             otherded = cursor.fetchall()
             for i in range(len(otherded)):
                 otherded = ''.join(otherded[i])
 
-            query4 = "SELECT Overtime From salary WHERE EmployeeID = %s"
+            query4 = "SELECT Overtime From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query4, data1)
             ot = cursor.fetchall()
             for i in range(len(ot)):
                 ot = ''.join(ot[i])
 
-            query5 = "SELECT DiscBonus From salary WHERE EmployeeID = %s"
+            query5 = "SELECT DiscBonus From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query5, data1)
             disc = cursor.fetchall()
             for i in range(len(disc)):
                 disc = ''.join(disc[i])
 
-            query6 = "SELECT NSFEmpee From salary WHERE EmployeeID = %s"
+            query6 = "SELECT NSFEmpee From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query6, data1)
             nsf = cursor.fetchall()
             for i in range(len(nsf)):
                 nsf = ''.join(nsf[i])
 
-            query7 = "SELECT OtherAllow From salary WHERE EmployeeID = %s"
+            query7 = "SELECT OtherAllow From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query7, data1)
             oalw = cursor.fetchall()
             for i in range(len(oalw)):
                 oalw = ''.join(oalw[i])
 
-            query8 = "SELECT TaxableAllow From salary WHERE EmployeeID = %s"
+            query8 = "SELECT TaxableAllow From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query8, data1)
             tax = cursor.fetchall()
             for i in range(len(tax)):
                 tax = ''.join(tax[i])
 
-            query9 = "SELECT Medical From salary WHERE EmployeeID = %s"
+            query9 = "SELECT Medical From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query9, data1)
             med = cursor.fetchall()
             for i in range(len(med)):
                 med = ''.join(med[i])
 
-            query10 = "SELECT Transport From salary WHERE EmployeeID = %s"
+            query10 = "SELECT Transport From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query10, data1)
             tran = cursor.fetchall()
             for i in range(len(tran)):
                 tran = ''.join(tran[i])
 
-            query11 = "SELECT NTaxableAllow From salary WHERE EmployeeID = %s"
+            query11 = "SELECT NTaxableAllow From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query11, data1)
             ntax = cursor.fetchall()
             for i in range(len(ntax)):
                 ntax = ''.join(ntax[i])
 
-            query12 = "SELECT EDF From salary WHERE EmployeeID = %s"
+            query12 = "SELECT EDF From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query12, data1)
             edf = cursor.fetchall()
             for i in range(len(edf)):
                 edf = ''.join(edf[i])
 
-            query13 = "SELECT Arrears From salary WHERE EmployeeID = %s"
+            query13 = "SELECT Arrears From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query13, data1)
             arr = cursor.fetchall()
             for i in range(len(arr)):
                 arr = ''.join(arr[i])
 
-            query14 = "SELECT AttendanceBns From salary WHERE EmployeeID = %s"
+            query14 = "SELECT AttendanceBns From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query14, data1)
             att = cursor.fetchall()
             for i in range(len(att)):
                 att = ''.join(att[i])
 
-            query15 = "SELECT TravelAllow From salary WHERE EmployeeID = %s"
+            query15 = "SELECT TravelAllow From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query15, data1)
             travel = cursor.fetchall()
             for i in range(len(travel)):
                 travel = ''.join(travel[i])
 
-            query16 = "SELECT EOY From salary WHERE EmployeeID = %s"
+            query16 = "SELECT EOY From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query16, data1)
             eoy = cursor.fetchall()
             for i in range(len(eoy)):
                 eoy = ''.join(eoy[i])
 
-            query17 = "SELECT Loan From salary WHERE EmployeeID = %s"
+            query17 = "SELECT Loan From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query17, data1)
             loan = cursor.fetchall()
             for i in range(len(loan)):
                 loan = ''.join(loan[i])
 
-            query18 = "SELECT CarBenefit From salary WHERE EmployeeID = %s"
+            query18 = "SELECT CarBenefit From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query18, data1)
             car = cursor.fetchall()
             for i in range(len(car)):
                 car = ''.join(car[i])
 
-            query19 = "SELECT LeaveRef From salary WHERE EmployeeID = %s"
+            query19 = "SELECT LeaveRef From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query19, data1)
             leave = cursor.fetchall()
             for i in range(len(leave)):
                 leave = ''.join(leave[i])
 
-            query20 = "SELECT SLevy From salary WHERE EmployeeID = %s"
+            query20 = "SELECT SLevy From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query20, data1)
             slevy = cursor.fetchall()
             for i in range(len(slevy)):
                 slevy = ''.join(slevy[i])
 
-            query21 = "SELECT SpecialBns From salary WHERE EmployeeID = %s"
+            query21 = "SELECT SpecialBns From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query21, data1)
             spebns = cursor.fetchall()
             for i in range(len(spebns)):
                 spebns = ''.join(spebns[i])
 
-            query22 = "SELECT Lateness From salary WHERE EmployeeID = %s"
+            query22 = "SELECT Lateness From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query22, data1)
             late = cursor.fetchall()
             for i in range(len(late)):
                 late = ''.join(late[i])
 
-            query23 = "SELECT EducationRel From salary WHERE EmployeeID = %s"
+            query23 = "SELECT EducationRel From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query23, data1)
             edurel = cursor.fetchall()
             for i in range(len(edurel)):
                 edurel = ''.join(edurel[i])
 
-            query24 = "SELECT SpeProBns From salary WHERE EmployeeID = %s"
+            query24 = "SELECT SpeProBns From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query24, data1)
             speprobns = cursor.fetchall()
             for i in range(len(speprobns)):
                 speprobns = ''.join(speprobns[i])
 
-            query25 = "SELECT NPS From salary WHERE EmployeeID = %s"
+            query25 = "SELECT NPS From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query25, data1)
             nps = cursor.fetchall()
             for i in range(len(nps)):
                 nps = ''.join(nps[i])
 
-            query26 = "SELECT MedicalRel From salary WHERE EmployeeID = %s"
+            query26 = "SELECT MedicalRel From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query26, data1)
             medrel = cursor.fetchall()
             for i in range(len(medrel)):
                 medrel = ''.join(medrel[i])
 
-            query27 = "SELECT Payable From salary WHERE EmployeeID = %s"
+            query27 = "SELECT Payable From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query27, data1)
             payable = cursor.fetchall()
             for i in range(len(payable)):
                 payable = ''.join(payable[i])
 
-            query28 = "SELECT Deduction From salary WHERE EmployeeID = %s"
+            query28 = "SELECT Deduction From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query28, data1)
             ded = cursor.fetchall()
             for i in range(len(ded)):
                 ded = ''.join(ded[i])
 
-            query29 = "SELECT NetPay From salary WHERE EmployeeID = %s"
+            query29 = "SELECT NetPay From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query29, data1)
             net = cursor.fetchall()
             for i in range(len(net)):
                 net = ''.join(net[i])
 
-            query31 = "SELECT CurrentGross From salary WHERE EmployeeID = %s"
+            query31 = "SELECT CurrentGross From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query31, data1)
             cgross = cursor.fetchall()
             for i in range(len(cgross)):
                 cgross = ''.join(cgross[i])
 
-            query32 = "SELECT PrevGross From salary WHERE EmployeeID = %s"
+            query32 = "SELECT PrevGross From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query32, data1)
             pgross = cursor.fetchall()
             for i in range(len(pgross)):
                 pgross = ''.join(pgross[i])
 
-            query33 = "SELECT IET From salary WHERE EmployeeID = %s"
+            query33 = "SELECT IET From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query33, data1)
             iet = cursor.fetchall()
             for i in range(len(iet)):
                 iet = ''.join(iet[i])
 
-            query34 = "SELECT NetCh From salary WHERE EmployeeID = %s"
+            query34 = "SELECT NetCh From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query34, data1)
             netch = cursor.fetchall()
             for i in range(len(netch)):
                 netch = ''.join(netch[i])
 
-            query35 = "SELECT CurrentPAYE From salary WHERE EmployeeID = %s"
+            query35 = "SELECT CurrentPAYE From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query35, data1)
             cpaye = cursor.fetchall()
             for i in range(len(cpaye)):
                 cpaye = ''.join(cpaye[i])
 
-            query36 = "SELECT PrevPAYE From salary WHERE EmployeeID = %s"
+            query36 = "SELECT PrevPAYE From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query36, data1)
             ppaye = cursor.fetchall()
             for i in range(len(ppaye)):
                 ppaye = ''.join(ppaye[i])
 
-            query37 = "SELECT PAYE From salary WHERE EmployeeID = %s"
+            query37 = "SELECT PAYE From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query37, data1)
             paye = cursor.fetchall()
             for i in range(len(paye)):
                 paye = ''.join(paye[i])
 
-            query38 = "SELECT eCSG From salary WHERE EmployeeID = %s"
+            query38 = "SELECT eCSG From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query38, data1)
             ecsg = cursor.fetchall()
             for i in range(len(ecsg)):
                 ecsg = ''.join(ecsg[i])
 
-            query39 = "SELECT eNSF From salary WHERE EmployeeID = %s"
+            query39 = "SELECT eNSF From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query39, data1)
             ensf = cursor.fetchall()
             for i in range(len(ensf)):
                 ensf = ''.join(ensf[i])
 
-            query40 = "SELECT eLevy From salary WHERE EmployeeID = %s"
+            query40 = "SELECT eLevy From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query40, data1)
             elevy = cursor.fetchall()
             for i in range(len(elevy)):
                 elevy = ''.join(elevy[i])
 
-            query41 = "SELECT Absences From salary WHERE EmployeeID = %s"
+            query41 = "SELECT Absences From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query41, data1)
             absence = cursor.fetchall()
             for i in range(len(absence)):
                 absence = ''.join(absence[i])
 
-            query42 = "SELECT FirstName From employee WHERE EmployeeID = %s"
+            query42 = "SELECT FirstName From employee WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query42, data1)
             fname = cursor.fetchall()
             for i in range(len(fname)):
                 fname = ''.join(fname[i])
 
-            query43 = "SELECT LastName From employee WHERE EmployeeID = %s"
+            query43 = "SELECT LastName From employee WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query43, data1)
             lname = cursor.fetchall()
             for i in range(len(lname)):
                 lname = ''.join(lname[i])
 
-            query44 = "SELECT position From employee WHERE EmployeeID = %s"
+            query44 = "SELECT position From employee WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query44, data1)
             pos = cursor.fetchall()
             for i in range(len(pos)):
