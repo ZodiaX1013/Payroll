@@ -446,10 +446,10 @@
 							<div class="form-group col-md-6">
 								{% if eid %}
 									<label>Employee ID</label>
-									<input type="text" name="eid" id="eid" value="{{eid}}" class="form-control" placeholder="Enter Employee ID">
+									<input type="text" name="eid" id="eid" value="{{eid}}" class="form-control" placeholder="Enter Employee ID" required>
 								{% else %}
 									<label>Employee ID</label>
-									<input type="text" name="eid" id="eid" value="" class="form-control" placeholder="Enter Employee ID">
+									<input type="text" name="eid" id="eid" value="" class="form-control" placeholder="Enter Employee ID" required>
 								{% endif %}
 							</div>
 							<div class="form-group col-md-6">
@@ -484,7 +484,7 @@
 							<div class="form-group col-md-6">
 								<label for="inputState">Month</label>
 								<select id="inputState" class="form-control" name="mon" required>
-									<option>select</option>
+									<option></option>
 									<option value="January">January</option>
 									<option value="February">February</option>
 									<option value="March">March</option>
@@ -501,7 +501,7 @@
 							</div>
 							<div class="form-group col-md-6">
 								<label> Year </label>
-								<input type="text" name="year" id="year" class="form-control" placeholder="Enter Year" >
+								<input type="text" name="year" id="year" class="form-control" placeholder="Enter Year" required>
 							</div>
 							
 							
