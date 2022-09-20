@@ -752,6 +752,7 @@ def salary():
     if request.method == "POST" and request.form['action'] == 'search':
         eid = request.form["eid"]
         month = request.form["mon"]
+        year = request.form["year"]
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
                                                 database='heroku_dbb5a8d2e1d2fbf',
@@ -1131,8 +1132,7 @@ def salary():
             for i in range(len(pos)):
                 pos = ''.join(pos[i])
             
-
-            return render_template("salary.html", basic=basic, falw=falw, otherded=otherded, ot=ot, disc=disc, nsf=nsf, oalw=oalw, tax=tax, med=med, tran=tran, ntax=ntax, edf=edf, arr=arr, att=att, travel=travel, eoy=eoy, loan=loan, car=car, leave=leave, slevy=slevy, spebns=spebns, late=late, edurel=edurel, speprobns=speprobns, nps=nps, medrel=medrel, payable=payable, ded=ded, net=net, cgross=cgross, pgross=pgross, iet=iet, netch=netch, cpaye=cpaye, ppaye=ppaye, paye=paye, ecsg=ecsg, ensf=ensf, elevy=elevy, absence=absence, eid=eid, fname=fname, lname=lname, pos=pos)
+            return render_template("salary.html", basic=basic, falw=falw, otherded=otherded, ot=ot, disc=disc, nsf=nsf, oalw=oalw, tax=tax, med=med, tran=tran, ntax=ntax, edf=edf, arr=arr, att=att, travel=travel, eoy=eoy, loan=loan, car=car, leave=leave, slevy=slevy, spebns=spebns, late=late, edurel=edurel, speprobns=speprobns, nps=nps, medrel=medrel, payable=payable, ded=ded, net=net, cgross=cgross, pgross=pgross, iet=iet, netch=netch, cpaye=cpaye, ppaye=ppaye, paye=paye, ecsg=ecsg, ensf=ensf, elevy=elevy, absence=absence, eid=eid, fname=fname, lname=lname, pos=pos, eid=eid, month=month, year=year)
             # return render_template("salary.html", sal=salary, bonus=bns, car=cars, edf=edf, med = med, travel = talw, eid = eid, fname=first, lname = last, edu=edu, paye=paye, gross=gross, IET=IET, mrel=mrel)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
@@ -1144,59 +1144,101 @@ def salary():
     
     # Save To Database
     elif request.method == "POST" and request.form['action'] == 'save':
+        
+        fixedAlw = request.form["falw2"]
+        otherDed = request.form["oded2"]
+        overtime = request.form["ot2"]
+        discBns = request.form["dbns2"]
+        NSF = request.form["nsf"]
+        otherAlw = request.form["oalw2"]
+        tax = request.form["txdes2"]
+        medical = request.form["med2"]
+        transport = request.form["tran2"]
+        ntax = request.form["ntxdes2"]
+        edf = request.form["edf"]
+        arrears = request.form["arr2"]
+        attendance = request.form["atbns2"]
+        travel = request.form["travel"]
+        eoy = request.form["eoy"]
+        loan = request.form["lrep"]
+        car = request.form["car"]
+        leaveRef = request.form["lref2"]
+        paye = request.form["paye3"]
+        slevy = request.form["levy"]
+        speBns = request.form["spbonus2"]
+        lateness = request.form["late"]
+        educationRel = request.form["edu"]
+        SpeProBns = request.form["spbonus3"]
+        NPS = request.form["nps"]
+        medicalRel = request.form["mrel"]
+        Payable = request.form["pay"]
+        Deduction = request.form["ded"]
+        Net = request.form["npay"]
+        cgross = request.form["cgrs"]
+        pgross = request.form["pgrs"]
+        iet = request.form["iet"]
+        netch = request.form["netch"]
+        cpaye = request.form["paye2"]
+        ppaye = request.form["ppaye"]
+        ecsg = request.form["nps2"]
+        ensf = request.form["nsf2"]
+        elevy = request.form["ivbt"]
+        absence = request.form["abs"]
+        month = request.form["mon"]
+        
         eid = request.form["eid"]
-        lname = request.form["lname"]
+        # lname = request.form["lname"]
         # print("Lname : ", lname)
         # print(lname)
-        fname = request.form["fname"]
-        flname = lname + " " + fname
+        # fname = request.form["fname"]
+        # flname = lname + " " + fname
         # print("Flname " , flname)
-        basic = request.form["bsal"]
-        arrears = request.form["arr2"]
-        tax = request.form["txdes2"]
-        ntax = request.form["ntxdes2"]
-        overseas = int(tax) + int(ntax)
-        travel = request.form["travel"]
-        other = request.form["oalw2"]
-        gross = request.form["cgrs"]
-        paye = request.form["paye"]
-        csg = request.form["nps"] 
-        nsf = request.form["nsf"] #nsf = nps = 213
-        medical = request.form["med2"]
-        levy = request.form["levy"]
-        tnet = request.form["npay"]
-        car = request.form["car"]
-        net = int(tnet) - int(levy)
+        # basic = request.form["bsal"]
+        # arrears = request.form["arr2"]
+        # tax = request.form["txdes2"]
+        # ntax = request.form["ntxdes2"]
+        # overseas = int(tax) + int(ntax)
+        # travel = request.form["travel"]
+        # other = request.form["oalw2"]
+        # gross = request.form["cgrs"]
+        # paye = request.form["paye"]
+        # csg = request.form["nps"] 
+        # nsf = request.form["nsf"] #nsf = nps = 213
+        # medical = request.form["med2"]
+        # levy = request.form["levy"]
+        # tnet = request.form["npay"]
+        # car = request.form["car"]
+        # net = int(tnet) - int(levy)
         # net = int(tnet) + int(car)
         # print(net)
-        edf = request.form["edf"]
-        ot = request.form["ot2"]
-        travel = request.form["tran2"]
-        eoy = request.form["eoy"]
-        leaveRef = request.form["lref2"]
-        speBonus = request.form["spbonus2"]
-        speProBonus = request.form["spbonus3"]
-        fixedAlw = request.form["falw2"]
-        DiscBonus = request.form["dbns2"]
-        AttendanceBns = request.form["atbns2"]
-        loan = request.form["lrep"]
-        lateness = request.form["am4"]
-        otherDeduction = request.form["oded2"]
-        payable = request.form["pay"]
-        deduction = request.form["ded"]
-        ot1hour = request.form["hr1"]
-        ot1amt = request.form["am1"]
-        ot2hour = request.form["hr2"]
-        ot2amt = request.form["am2"]
-        ot3hour = request.form["hr3"]
-        ot3amt = request.form["am3"]
-        educationRel = request.form["edu"]
-        latehr = request.form["hr4"]
+        # edf = request.form["edf"]
+        # ot = request.form["ot2"]
+        # travel = request.form["tran2"]
+        # eoy = request.form["eoy"]
+        # leaveRef = request.form["lref2"]
+        # speBonus = request.form["spbonus2"]
+        # speProBonus = request.form["spbonus3"]
+        # fixedAlw = request.form["falw2"]
+        # DiscBonus = request.form["dbns2"]
+        # AttendanceBns = request.form["atbns2"]
+        # loan = request.form["lrep"]
+        # lateness = request.form["am4"]
+        # otherDeduction = request.form["oded2"]
+        # payable = request.form["pay"]
+        # deduction = request.form["ded"]
+        # ot1hour = request.form["hr1"]
+        # ot1amt = request.form["am1"]
+        # ot2hour = request.form["hr2"]
+        # ot2amt = request.form["am2"]
+        # ot3hour = request.form["hr3"]
+        # ot3amt = request.form["am3"]
+        # educationRel = request.form["edu"]
+        # latehr = request.form["hr4"]
 
-        mon = request.form["mon"]
-        year = request.form["year"]
-        IET = request.form["iet"]
-        unqcode = lname + " " + mon
+        # mon = request.form["mon"]
+        # year = request.form["year"]
+        # IET = request.form["iet"]
+        # unqcode = lname + " " + mon
 
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
@@ -1204,161 +1246,209 @@ def salary():
                                                 user='b58f7064154253',
                                                 password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
+            query1 = """UPDATE salary
+                        SET 
+                        FixedAllow = %s,
+                        OtherDeduction = %s,
+                        Overtime = %s,
+                        DiscBonus = %s,
+                        NSFEmpee = %s,
+                        OtherAllow = %s,
+                        TaxableAllow = %s,
+                        Medical = %s,
+                        Transport = %s,
+                        NTaxableAllow = %s,
+                        EDF = %s,
+                        Arrears = %s,
+                        AttendanceBns = %s,
+                        TravelAllow = %s,
+                        EOY = %s,
+                        Loan = %s,
+                        CarBenefit = %s,
+                        LeaveRef = %s,
+                        SLevy = %s,
+                        SpecialBns = %s,
+                        Lateness = %s,
+                        EducationRel = %s,
+                        SpeProBns = %s,
+                        NPS = %s,
+                        MedicalRel = %s,
+                        Payable = %s,
+                        Deduction = %s,
+                        NetPay = %s,
+                        CurrentGross = %s,
+                        PrevGross = %s,
+                        IET = %s,
+                        NetCh = %s,
+                        CurrentPAYE = %s,
+                        PrevPAYE = %s,
+                        PAYE = %s,
+                        eCSG = %s,
+                        eNSF = %s,
+                        eLevy = %s,
+                        Absences = %s,
+                        WHERE 
+                        EmployeeID = %s AND Month = %s """
+            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, paye, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, ecsg, ensf, elevy, absence, eid, month ]
 
-            query12 = "SELECT UNQ FROM payable"
-            cursor.execute(query12)
+            cursor.execute(query1, data1)
+            print("Database Updated Successfully")
+            return render_template("paysheet.html")
 
-            UNQ = cursor.fetchall()
-            print(UNQ)
-            for i in range(len(UNQ)):
-                udata = ''.join(UNQ[i])
-            print(udata)
-            con = 0
-            for i in udata:
-                if unqcode == i:
-                    con = 1
-                    break
-                else:
-                    con = 0
+            # query12 = "SELECT UNQ FROM payable"
+            # cursor.execute(query12)
+
+            # UNQ = cursor.fetchall()
+            # print(UNQ)
+            # for i in range(len(UNQ)):
+            #     udata = ''.join(UNQ[i])
+            # print(udata)
+            # con = 0
+            # for i in udata:
+            #     if unqcode == i:
+            #         con = 1
+            #         break
+            #     else:
+            #         con = 0
                 
             # Payable Table
-            if con == 0:
-                query11 = """INSERT INTO payable (
-                    EmployeeID,
-                    BasicSalary,
-                    Overtime,
-                    OtherAllow,
-                    Transport,
-                    Arrears,
-                    EOY,
-                    LeaveRef,
-                    SpeBonus,
-                    SpeProBonus,
-                    FixedAllow,
-                    DiscBonus,
-                    TaxAllow,
-                    NTaxAllow,
-                    AttBonus,
-                    Loan,
-                    PAYE,
-                    Lateness,
-                    NPS,
-                    OtherDed,
-                    NSF,
-                    Medical,
-                    EDF,
-                    travel,
-                    car,
-                    SLevy,
-                    EducationRelief,
-                    gross,
-                    Payable,
-                    Deduction,
-                    NetPay,
-                    OT1hr,
-                    OT1amt,
-                    OT2hr,
-                    OT2amt,
-                    OT3hr,
-                    OT3amt,
-                    LatenessHr,
-                    Month,
-                    Year,
-                    IET,
-                    UNQ
-                )
-                VALUES (
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s,
-                    %s
-                );"""
+            # if con == 0:
+            #     query11 = """INSERT INTO payable (
+            #         EmployeeID,
+            #         BasicSalary,
+            #         Overtime,
+            #         OtherAllow,
+            #         Transport,
+            #         Arrears,
+            #         EOY,
+            #         LeaveRef,
+            #         SpeBonus,
+            #         SpeProBonus,
+            #         FixedAllow,
+            #         DiscBonus,
+            #         TaxAllow,
+            #         NTaxAllow,
+            #         AttBonus,
+            #         Loan,
+            #         PAYE,
+            #         Lateness,
+            #         NPS,
+            #         OtherDed,
+            #         NSF,
+            #         Medical,
+            #         EDF,
+            #         travel,
+            #         car,
+            #         SLevy,
+            #         EducationRelief,
+            #         gross,
+            #         Payable,
+            #         Deduction,
+            #         NetPay,
+            #         OT1hr,
+            #         OT1amt,
+            #         OT2hr,
+            #         OT2amt,
+            #         OT3hr,
+            #         OT3amt,
+            #         LatenessHr,
+            #         Month,
+            #         Year,
+            #         IET,
+            #         UNQ
+            #     )
+            #     VALUES (
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s,
+            #         %s
+            #     );"""
                 
-                data3 = [eid, basic, ot, other, travel, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, IET, unqcode]
+            #     data3 = [eid, basic, ot, other, travel, arrears, eoy, leaveRef, speBonus, speProBonus, fixedAlw, DiscBonus, tax, ntax, AttendanceBns, loan, paye, lateness, csg, otherDeduction, nsf, medical, edf, travel, car, levy, educationRel, gross, payable, deduction, net, ot1hour, ot1amt, ot2hour, ot2amt, ot3hour, ot3amt, latehr, mon, year, IET, unqcode]
 
-                cursor.execute(query11 , data3)
-                print("Payable Query Executed")
+            #     cursor.execute(query11 , data3)
+            #     print("Payable Query Executed")
 
             # Paysheet Table
-            query10 = """INSERT INTO paysheet (
-                EmployeeID,
-                EmployeeName,
-                BasicSalary,
-                Arrears,
-                Overseas,
-                TravelAllow,
-                OtherAllow,
-                Gross,
-                PAYE,
-                CSG,
-                NSF,
-                Medical,
-                SLevy,
-                Net,
-                Month,
-                department
-              )
-            VALUES (
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s,
-                %s
-              );"""
+            # query10 = """INSERT INTO paysheet (
+            #     EmployeeID,
+            #     EmployeeName,
+            #     BasicSalary,
+            #     Arrears,
+            #     Overseas,
+            #     TravelAllow,
+            #     OtherAllow,
+            #     Gross,
+            #     PAYE,
+            #     CSG,
+            #     NSF,
+            #     Medical,
+            #     SLevy,
+            #     Net,
+            #     Month,
+            #     department
+            #   )
+            # VALUES (
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s,
+            #     %s
+            #   );"""
             
-            dep = "Demo"
-            data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net, mon, dep]
-            cursor.execute(query10, data2)
-            print("Insert Query Execute successfully")
+            # dep = "Demo"
+            # data2 = [eid, flname, basic,arrears, overseas, travel, other, gross, paye, csg, nsf,medical, levy, net, mon, dep]
+            # cursor.execute(query10, data2)
+            # print("Insert Query Execute successfully")
 
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
