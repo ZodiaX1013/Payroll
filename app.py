@@ -2062,6 +2062,7 @@ def process_salary():
                     );
                     """
                     data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow, tax, medical, trans, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, cgross, prevGross, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, ab, month, year, UNQ]
+                    cursor.execute(insert_query, data1)
 
                 print("Do Something Else")
                 msg = "Processing Complete"
