@@ -1616,6 +1616,8 @@ def process_salary():
                 data = [eid]
                 cursor.execute(query1,data)
                 fname = cursor.fetchall()
+                for i in range(len(fname)):
+                    fname = ''.join(fname[i])
 
                 query2 = "SELECT LastName FROM employee WHERE EmployeeID = %s"
                 cursor.execute(query2,data)
