@@ -1733,7 +1733,7 @@ def process_salary():
                     
                     NSFEmpee,
                     OtherAllow,
-                    TaxablelAllow,
+                    TaxableAllow,
                     Medical,
                     
                     NTaxableAllow,
