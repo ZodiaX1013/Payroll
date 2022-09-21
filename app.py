@@ -1859,6 +1859,7 @@ def process_salary():
                     arrays[str(index+1)] = lst
 
                 for i in arrays:
+                    print(i)
                     emp_data2 = list(arrays[i])
                     # emp_data2 = list(emp_data[0])
 
@@ -1964,8 +1965,6 @@ def process_salary():
                     levy = int(basic) * 0.015
                     deduction = int(loan) + int(paye) + int(lateness) + int(nps) + int(otherDed) + int(nsf) + int(medical)
                     net = int(payable) - int(deduction)
-
-                    
 
                     insert_query = """
                     INSERT INTO salary(
