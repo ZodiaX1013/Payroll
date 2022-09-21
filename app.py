@@ -1728,27 +1728,27 @@ def process_salary():
                     EmployeeID,
                     BasicSalary,
                     FixedAllow,
-                    
+                    OtherDeduction,
                     Overtime,
-                    
+                    DiscBonus,
                     NSFEmpee,
                     OtherAllow,
                     TaxableAllow,
                     Medical,
-                    
+                    Transport,
                     NTaxableAllow,
                     EDF,
                     Arrears,
-                    
+                    AttendanceBns,
                     TravelAllow,
-                    
-                    
+                    EOY,
+                    Loan,
                     CarBenefit,
-                    
+                    LeaveRef,
                     SLevy,
-                    
-
-                    EducationRel,
+                    SpecialBns,
+                    Lateness,
+                    EducationRel,                    
                     SpeProBns,
                     NPS,
                     MedicalRel,
@@ -1760,12 +1760,12 @@ def process_salary():
                     IET,
                     NetCh,
                     CurrentPAYE,
-                    
-                    
+                    PrevPAYE,
+                    PAYE,
                     eCSG,
                     eNSF,
                     eLevy,
-                    
+                    Absences,
                     Month,
                     Year,
                     UNQ
@@ -1803,10 +1803,23 @@ def process_salary():
                     %s,
                     %s,
                     %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
                     %s
                     );
                     """
-                data1 = [eid, basic , fixAllow, OT, nsf, otherAllow, tax, medical, ntax, edf, arrears, travel, car, slevy, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, ntax ,ensf, IVBT, month, year, UNQ]
+                data1 = [eid, basic , fixAllow, 0, OT, 0, nsf, otherAllow, tax, medical, 0, ntax, edf, arrears, 0, travel, 0, 0, car, 0, slevy, 0, 0, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, 0, PAYE, ntax ,ensf, IVBT, 0, month, year, UNQ]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
