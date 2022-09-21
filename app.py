@@ -1815,7 +1815,6 @@ def process_salary():
                     %s,
                     %s,
                     %s,
-                    %s,
                     %s
                     );
                     """
