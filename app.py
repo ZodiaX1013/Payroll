@@ -958,11 +958,11 @@ def salary():
             for i in range(len(att)):
                 att = ''.join(att[i])
 
-            query15 = "SELECT TravelAllow From salary WHERE EmployeeID = %s AND Month = %s"
-            cursor.execute(query15, data1)
-            travel = cursor.fetchall()
-            for i in range(len(travel)):
-                travel = ''.join(travel[i])
+            # query15 = "SELECT TravelAllow From salary WHERE EmployeeID = %s AND Month = %s"
+            # cursor.execute(query15, data1)
+            # travel = cursor.fetchall()
+            # for i in range(len(travel)):
+            #     travel = ''.join(travel[i])
 
             query16 = "SELECT EOY From salary WHERE EmployeeID = %s AND Month = %s"
             cursor.execute(query16, data1)
@@ -1291,7 +1291,7 @@ def salary():
                         WHERE 
                         UNQ = %s;"""
             data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, transport, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, absence, UNQ ]
-            
+
             cursor.execute(query1, data1)
             print("Database Updated Successfully")
             return render_template("paysheet.html")
@@ -1628,7 +1628,7 @@ def process_salary():
                 flname = lname + " " + fname
                 UNQ = eid + " " + fname
 
-                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
+                query3 = "SELECT EmployeeID, Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
                 
                 cursor.execute(query3, data)
                 emp_data = cursor.fetchall()
@@ -1642,7 +1642,7 @@ def process_salary():
                 car = int(emp_data2[0])
                 basic = int(emp_data2[1])
                 fixAllow = int(emp_data2[2])
-                travel = int(emp_data2[3])
+                trans = int(emp_data2[3])
                 edf = int(emp_data2[4])
                 house = int(emp_data2[5])
                 education = int(emp_data2[6])
@@ -1661,10 +1661,9 @@ def process_salary():
                 # Calculation Of All Salary
                 # Get Elements
 
-
                 # Calcutations
-                gross = basic + arrears + OT + travel + otherAllow + tax + car + fixAllow + SpeProBns + travel
-                tgross = basic + arrears + OT + travel + otherAllow + overseas + fixAllow + SpeProBns
+                gross = basic + arrears + OT + trans + otherAllow + tax + car + fixAllow + SpeProBns 
+                tgross = basic + arrears + OT  + otherAllow + overseas + fixAllow + SpeProBns
 
                 temp = basic * 0.06
 
@@ -1679,11 +1678,21 @@ def process_salary():
                 # For PAYE and CSG
 
                 if basic > 50000:
-                    PAYE = round( (tgross - IET) * 0.15)
-                    CSG = round( basic * 0.03)
+                    if trans < 11500:
+                        PAYE = round( (tgross - IET) * 0.15)
+                        CSG = round( basic * 0.03)
+                    else:
+                        PAYE = round( (gross - IET) * 0.15)
+                        CSG = round( basic * 0.03)
                 else:
-                    PAYE = round((tgross - IET) * 0.1)
-                    CSG = round(basic * 0.015)
+                    if trans < 11500:
+                        PAYE = round( (tgross - IET) * 0.1)
+                        CSG = round( basic * 0.015)
+                    else:
+                        PAYE = round( (gross - IET) * 0.1)
+                        CSG = round( basic * 0.015)
+                    # PAYE = round((tgross - IET) * 0.1)
+                    # CSG = round(basic * 0.015)
                 
                 # For NSF
                 nsf = round(basic * 0.01)
@@ -1747,7 +1756,6 @@ def process_salary():
                     EDF,
                     Arrears,
                     AttendanceBns,
-                    TravelAllow,
                     EOY,
                     Loan,
                     CarBenefit,
@@ -1822,22 +1830,239 @@ def process_salary():
                     %s,
                     %s,
                     %s,
-                    %s,
                     %s
                     );
                     """
-                data1 = [eid, flname, basic , fixAllow, 0, OT, 0, nsf, otherAllow, tax, medical, 0, ntax, edf, arrears, 0, travel, 0, 0, car, 0, slevy, 0, 0, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, 0, PAYE, nps ,ensf, IVBT, 0, month, year, UNQ]
+                data1 = [eid, flname, basic , fixAllow, 0, OT, 0, nsf, otherAllow, tax, medical, trans, ntax, edf, arrears, 0, 0, 0, car, 0, slevy, 0, 0, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, 0, PAYE, nps ,ensf, IVBT, 0, month, year, UNQ]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
                 # return render_template("salary.html",sal = basic ,falw = fixAllow, ot = OT, nsf = nsf, olaw = otherAllow, tax = tax, med = medical, ntax = ntax, edf = edf, arr = arrears, travel = travel, car = car, slevy = slevy, edu = education, bonus = SpeProBns, csg = CSG, mrel = Medicalrel, pay = payable, ded = deduction, net = net, cgrs = tgross, pgrs = pgross, iet = IET, nch = netch, paye = PAYE, ensf = ensf, levy = IVBT)
                 print(data1)
-                str1 = json.dumps(data1)
+                # str1 = json.dumps(data1)
 
                 # return str1
                 msg = "Processing Complete"
                 return render_template("process.html", msg = msg)
-            else:
+            
+            elif eid == "ALL":                 
+
+                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
+                # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID FROM employee"
+                cursor.execute(query3, data)
+                emp_data = cursor.fetchall()
+
+
+                arrays = {}
+                for index,lst in enumerate(emp_data):
+                    arrays[str(index+1)] = lst
+
+                for i in arrays:
+                    emp_data2 = list(arrays[i])
+                    # emp_data2 = list(emp_data[0])
+
+                    car = int(emp_data2[0])
+                    basic = int(emp_data2[1])
+                    fixAllow = int(emp_data2[2])
+                    trans = int(emp_data2[3])
+                    edf = int(emp_data2[4])
+                    education = int(emp_data2[5])
+                    Medicalrel = int(emp_data2[6])
+                    medical = int(emp_data2[7])
+                    SpeProBns = int(emp_data2[8])
+                    eid = emp_data2[9]
+
+                    query1 = "SELECT FirstName FROM employee WHERE EmployeeID = %s"
+                    data = [eid]
+                    cursor.execute(query1,data)
+                    fname = cursor.fetchall()
+                    for i in range(len(fname)):
+                        fname = ''.join(fname[i])
+
+                    query2 = "SELECT LastName FROM employee WHERE EmployeeID = %s"
+                    cursor.execute(query2,data)
+                    lname = cursor.fetchall()
+                    for i in range(len(lname)):
+                        lname = ''.join(lname[i])
+
+                    UNQ = eid + " " + fname
+                    flname = lname + " " + fname
+
+
+                    # Values We Don't Get
+                    ot = 0
+                    otherAllow = 0
+                    arrears = 0
+                    eoy = 0
+                    leave = 0
+                    speBns = 0
+                    discBns = 0
+                    tax = 0
+                    ntax = 0
+                    attBns = 0
+                    overseas = 0
+
+                    loan = 0
+                    lateness = 0
+                    otherDed = 0
+                    ab = 0
+
+                    # Previous Data
+                    prevGross = 0
+                    piet = 0
+                    ppaye = 0
+
+                    # Calculations
+                    payable = basic + ot + otherAllow + trans + arrears + eoy + leave + speBns + SpeProBns + fixAllow + discBns + tax + ntax + attBns
+
+                    # For Overseas Amount
+                    if overseas > 0:
+                        ntax = int(basic) * 0.06
+                        tax = int(overseas) - int(ntax)
+                    else:
+                        ntax = 0
+                        tax = 0
+
+                    cgross = basic + ot + otherAllow + trans + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+                    gross = prevGross + cgross
+                    
+                    ciet = ( int(edf) + int(Medicalrel) + int(education)) / 13
+                    
+                    iet = int(ciet) + int(piet)
+
+                    netch = gross - iet
+
+                    if int(basic) > 50000:
+                        nps = int(basic) * 0.03
+                        cpaye =  netch * 0.15 
+                        enps = int(basic) * 0.03
+                    else:
+                        nps = int(basic) * 0.015
+                        cpaye = netch * 0.1 
+                        enps = int(basic) * 0.06
+                    
+                    paye = int(cpaye) - int(ppaye)
+                    nsf = int(basic) * 0.01
+
+                    temp = int(cgross) * 13
+                    slevy = 0
+                    if int(temp) > 3000000:
+                        slevy1 = (int(cgross) - int(iet) - (3000000/13)) * 0.25
+                        slevy2 = int(cgross) * 0.1
+
+                        if slevy1 > slevy2:
+                            slevy = slevy2
+                        else:
+                            slevy = slevy1
+
+                    ensf = round(basic * 0.025)
+                    if ensf > 531:
+                        ensf = 531
+                    else:
+                        ensf = round(ensf)
+                    levy = int(basic) * 0.015
+                    deduction = int(loan) + int(paye) + int(lateness) + int(nps) + int(otherDed) + int(nsf) + int(medical)
+                    net = int(payable) - int(deduction)
+
+                    
+
+                    insert_query = """
+                    INSERT INTO salary(
+                    EmployeeID,
+                    EmployeeName,
+                    BasicSalary,
+                    FixedAllow,
+                    OtherDeduction,
+                    Overtime,
+                    DiscBonus,
+                    NSFEmpee,
+                    OtherAllow,
+                    TaxableAllow,
+                    Medical,
+                    Transport,
+                    NTaxableAllow,
+                    EDF,
+                    Arrears,
+                    AttendanceBns,
+                    EOY,
+                    Loan,
+                    CarBenefit,
+                    LeaveRef,
+                    SLevy,
+                    SpecialBns,
+                    Lateness,
+                    EducationRel,                    
+                    SpeProBns,
+                    NPS,
+                    MedicalRel,
+                    Payable,
+                    Deduction,
+                    NetPay,
+                    CurrentGross,
+                    PrevGross,
+                    IET,
+                    NetCh,
+                    CurrentPAYE,
+                    PrevPAYE,
+                    PAYE,
+                    eCSG,
+                    eNSF,
+                    eLevy,
+                    Absences,
+                    Month,
+                    Year,
+                    UNQ
+                    )
+
+                    VALUES(
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s,
+                    %s
+                    );
+                    """
+                    data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow, tax, medical, trans, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, cgross, prevGross, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, ab, month, year, UNQ]
+
                 print("Do Something Else")
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
