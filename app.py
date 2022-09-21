@@ -1616,15 +1616,19 @@ def process_salary():
                 data = [eid]
                 cursor.execute(query1,data)
                 fname = cursor.fetchall()
-                
-                for i in range(len(fname)):
-                    fname = ''.join(fname[i])
 
+                query2 = "SELECT LastName FROM employee WHERE EmployeeID = %s"
+                cursor.execute(query2,data)
+                lname = cursor.fetchall()
+                for i in range(len(lname)):
+                    lname = ''.join(lname[i])
+
+                flname = lname + " " + fname
                 UNQ = eid + " " + fname
 
-                query2 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
+                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Houseinterest, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
                 
-                cursor.execute(query2, data)
+                cursor.execute(query3, data)
                 emp_data = cursor.fetchall()
                 # print("Employee Data : \n " , emp_data)
 
@@ -1726,6 +1730,7 @@ def process_salary():
                 insert_query = """
                     INSERT INTO salary(
                     EmployeeID,
+                    EmployeeName,
                     BasicSalary,
                     FixedAllow,
                     OtherDeduction,
@@ -1815,10 +1820,11 @@ def process_salary():
                     %s,
                     %s,
                     %s,
+                    %s,
                     %s
                     );
                     """
-                data1 = [eid, basic , fixAllow, 0, OT, 0, nsf, otherAllow, tax, medical, 0, ntax, edf, arrears, 0, travel, 0, 0, car, 0, slevy, 0, 0, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, 0, PAYE, ntax ,ensf, IVBT, 0, month, year, UNQ]
+                data1 = [eid, flname, basic , fixAllow, 0, OT, 0, nsf, otherAllow, tax, medical, 0, ntax, edf, arrears, 0, travel, 0, 0, car, 0, slevy, 0, 0, education, SpeProBns, CSG, Medicalrel, payable, deduction, net, tgross, pgross, IET, netch, PAYE, 0, PAYE, ntax ,ensf, IVBT, 0, month, year, UNQ]
                 
                 cursor.execute(insert_query, data1)
                 print("Insert Query Run Successfully")
