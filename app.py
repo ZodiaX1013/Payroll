@@ -2205,7 +2205,7 @@ def paysheet():
 
             # query1 = "SELECT * FROM paysheet"
             # query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
-            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overtime, LeaveRef, EOY, TravelAllow, OtherAllow, Payable, Absences, CurrentPAYE, NPS, NSFEmpee, Medical, SLevy, Lateness, Deduction, NetPay FROM salary"
+            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overtime, LeaveRef, EOY, Transport, OtherAllow, Payable, Absences, CurrentPAYE, NPS, NSFEmpee, Medical, SLevy, Lateness, Deduction, NetPay FROM salary"
             cursor.execute(query1)
             data = cursor.fetchall()
             print(data)
