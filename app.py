@@ -1291,7 +1291,7 @@ def salary():
                         WHERE 
                         UNQ = %s;"""
             data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, transport, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, absence, UNQ ]
-
+            
             cursor.execute(query1, data1)
             print("Database Updated Successfully")
             return render_template("paysheet.html")
@@ -1977,7 +1977,7 @@ def paysheet():
 
             # query1 = "SELECT * FROM paysheet"
             # query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overseas, TravelAllow, OtherAllow, Gross, PAYE, CSG, NSF, Medical, SLevy, Net FROM paysheet"
-            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overtime, LeaveRef, EOY, TravelAllow, OtherAllow, CurrentGross, Absences, CurrentPAYE, NPS, NSFEmpee, Medical, SLevy, Lateness, Deduction, NetPay FROM salary"
+            query1 = "SELECT EmployeeName, BasicSalary, Arrears, Overtime, LeaveRef, EOY, TravelAllow, OtherAllow, Payable, Absences, CurrentPAYE, NPS, NSFEmpee, Medical, SLevy, Lateness, Deduction, NetPay FROM salary"
             cursor.execute(query1)
             data = cursor.fetchall()
             print(data)
