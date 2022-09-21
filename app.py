@@ -2065,6 +2065,8 @@ def process_salary():
                     data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow, tax, medical, trans, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, cgross, prevGross, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, ab, month, year, UNQ]
 
                 print("Do Something Else")
+                msg = "Processing Complete"
+                return render_template("process.html", msg = msg)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
