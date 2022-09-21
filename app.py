@@ -1612,7 +1612,7 @@ def process_salary():
                 #     employee_id.append(tdata1)
                 # print(employee_id)
                 # print(data1)
-                query1 = "SELECT fname FROM employee WHERE EmployeeID = %s"
+                query1 = "SELECT FirstName FROM employee WHERE EmployeeID = %s"
                 data = [eid]
                 cursor.execute(query1,data)
                 fname = cursor.fetchall()
