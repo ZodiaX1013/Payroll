@@ -1290,7 +1290,7 @@ def salary():
                         Absences = %s
                         WHERE 
                         UNQ = %s;"""
-            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, travel, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, absence, UNQ ]
+            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw, tax, medical, transport, ntax, edf, arrears, attendance, transport, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, cgross, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, absence, UNQ ]
 
             cursor.execute(query1, data1)
             print("Database Updated Successfully")
