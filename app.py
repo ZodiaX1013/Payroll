@@ -1951,6 +1951,11 @@ def process_salary():
                     paye = int(cpaye) - int(ppaye)
                     nsf = int(basic * 0.01)
 
+                    if nsf > 213:
+                        nsf = 213
+                    else:
+                        nsf = int(nsf)
+
                     temp = int(cgross) * 13
                     slevy = 0
                     if int(temp) > 3000000:
