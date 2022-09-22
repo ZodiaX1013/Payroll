@@ -1970,7 +1970,7 @@ def process_salary():
                         ensf = 531
                     else:
                         ensf = round(ensf)
-                    levy = int(basic) * 0.015
+                    levy = round(int(basic) * 0.015)
                     deduction = int(loan) + int(paye) + int(lateness) + int(nps) + int(otherDed) + int(nsf) + int(medical)
                     net = int(payable) - int(deduction)
 
