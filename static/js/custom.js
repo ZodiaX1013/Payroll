@@ -607,16 +607,17 @@ function calculateSalary(){
 
   var payable = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(speBns) + parseInt(speProBns) + parseInt(fixAllow) + parseInt(DiscBonus) + parseInt(tax) + parseInt(ntax) + parseInt(attBns)
 
-  if(overseas > 0){
-    ntax = Math.round(parseInt(basic) * 0.06)
-    tax = Math.round(parseInt(overseas) - parseInt(tax))
-  }
-  else{
-    ntax = 0
-    tax = 0
-  }
+  // if(overseas > 0){
+  //   ntax = Math.round(parseInt(basic) * 0.06)
+  //   tax = Math.round(parseInt(overseas) - parseInt(tax))
+  // }
+  // else{
+  //   ntax = 0
+  //   tax = 0
+  // }
 
   var cgross
+  var ptransport = 0
   if(transport > 11500){
     cgross = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(DiscBonus) + parseInt(fixAllow) + parseInt(speBns) + parseInt(tax) + parseInt(speProBns) + parseInt(attBns) + parseInt(car)
   }
@@ -671,6 +672,9 @@ function calculateSalary(){
       slevy = slevy1
     }
   }
+  else{
+    slevy = 0
+  }
   var ensf = Math.round(parseInt(basic) * 0.025)
   if(ensf > 531){
     ensf = 531
@@ -723,7 +727,7 @@ function calculateSalary(){
   document.getElementById("oalw3").value = otherAllow
   document.getElementById("piet").value = piet
   document.getElementById("iet").value = ciet  // check iet value
-  document.getElementById("tran3").value = transport
+  document.getElementById("tran3").value = ptransport
   document.getElementById("txdes3").value = tax
   document.getElementById("netch").value = netch
   document.getElementById("arr3").value = arrears
