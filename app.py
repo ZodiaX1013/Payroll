@@ -1925,7 +1925,12 @@ def process_salary():
                         ntax = 0
                         tax = 0
 
-                    cgross = basic + ot + otherAllow + trans + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+                    if trans > 11500:
+                        cgross = basic + ot + otherAllow + trans + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+                    else:
+                        cgross = basic + ot + otherAllow + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+
+                    
                     gross = prevGross + cgross
                     
                     ciet = ( int(edf) + int(Medicalrel) + int(education)) / 13
@@ -1935,16 +1940,16 @@ def process_salary():
                     netch = gross - iet
 
                     if int(basic) > 50000:
-                        nps = int(basic) * 0.03
-                        cpaye =  int(netch) * 0.15 
-                        enps = int(basic) * 0.03
+                        nps = int(basic * 0.03)
+                        cpaye =  int(netch * 0.15)
+                        enps = int(basic * 0.03)
                     else:
-                        nps = int(basic) * 0.015
-                        cpaye = int(netch) * 0.1 
-                        enps = int(basic) * 0.06
+                        nps = int(basic * 0.015)
+                        cpaye = int(netch * 0.1)
+                        enps = int(basic * 0.06)
                     
                     paye = int(cpaye) - int(ppaye)
-                    nsf = int(basic) * 0.01
+                    nsf = int(basic * 0.01)
 
                     temp = int(cgross) * 13
                     slevy = 0
