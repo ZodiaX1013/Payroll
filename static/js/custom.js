@@ -333,223 +333,409 @@ function payeCalc(){
 
 
 // Calculate Tax and Other Data
+// function calculateSalary(){
+//   var basic = document.getElementById('bsal').value
+//   var car = document.getElementById('car').value
+//   var otherAllow = document.getElementById('oalw').value
+//   var overseas
+//   var tax = document.getElementById('amt1').value
+//   var ntax = document.getElementById('amt2').value
+//   var education = document.getElementById('edu').value
+//   var fixAllow = document.getElementById('falw').value
+
+//   overseas = parseInt(tax) + parseInt(ntax)
+
+//   var arrears = document.getElementById('arr').value
+//   var ot1 = document.getElementById('am1').value
+//   var ot2 = document.getElementById('am2').value
+//   var ot3 = document.getElementById('am3').value
+//   var special_pro_bonus = document.getElementById("spbonus3").value
+//   var overtime = parseInt(ot1) + parseInt(ot2) + parseInt(ot3)
+//   // var travel = document.getElementById("travel").value
+//   var medical = document.getElementById('med2').value
+//   var edf = document.getElementById('edf').value
+//   var transport = document.getElementById('tran').value
+//   var mrel = document.getElementById("mrel").value
+//   // alert(transport)
+  
+//   // Get Other Values
+//   var localRef = document.getElementById('lref').value
+    
+//   var DiscBonus = document.getElementById('dbns').value
+//   var attendance = document.getElementById('atbns').value
+
+//   var sick = document.getElementById('sref').value
+//   var special = document.getElementById('sbns').value
+//   var odeduction = document.getElementById('oded').value
+//   var late = document.getElementById('am4').value
+
+//   // Paye Of PAYE Calculation
+//   var previous_paye = document.getElementById("ppaye").value
+//   var payable = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(leave) + parseInt() + parseInt() + parseInt() + parseInt() 
+
+//   var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(tax) +  parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus)
+//   var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(overseas) +  parseInt(fixAllow) + parseInt(special_pro_bonus)
+  
+//   var temp = basic * 0.06
+//   var payable
+//   if( temp > overseas)
+//   {
+//     payable = parseInt(gross)  - parseInt(car)
+//   }
+//   else
+//   {
+//     payable = parseInt(gross)  - parseInt(car) + parseInt(ntax)
+//   }
+  
+//   // IET Calculation
+//   var pIET = document.getElementById("piet").value
+//   var TIET = parseInt(edf) + parseInt(education) + parseInt(mrel)
+//   var cIET = Math.round(TIET / 13)
+//   var IET = parseInt(pIET) + parseInt(cIET)
+  
+//   // PAYE and CSG Calculation
+//   var tpaye
+//   var csg
+//   var paye
+//   if( basic > 50000 )
+//   {
+//     tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.15
+//     // alert(paye)
+//     csg = Math.round( parseInt(basic) * 0.03 )
+//     paye = Math.round(tpaye)
+//   }
+//   else
+//   {
+//     tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.1 
+//     csg = Math.round( parseInt(basic) * 0.015 )
+//     paye = Math.round(tpaye)
+//   }
+  
+//   // NSF Calculation
+//   var nsf = parseInt(basic) * 0.01
+//   var ivbt = parseInt(basic) * 0.015
+//   if(nsf > 213)
+//   {
+//     nsf = 213
+//   }
+//   else
+//   {
+//     nsf = nsf
+//   }
+
+//   // NSF For Employer
+//   var ensf = parseInt(basic) * 0.025
+//   if(ensf > 531)
+//   {
+//     ensf = 531
+//   }
+//   else
+//   {
+//     ensf = ensf
+//   }
+
+//   // S.Levy Calculation
+
+//   var emo = parseInt(tgross) * 13
+//   var levy
+//   var slevy
+//   if( emo > 3000000)
+//   {
+//     levy = ( parseInt(tgross) - parseInt(cIET) - (3000000/13) ) * 0.25
+//     var emo2 = parseInt(emo) * 0.1
+//     if(emo2 > levy)
+//     {
+//       slevy = Math.round(levy)
+//     }
+//     else
+//     {
+//       slevy = Math.round(emo2)
+//     }
+//   }
+//   else
+//   {
+//     slevy = 0
+//   }
+//   // alert(slevy)
+//   var deduction = Math.round(paye + csg + nsf + parseInt(medical))
+//   var net = Math.round(payable - deduction)
+
+//   var pgross = document.getElementById("pgrs").value
+
+//   // Net Ch
+//   var netch = parseInt(tgross) + parseInt(pgross) - parseInt(IET)
+//   document.getElementById("netch").value = netch
+
+
+//   // NPS
+// var nps
+// if(basic > 50000)
+// {
+//   nps = parseInt(basic) * 0.06
+// }
+// else
+// {
+//   nps = parseInt(basic) * 0.03
+// }
+
+//   var pPAYE = parseInt(previous_paye) + parseInt(paye)
+//   payable_paye = parseInt(pPAYE) - parseInt(previous_paye)
+
+//   // Fill Readonly Field
+//   // fix allow
+//   document.getElementById('falw2').value = fixAllow
+//   document.getElementById('falw3').value = fixAllow
+//   // other deduction
+//   document.getElementById('oded2').value = odeduction
+//   // overtime
+//   document.getElementById('ot2').value = overtime
+//   document.getElementById('ot3').value = overtime
+//   // disc bonus
+//   document.getElementById('dbns2').value = DiscBonus
+//   document.getElementById('dbns3').value = DiscBonus
+//   // NSF
+//   document.getElementById('nsf').value = nsf
+//   document.getElementById('ivbt').value = Math.round(ivbt) 
+//   // other allow
+//   document.getElementById('oalw2').value = otherAllow
+//   document.getElementById('oalw3').value = otherAllow
+//   // taxable
+//   document.getElementById('txdes2').value = tax
+//   document.getElementById('txdes3').value = tax
+//   // transport
+//   document.getElementById('tran2').value = transport
+//   document.getElementById('tran3').value = transport
+//   // non taxable
+//   document.getElementById('ntxdes2').value = ntax
+//   // arrears
+//   document.getElementById('arr2').value = arrears
+//   document.getElementById('arr3').value = arrears
+//   // attendance
+//   document.getElementById('atbns2').value = attendance
+//   document.getElementById('atbns3').value = attendance
+//   // EOY
+//   document.getElementById('eoy').value = 0
+//   document.getElementById('eoy2').value = 0
+//   // loan
+//   document.getElementById('lrep').value = 0
+//   // leave refund 
+//   document.getElementById('lref2').value = localRef
+//   document.getElementById('lref3').value = localRef
+//   // paye
+//   document.getElementById('paye').value = paye
+//   document.getElementById('paye2').value = pPAYE
+//   document.getElementById('paye3').value = payable_paye
+//   // s.levy
+//   document.getElementById('levy').value = slevy
+//   // special bonus
+//   document.getElementById('spbonus2').value = special
+//   // document.getElementById('spbonus4').value = special
+//   // lateness
+//   document.getElementById('late').value = late
+//   // NPS
+//   document.getElementById('nps').value = csg
+//   document.getElementById('nps2').value = Math.round(nps)
+//   document.getElementById('nsf2').value = Math.round(ensf)
+//   // IET
+//   document.getElementById('iet').value = IET
+//   // payable
+//   alert(payable)
+//   document.getElementById('pay').value = payable
+//   // Deduction
+//   document.getElementById('ded').value = deduction
+//   // Net Pay
+//   document.getElementById('npay').value = net
+//   // Gross
+//   // document.getElementById('grs').value = tgross
+//   // Current Gross
+//   // alert(tgross)
+//   document.getElementById('cgrs').value = tgross
+
+// }
+
 function calculateSalary(){
-  var basic = document.getElementById('bsal').value
-  var car = document.getElementById('car').value
-  var otherAllow = document.getElementById('oalw').value
-  var overseas
-  var tax = document.getElementById('amt1').value
-  var ntax = document.getElementById('amt2').value
-  var education = document.getElementById('edu').value
-  var fixAllow = document.getElementById('falw').value
 
-  overseas = parseInt(tax) + parseInt(ntax)
+  // Changable Amount is travel allowance
 
-  var arrears = document.getElementById('arr').value
-  var ot1 = document.getElementById('am1').value
-  var ot2 = document.getElementById('am2').value
-  var ot3 = document.getElementById('am3').value
-  var special_pro_bonus = document.getElementById("spbonus3").value
-  var overtime = parseInt(ot1) + parseInt(ot2) + parseInt(ot3)
-  // var travel = document.getElementById("travel").value
-  var medical = document.getElementById('med2').value
-  var edf = document.getElementById('edf').value
-  var transport = document.getElementById('tran').value
-  var mrel = document.getElementById("mrel").value
-  // alert(transport)
+  var arrears = document.getElementById("arr").value
+  var localRef = document.getElementById("lref").value
+  var fixAllow  = document.getElementById("falw").value
+  var DiscBonus = document.getElementById("dbns").value
+  var attBns = document.getElementById("atbns").value
+  var transport1 = document.getElementById("tran").value
+  var transport2 = document.getElementById("tran3").value
+  var sick = document.getElementById("sref").value
+  var speBns = document.getElementById("sbns").value
+  var otherAllow = document.getElementById("oalw").value
+  var otherDed = document.getElementById("oded").value
+  var abs = document.getElementById("abs").value
+  var ot1 = document.getElementById("am1").value
+  var ot2 = document.getElementById("am2").value
+  var ot3 = document.getElementById("am3").value
+  var lateness = document.getElementById("am4").value
+  var tax = document.getElementById("amt1").value
+  var ntax = document.getElementById("amt2").value
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(tax) +  parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus)
-  var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(overseas) +  parseInt(fixAllow) + parseInt(special_pro_bonus)
-  
-  var temp = basic * 0.06
-  var payable
-  if( temp > overseas)
-  {
-    payable = parseInt(gross)  - parseInt(car)
-  }
-  else
-  {
-    payable = parseInt(gross)  - parseInt(car) + parseInt(ntax)
-  }
-  
-  // IET Calculation
-  var pIET = document.getElementById("piet").value
-  var TIET = parseInt(edf) + parseInt(education) + parseInt(mrel)
-  var cIET = Math.round(TIET / 13)
-  var IET = parseInt(pIET) + parseInt(cIET)
-  
-  // PAYE and CSG Calculation
-  var tpaye
-  var csg
-  var paye
-  if( basic > 50000 )
-  {
-    tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.15
-    // alert(paye)
-    csg = Math.round( parseInt(basic) * 0.03 )
-    paye = Math.round(tpaye)
-  }
-  else
-  {
-    tpaye = (parseInt(tgross) - parseInt(cIET)) * 0.1 
-    csg = Math.round( parseInt(basic) * 0.015 )
-    paye = Math.round(tpaye)
-  }
-  
-  // NSF Calculation
-  var nsf = parseInt(basic) * 0.01
-  var ivbt = parseInt(basic) * 0.015
-  if(nsf > 213)
-  {
-    nsf = 213
-  }
-  else
-  {
-    nsf = nsf
-  }
+  var transport = parseInt(transport1) + parseInt(transport2)
+  var overseas = parseInt(tax) + parseInt(ntax)
 
-  // NSF For Employer
-  var ensf = parseInt(basic) * 0.025
-  if(ensf > 531)
-  {
-    ensf = 531
-  }
-  else
-  {
-    ensf = ensf
-  }
+  var basic = document.getElementById("bsal").value
+  var overtime = parseInt(ot1) + parseInt(ot2) +parseInt(ot3)
+  var eoy = document.getElementById("eoy").value
+  var speProBns = document.getElementById("spbonus3").value
+  
+  var loan = document.getElementById("lrep").value
+  var paye = document.getElementById("paye").value
+  var nps = document.getElementById("nps").value
+  var nsf = document.getElementById("nsf").value
+  var medical = document.getElementById("med2").value
 
-  // S.Levy Calculation
-
-  var emo = parseInt(tgross) * 13
-  var levy
+  var edf = document.getElementById("edf").value
+  var car = document.getElementById("car").value
   var slevy
-  if( emo > 3000000)
-  {
-    levy = ( parseInt(tgross) - parseInt(cIET) - (3000000/13) ) * 0.25
-    var emo2 = parseInt(emo) * 0.1
-    if(emo2 > levy)
-    {
-      slevy = Math.round(levy)
-    }
-    else
-    {
-      slevy = Math.round(emo2)
-    }
-  }
-  else
-  {
-    slevy = 0
-  }
-  // alert(slevy)
-  var deduction = Math.round(paye + csg + nsf + parseInt(medical))
-  var net = Math.round(payable - deduction)
+  var educationRel = document.getElementById("edu").value
+  var medicalRel = document.getElementById("mrel").value
+
 
   var pgross = document.getElementById("pgrs").value
+  var piet = document.getElementById("piet").value
+  var ppaye = document.getElementById("ppaye").value
 
-  // Net Ch
-  var netch = parseInt(tgross) + parseInt(pgross) - parseInt(IET)
+
+
+
+  var payable = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(speBns) + parseInt(speProBns) + parseInt(fixAllow) + parseInt(DiscBonus) + parseInt(tax) + parseInt(ntax) + parseInt(attBns)
+
+  if(overseas > 0){
+    ntax = Math.round(parseInt(basic) * 0.06)
+    tax = Math.round(parseInt(overseas) - parseInt(tax))
+  }
+  else{
+    ntax = 0
+    tax = 0
+  }
+
+  var cgross
+  if(transport > 11500){
+    cgross = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(DiscBonus) + parseInt(fixAllow) + parseInt(speBns) + parseInt(tax) + parseInt(speProBns) + parseInt(attBns) + parseInt(car)
+  }
+  else{
+    cgross = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(DiscBonus) + parseInt(fixAllow) + parseInt(speBns) + parseInt(tax) + parseInt(speProBns) + parseInt(attBns) + parseInt(car)
+  }
+
+  var gross = pgross + cgross
+
+  var tciet = parseInt(edf) + parseInt(medicalRel) + parseInt(educationRel)
+  var ciet
+  ciet = Math.round(parseInt(tciet) / 13)
+  var iet = parseInt(ciet) + parseInt(piet)
+
+  var netch = parseInt(gross) - parseInt(iet)
+
+  var nps
+  var cpaye
+  var enps
+  if(basic > 50000){
+    nps = Math.round(parseInt(basic) * 0.03)
+    cpaye = Math.round(parseInt(netch) * 0.15)
+    enps = Math.round(parseInt(basic) * 0.06)
+  }
+  else{
+    nps = Math.round(parseInt(basic) * 0.015)
+    cpaye = Math.round(parseInt(netch) * 0.1)
+    enps = Math.round(parseInt(basic) * 0.03)
+  }
+
+  paye = parseInt(cpaye) - parseInt(ppaye)
+  nsf = Math.round(parseInt(basic) * 0.01)
+
+  if(nsf > 213){
+    nsf = 213
+  }
+  else{
+    nsf = parseInt(nsf)
+  }
+
+  var temp = parseInt(cgross) * 13
+  var slevy1
+  var slevy2
+  if(temp > 3000000){
+    slevy1 = Math.round((parseInt(cgross) - parseInt(iet) - (3000000/13)) * 0.25)
+    slevy2 = Math.round(parseInt(cgross) * 0.1)
+    
+    if(slevy1 > slevy2){
+      slevy = slevy2
+    }
+    else{
+      slevy = slevy1
+    }
+  }
+  var ensf = Math.round(parseInt(basic) * 0.025)
+  if(ensf > 531){
+    ensf = 531
+  }
+  else{
+    ensf = Math.round(ensf)
+  }
+  var levy = parseInt(basic) * 0.015
+
+  var deduction = parseInt(loan) + parseInt(paye) + parseInt(lateness) + parseInt(nps) + parseInt(otherDed) + parseInt(nsf) + parseInt(medical)
+
+  var net = parseInt(payable) - parseInt(deduction)
+
+  document.getElementById("bsal").value = basic
+  document.getElementById("falw2").value = fixAllow
+  document.getElementById("oded2").value = otherDed
+  document.getElementById("ot2").value = overtime
+  document.getElementById("dbns2").value = DiscBonus
+  document.getElementById("nsf").value = nsf
+  document.getElementById("oalw2").value = otherAllow
+  document.getElementById("txdes2").value = tax
+  document.getElementById("med2").value = medical
+  document.getElementById("tran2").value = transport
+  document.getElementById("ntxdes2").value = ntax
+  document.getElementById("edf").value = edf
+  document.getElementById("arr2").value = arrears
+  document.getElementById("atbns2").value = attBns
+  document.getElementById("eoy").value = eoy
+  document.getElementById("lrep").value = loan
+  document.getElementById("car").value = car
+  document.getElementById("lref2").value = localRef
+  document.getElementById("paye").value = paye
+  document.getElementById("levy").value = slevy
+  document.getElementById("spbonus2").value = speBns
+  document.getElementById("late").value = lateness
+  document.getElementById("edu").value = educationRel
+  document.getElementById("spbonus3").value = speProBns
+  document.getElementById("nps").value = nps
+  document.getElementById("mrel").value = medicalRel
+  document.getElementById("pay").value = payable
+  document.getElementById("ded").value = deduction
+  document.getElementById("npay").value = net
+  document.getElementById("bsal2").value = basic
+  document.getElementById("dbns3").value = DiscBonus
+  document.getElementById("cgrs").value = cgross
+  document.getElementById("ot3").value = overtime
+  document.getElementById("falw3").value = fixAllow
+  document.getElementById("pgrs").value = pgross
+  document.getElementById("oalw3").value = otherAllow
+  document.getElementById("piet").value = piet
+  document.getElementById("iet").value = ciet  // check iet value
+  document.getElementById("tran3").value = transport
+  document.getElementById("txdes3").value = tax
   document.getElementById("netch").value = netch
-
-
-  // NPS
-var nps
-if(basic > 50000)
-{
-  nps = parseInt(basic) * 0.06
-}
-else
-{
-  nps = parseInt(basic) * 0.03
-}
-
-
-  // Get Other Values
-  var localRef = document.getElementById('lref').value
-  
-  var DiscBonus = document.getElementById('dbns').value
-  var attendance = document.getElementById('atbns').value
-  
-  var sick = document.getElementById('sref').value
-  var special = document.getElementById('sbns').value
-  var odeduction = document.getElementById('oded').value
-  var late = document.getElementById('am4').value
-
-  // Paye Of PAYE Calculation
-  var previous_paye = document.getElementById("ppaye").value
-
-  var pPAYE = parseInt(previous_paye) + parseInt(paye)
-  payable_paye = parseInt(pPAYE) - parseInt(previous_paye)
-
-  // Fill Readonly Field
-  // fix allow
-  document.getElementById('falw2').value = fixAllow
-  document.getElementById('falw3').value = fixAllow
-  // other deduction
-  document.getElementById('oded2').value = odeduction
-  // overtime
-  document.getElementById('ot2').value = overtime
-  document.getElementById('ot3').value = overtime
-  // disc bonus
-  document.getElementById('dbns2').value = DiscBonus
-  document.getElementById('dbns3').value = DiscBonus
-  // NSF
-  document.getElementById('nsf').value = nsf
-  document.getElementById('ivbt').value = Math.round(ivbt) 
-  // other allow
-  document.getElementById('oalw2').value = otherAllow
-  document.getElementById('oalw3').value = otherAllow
-  // taxable
-  document.getElementById('txdes2').value = tax
-  document.getElementById('txdes3').value = tax
-  // transport
-  document.getElementById('tran2').value = transport
-  document.getElementById('tran3').value = transport
-  // non taxable
-  document.getElementById('ntxdes2').value = ntax
-  // arrears
-  document.getElementById('arr2').value = arrears
-  document.getElementById('arr3').value = arrears
-  // attendance
-  document.getElementById('atbns2').value = attendance
-  document.getElementById('atbns3').value = attendance
-  // EOY
-  document.getElementById('eoy').value = 0
-  document.getElementById('eoy2').value = 0
-  // loan
-  document.getElementById('lrep').value = 0
-  // leave refund 
-  document.getElementById('lref2').value = localRef
-  document.getElementById('lref3').value = localRef
-  // paye
-  document.getElementById('paye').value = paye
-  document.getElementById('paye2').value = pPAYE
-  document.getElementById('paye3').value = payable_paye
-  // s.levy
-  document.getElementById('levy').value = slevy
-  // special bonus
-  document.getElementById('spbonus2').value = special
-  // document.getElementById('spbonus4').value = special
-  // lateness
-  document.getElementById('late').value = late
-  // NPS
-  document.getElementById('nps').value = csg
-  document.getElementById('nps2').value = Math.round(nps)
-  document.getElementById('nsf2').value = Math.round(ensf)
-  // IET
-  document.getElementById('iet').value = IET
-  // payable
-  alert(payable)
-  document.getElementById('pay').value = payable
-  // Deduction
-  document.getElementById('ded').value = deduction
-  // Net Pay
-  document.getElementById('npay').value = net
-  // Gross
-  // document.getElementById('grs').value = tgross
-  // Current Gross
-  // alert(tgross)
-  document.getElementById('cgrs').value = tgross
+  document.getElementById("arr3").value = arrears
+  document.getElementById("spbonus3").value = speProBns
+  document.getElementById("paye2").value = cpaye
+  document.getElementById("eoy2").value = eoy
+  document.getElementById("atbns3").value = attBns
+  document.getElementById("ppaye").value = ppaye
+  document.getElementById("lref3").value = localRef
+  document.getElementById("car").value = car 
+  document.getElementById("paye3").value = paye 
+  document.getElementById("nps2").value = enps
+  document.getElementById("nsf2").value = ensf
+  document.getElementById("ivbt").value = levy
 
 }
 

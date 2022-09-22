@@ -1940,11 +1940,11 @@ def process_salary():
                     if int(basic) > 50000:
                         nps = round(basic * 0.03)
                         cpaye =  round(netch * 0.15)
-                        enps = round(basic * 0.03)
+                        enps = round(basic * 0.06)
                     else:
                         nps = round(basic * 0.015)
                         cpaye = round(netch * 0.1)
-                        enps = round(basic * 0.06)
+                        enps = round(basic * 0.03)
 
                     paye = int(cpaye) - int(ppaye)
                     nsf = int(basic * 0.01)
@@ -1957,7 +1957,7 @@ def process_salary():
                     temp = int(cgross) * 13
                     slevy = 0
                     if int(temp) > 3000000:
-                        slevy1 = round(cgross - iet - (3000000/13) * 0.25)
+                        slevy1 = round((cgross - iet - (3000000/13)) * 0.25)
                         slevy2 = round(cgross * 0.1)
 
                         if slevy1 > slevy2:
