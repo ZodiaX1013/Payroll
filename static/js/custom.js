@@ -592,7 +592,8 @@ function calculateSalary(){
 
   var edf = document.getElementById("edf").value
   var car = document.getElementById("car").value
-  var slevy
+  var slevy = document.getElementById("levy").value
+  alert(slevy)
   var educationRel = document.getElementById("edu").value
   var medicalRel = document.getElementById("mrel").value
 
