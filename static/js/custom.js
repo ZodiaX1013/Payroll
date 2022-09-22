@@ -677,7 +677,7 @@ function calculateSalary(){
   else{
     ensf = Math.round(ensf)
   }
-  var levy = parseInt(basic) * 0.015
+  var levy = Math.round(parseInt(basic) * 0.015)
 
   var deduction = parseInt(loan) + parseInt(paye) + parseInt(lateness) + parseInt(nps) + parseInt(otherDed) + parseInt(nsf) + parseInt(medical)
 
