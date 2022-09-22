@@ -358,7 +358,7 @@ function calculateSalary(){
   var mrel = document.getElementById("mrel").value
   // alert(transport)
   
-  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(tax) +  parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus) + parseInt(transport)
+  var gross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(tax) +  parseInt(car) + parseInt(fixAllow) + parseInt(special_pro_bonus)
   var tgross = parseInt(basic)  + parseInt(arrears) + parseInt(overtime) + parseInt(transport) + parseInt(otherAllow) + parseInt(overseas) +  parseInt(fixAllow) + parseInt(special_pro_bonus)
   
   var temp = basic * 0.06
@@ -644,18 +644,18 @@ function Export2Word(element, filename = 'paysheet'){
 
 
 // Image Name Shown
-$("input").change(function(e) {
+// $("input").change(function(e) {
 
-  for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
+//   for (var i = 0; i < e.originalEvent.srcElement.files.length; i++) {
       
-      var file = e.originalEvent.srcElement.files[i];
+//       var file = e.originalEvent.srcElement.files[i];
       
-      var img = document.createElement("img");
-      var reader = new FileReader();
-      /* reader.onloadend = function() {
-           img.src = reader.result;
-      } */
-      reader.readAsDataURL(file);
-      $("input").after(img);
-  }
-});
+//       var img = document.createElement("img");
+//       var reader = new FileReader();
+//       /* reader.onloadend = function() {
+//            img.src = reader.result;
+//       } */
+//       reader.readAsDataURL(file);
+//       $("input").after(img);
+//   }
+// });
