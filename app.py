@@ -1890,7 +1890,6 @@ def process_salary():
                     UNQ = eid + " " + fname
                     flname = lname + " " + fname
 
-
                     # Values We Don't Get
                     ot = 0
                     otherAllow = 0
@@ -1930,7 +1929,6 @@ def process_salary():
                     else:
                         cgross = basic + ot + otherAllow + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
 
-                    
                     gross = prevGross + cgross
                     
                     ciet = round(( int(edf) + int(Medicalrel) + int(education)) / 13)
@@ -1940,13 +1938,13 @@ def process_salary():
                     netch = gross - iet
 
                     if int(basic) > 50000:
-                        nps = round(int(basic * 0.03))
-                        cpaye =  round(int(netch * 0.15))
-                        enps = round(int(basic * 0.03))
+                        nps = round(basic * 0.03)
+                        cpaye =  round(netch * 0.15)
+                        enps = round(basic * 0.03)
                     else:
-                        nps = round(int(basic * 0.015))
-                        cpaye = round(int(netch * 0.1))
-                        enps = round(int(basic * 0.06))
+                        nps = round(basic * 0.015)
+                        cpaye = round(netch * 0.1)
+                        enps = round(basic * 0.06)
 
                     paye = int(cpaye) - int(ppaye)
                     nsf = int(basic * 0.01)
@@ -1959,8 +1957,8 @@ def process_salary():
                     temp = int(cgross) * 13
                     slevy = 0
                     if int(temp) > 3000000:
-                        slevy1 = round((int(cgross) - int(iet) - (3000000/13)) * 0.25)
-                        slevy2 = round(int(cgross) * 0.1)
+                        slevy1 = round(cgross - iet - (3000000/13) * 0.25)
+                        slevy2 = round(cgross * 0.1)
 
                         if slevy1 > slevy2:
                             slevy = int(slevy2)
