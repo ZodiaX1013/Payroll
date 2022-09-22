@@ -1145,6 +1145,7 @@ def salary():
     # Save To Database
     elif request.method == "POST" and request.form['action'] == 'save':
         
+        print("IN SAVE")
         fixedAlw = request.form["falw2"]
         otherDed = request.form["oded2"]
         overtime = request.form["ot2"]
@@ -1158,7 +1159,7 @@ def salary():
         edf = request.form["edf"]
         arrears = request.form["arr2"]
         attendance = request.form["atbns2"]
-        travel = request.form["travel"]
+        # travel = request.form["tran"]
         eoy = request.form["eoy"]
         loan = request.form["lrep"]
         car = request.form["car"]
@@ -1247,6 +1248,7 @@ def salary():
                                                 user='b58f7064154253',
                                                 password='32de4f18') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
+            print("Before Query Execute")
             query1 = """UPDATE salary
                         SET 
                         FixedAllow = %s,
