@@ -593,7 +593,7 @@ function calculateSalary(){
   var edf = document.getElementById("edf").value
   var car = document.getElementById("car").value
   var slevy = document.getElementById("levy").value
-  alert(slevy)
+  // alert(slevy)
   var educationRel = document.getElementById("edu").value
   var medicalRel = document.getElementById("mrel").value
 
@@ -707,7 +707,7 @@ function calculateSalary(){
   document.getElementById("car").value = car
   document.getElementById("lref2").value = localRef
   document.getElementById("paye").value = paye
-  alert(slevy)
+  // alert(slevy)
   document.getElementById("levy").value = slevy
   document.getElementById("spbonus2").value = speBns
   document.getElementById("late").value = lateness
