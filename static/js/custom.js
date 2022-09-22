@@ -702,6 +702,7 @@ function calculateSalary(){
   document.getElementById("car").value = car
   document.getElementById("lref2").value = localRef
   document.getElementById("paye").value = paye
+  alert(slevy)
   document.getElementById("levy").value = slevy
   document.getElementById("spbonus2").value = speBns
   document.getElementById("late").value = lateness
