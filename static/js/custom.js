@@ -579,7 +579,7 @@ function calculateSalary(){
   var transport = parseInt(transport1) + parseInt(transport2)
   var overseas = parseInt(tax) + parseInt(ntax)
 
-  var basic = document.getElementById("bsal").value
+  var tbasic = document.getElementById("bsal").value
   var overtime = parseInt(ot1) + parseInt(ot2) +parseInt(ot3)
   var eoy = document.getElementById("eoy").value
   var speProBns = document.getElementById("spbonus3").value
@@ -602,7 +602,7 @@ function calculateSalary(){
   var piet = document.getElementById("piet").value
   var ppaye = document.getElementById("ppaye").value
 
-
+  var basic = parseInt(tbasic) - parseInt(abs)
 
 
   var payable = parseInt(basic) + parseInt(overtime) + parseInt(otherAllow) + parseInt(transport) + parseInt(arrears) + parseInt(eoy) + parseInt(localRef) + parseInt(speBns) + parseInt(speProBns) + parseInt(fixAllow) + parseInt(DiscBonus) + parseInt(tax) + parseInt(ntax) + parseInt(attBns)

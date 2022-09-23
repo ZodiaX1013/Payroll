@@ -1881,7 +1881,7 @@ def process_salary():
                     # emp_data2 = list(emp_data[0])
 
                     car = int(emp_data2[0])
-                    basic = int(emp_data2[1])
+                    tbasic = int(emp_data2[1])
                     fixAllow = int(emp_data2[2])
                     trans = int(emp_data2[3])
                     edf = int(emp_data2[4])
@@ -1929,6 +1929,8 @@ def process_salary():
                     prevGross = 0
                     piet = 0
                     ppaye = 0
+
+                    basic = int(tbasic) - int(ab)
 
                     # Calculations
                     payable = basic + ot + otherAllow + trans + arrears + eoy + leave + speBns + SpeProBns + fixAllow + discBns + tax + ntax + attBns
