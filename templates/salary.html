@@ -4,7 +4,7 @@
 <!-- Mirrored from technext.github.io/flat_able/bc_tabs.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 04 Aug 2022 05:38:53 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-	<title>Flat Able - Premium Admin Template by Phoenixcoded</title>
+	<title>Care Edge</title>
 	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 11]>
@@ -143,12 +143,12 @@
 	</nav> -->
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark" style="background-color:white; color: black;">
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark"  >
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="{{url_for('dashboard')}}"><span></span></a>
             <a href="{{url_for('dashboard')}}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="../static/images/logo.png" alt="" class="logo" width="150" height="50">
+                <img src="../static/images/logo.png" alt="" class="logo"  >
                 <!-- <img src="../static/images/logo-icon.png" alt="" class="logo-thumb"> -->
                 <!-- <i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>HOME -->
             </a>
@@ -172,7 +172,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" >
-                                   <b style="color:black"> File </b>
+                                   <b> File </b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -186,7 +186,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                    <b style="color:black">Process</b>
+                                    <b>Process</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -202,7 +202,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Reports</b>
+                                   <b> Reports</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -217,7 +217,7 @@
                         <li class="nav-item">
                             <div class="dropdown" >
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" aria-disabled="true">
-                                   <b style="color:black"> Utility</b>
+                                   <b> Utility</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -231,7 +231,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Window</b>
+                                   <b> Window</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -245,7 +245,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Help</b>
+                                   <b> Help</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -446,10 +446,10 @@
 							<div class="form-group col-md-6">
 								{% if eid %}
 									<label>Employee ID</label>
-									<input type="text" name="eid" id="eid" value="{{eid}}" class="form-control" placeholder="Enter Employee ID">
+									<input type="text" name="eid" id="eid" value="{{eid}}" class="form-control" placeholder="Enter Employee ID" required>
 								{% else %}
 									<label>Employee ID</label>
-									<input type="text" name="eid" id="eid" value="" class="form-control" placeholder="Enter Employee ID">
+									<input type="text" name="eid" id="eid" value="" class="form-control" placeholder="Enter Employee ID" required>
 								{% endif %}
 							</div>
 							<div class="form-group col-md-6">
@@ -458,14 +458,19 @@
 								<input type="text" name="lname" id="lname" value="{{lname}}" class="form-control" placeholder="Enter Last Name">
 								{% else %}
 								<label>Last Name</label>
-								<input type="text" name="lname" id="lname" class="form-control" placeholder="Enter Last Name">
+								<input type="text" name="lname" id="lname" value="" class="form-control" placeholder="Enter Last Name">
 								{% endif %}
 							</div>
 						</div>
 						<div class="form-row">
 							<div class="form-group col-md-6">
+								{% if pos %}
 								<label>Position</label>
-								<input type="text" name="pos" id="pos" class="form-control" placeholder="Enter Position">
+								<input type="text" name="pos" id="pos" value="{{pos}}" class="form-control" placeholder="Enter Position">
+								{% else %}
+								<label>Position</label>
+								<input type="text" name="pos" id="pos" value="" class="form-control" placeholder="Enter Position">
+								{% endif %}
 							</div>
 							<div class="form-group col-md-6">
 								{% if fname %}
@@ -473,9 +478,45 @@
 								<input type="text" name="fname" id="fname" value="{{fname}}" class="form-control" placeholder="Enter First Name">
 								{% else %}
 								<label>First Name</label>
-								<input type="text" name="fname" id="fname" class="form-control" placeholder="Enter First Name">
+								<input type="text" name="fname" id="fname" value="" class="form-control" placeholder="Enter First Name">
+								{% endif %}
+							</div>							
+							<div class="form-group col-md-6">
+								{% if month %}
+								<label for="inputState">Month</label>
+								<select id="inputState" class="form-control" name="mon" required>
+									<option value="{{month}}">{{month}}</option>
+								</select>
+								{% else %}
+								<label for="inputState">Month</label>
+								<select id="inputState" class="form-control" name="mon" required>
+									<option></option>
+									<option value="January">January</option>
+									<option value="February">February</option>
+									<option value="March">March</option>
+									<option value="April">April</option>
+									<option value="May">May</option>
+									<option value="June">June</option>
+									<option value="July">July</option>
+									<option value="August">August</option>
+									<option value="September">September</option>
+									<option value="October">October</option>
+									<option value="November">November</option>
+									<option value="December">December</option>
+								</select>
 								{% endif %}
 							</div>
+							<div class="form-group col-md-6">
+								{% if year %}
+								<label> Year </label>
+								<input type="text" name="year" id="year" value="{{year}}" class="form-control" placeholder="Enter Year" required>
+								{% else %}
+								<label> Year </label>
+								<input type="text" name="year" id="year" value="" class="form-control" placeholder="Enter Year" required>
+								{% endif %}
+							</div>
+							
+							
 						</div>
 						<!-- <div class="card-body"> -->
 							
@@ -505,37 +546,10 @@
 								<button type="button" class="btn btn-secondary" onclick="calculateSalary()"><i class="fa-solid fa-calculator" style="margin-right: 0.5rem;"></i>Calculate</button>
 							<!-- </div> -->
 						</center>
-						<!-- Common Form -->
 
-						
-							<div class="form-row">
-								<div class="form-group col-md-6">
-									<label for="inputState">Month</label>
-									<select id="inputState" class="form-control">
-										<option selected>select</option>
-										<option>January</option>
-										<option>February</option>
-										<option>March</option>
-										<option>April</option>
-										<option>May</option>
-										<option>June</option>
-										<option>July</option>
-										<option>August</option>
-										<option>September</option>
-										<option>October</option>
-										<option>November</option>
-										<option>December</option>
-									</select>
-								</div>
-								<div class="form-group col-md-6">
-									<label> Year </label>
-									<input type="text" name="year" id="year" class="form-control" placeholder="Enter Year" >
-								</div>
-								<div class="form-group col-md-6">
-
-								</div>
-							</div>
-							
+						<br>
+						<br>
+						<!-- Common Form -->				
 						
 
 						<!-- End Common Form -->
@@ -615,13 +629,17 @@
 											</div>
 										</div>
 										<div class="form-row">
-											<div class="form-group col-md-6">
+											<div class="form-group col-md-4">
 												<label>Other Allowance</label>
 												<input type="text" name="oalw" id="oalw" class="form-control" placeholder="Enter Other Allowance">
 											</div>
-											<div class="form-group col-md-6">
+											<div class="form-group col-md-4">
 												<label style="color: red;">Other Deduction</label>
 												<input type="text" name="oded" id="oded" class="form-control" placeholder="Enter Other Deduction">
+											</div>
+											<div class="form-group col-md-4">
+												<label style="color: red;">Absences</label>
+												<input type="text" name="abs" id="abs" class="form-control" placeholder="Enter Absence Amount">
 											</div>
 										</div>
 									
@@ -738,64 +756,109 @@
 									<!-- <form action="#" id="salary5"> -->
 										<div class="form-row">
 											<div class="form-group col-md-4">
-												{% if sal %}
+												{% if basic %}
 													<label>Basic Salary</label>
-													<input type="text" name="bsal" id="bsal" class="form-control" value="{{sal}}" placeholder="Basic Salary" readonly> 
+													<input type="text" name="bsal" id="bsal" class="form-control" value="{{basic}}" placeholder="Basic Salary" readonly> 
 												{% else %}
 													<label>Basic Salary</label>
 													<input type="text" name="bsal" id="bsal" class="form-control" value="" placeholder="Basic Salary" readonly> 
 												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if falw %}
 												<label>Fixed Allow</label>
-												<input type="text" name="falw2" id="falw2" class="form-control" placeholder="Fixed Allowance" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label style="color: red;">Other Deduction</label>
-												<input type="text" name="oded2" id="oded2" class="form-control" placeholder="Other Deduction" readonly>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-4">
-												<label>Overtime</label>
-												<input type="text" name="ot2" id="ot2" class="form-control" placeholder="Overtime" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label>Disc Bonus</label>
-												<input type="text" name="dbns2" id="dbns2" class="form-control" placeholder="Disc Bonus" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label style="color: red;">NSF Empee</label>
-												<input type="text" name="nsf" id="nsf" class="form-control" placeholder="NSF Empee" readonly>
-											</div>
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-4">
-												<label>Other Allowance</label>
-												<input type="text" name="oalw2" id="oalw2" class="form-control" placeholder="Other Allowance" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label>Taxable Allowance</label>
-												<input type="text" name="txdes2" id="txdes2" class="form-control" placeholder="Taxable Allowance" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												{% if med %}
-													<label>Medical</label>
-													<input type="text" name="med2" id="med2" value="{{med}}" class="form-control" placeholder="Medical" readonly>
+												<input type="text" name="falw2" id="falw2" value="{{falw}}" class="form-control" placeholder="Fixed Allowance" readonly>
 												{% else %}
-													<label>Medical</label>
-													<input type="text" name="med2" id="med2" value="{{med}}" class="form-control" placeholder="Medical" readonly>
+												<label>Fixed Allow</label>
+												<input type="text" name="falw2" id="falw2" value="" class="form-control" placeholder="Fixed Allowance" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if otherded %}
+												<label style="color: red;">Other Deduction</label>
+												<input type="text" name="oded2" id="oded2" value="{{otherded}}" class="form-control" placeholder="Other Deduction" readonly>
+												{% else %}
+												<label style="color: red;">Other Deduction</label>
+												<input type="text" name="oded2" id="oded2" value="" class="form-control" placeholder="Other Deduction" readonly>
 												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
-												<label>Transport</label>
-												<input type="text" name="tran2" id="tran2" class="form-control" placeholder="Transport" readonly>
+												{% if ot %}
+												<label>Overtime</label>
+												<input type="text" name="ot2" id="ot2" value="{{ot}}" class="form-control" placeholder="Overtime" readonly>
+												{% else %}
+												<label>Overtime</label>
+												<input type="text" name="ot2" id="ot2" value="" class="form-control" placeholder="Overtime" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if disc %}
+												<label>Disc Bonus</label>
+												<input type="text" name="dbns2" id="dbns2" value="{{disc}}" class="form-control" placeholder="Disc Bonus" readonly>
+												{% else %}
+												<label>Disc Bonus</label>
+												<input type="text" name="dbns2" id="dbns2" value="" class="form-control" placeholder="Disc Bonus" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if nsf %}
+												<label style="color: red;">NSF Empee</label>
+												<input type="text" name="nsf" id="nsf" value="{{nsf}}" class="form-control" placeholder="NSF Empee" readonly>
+												{% else %}
+												<label style="color: red;">NSF Empee</label>
+												<input type="text" name="nsf" id="nsf" value="" class="form-control" placeholder="NSF Empee" readonly>
+												{% endif %}
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												{% if oalw %}
+												<label>Other Allowance</label>
+												<input type="text" name="oalw2" id="oalw2" value="{{oalw}}" class="form-control" placeholder="Other Allowance" readonly>
+												{% else %}
+												<label>Other Allowance</label>
+												<input type="text" name="oalw2" id="oalw2" value="" class="form-control" placeholder="Other Allowance" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if tax %}
+												<label>Taxable Allowance</label>
+												<input type="text" name="txdes2" id="txdes2" value="{{tax}}" class="form-control" placeholder="Taxable Allowance" readonly>
+												{% else %}
+												<label>Taxable Allowance</label>
+												<input type="text" name="txdes2" id="txdes2" value="" class="form-control" placeholder="Taxable Allowance" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if med %}
+													<label style="color: red;">Medical</label>
+													<input type="text" name="med2" id="med2" value="{{med}}" class="form-control" placeholder="Medical" readonly>
+												{% else %}
+													<label style="color: red;">Medical</label>
+													<input type="text" name="med2" id="med2" value="" class="form-control" placeholder="Medical" readonly>
+												{% endif %}
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												{% if tran %}
+												<label>Transport</label>
+												<input type="text" name="tran2" id="tran2" value="{{tran}}" class="form-control" placeholder="Transport" readonly>
+												{% else %}
+												<label>Transport</label>
+												<input type="text" name="tran2" id="tran2" value="" class="form-control" placeholder="Transport" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if ntax %}
 												<label>Non-Taxable Allowance</label>
-												<input type="text" name="ntxdes2" id="ntxdes2" class="form-control" placeholder="Non-Taxable Allowance" readonly>
+												<input type="text" name="ntxdes2" id="ntxdes2" value="{{ntax}}" class="form-control" placeholder="Non-Taxable Allowance" readonly>
+												{% else %}
+												<label>Non-Taxable Allowance</label>
+												<input type="text" name="ntxdes2" id="ntxdes2" value="" class="form-control" placeholder="Non-Taxable Allowance" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
 												{% if edf %}
@@ -809,31 +872,22 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
+												{% if arr %}
+												<label>Arrears</label>
+												<input type="text" name="arr2" id="arr2" value="{{arr}}" class="form-control" placeholder="Arrears" readonly>
+												{% else %}
 												<label>Arrears</label>
 												<input type="text" name="arr2" id="arr2" class="form-control" placeholder="Arrears" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label>Attendance Bonus</label>
-												<input type="text" name="atbns2" id="atbns2" class="form-control" placeholder="Attendance Bonus" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												{% if travel %}
-													<label>Travel Allowance</label>
-													<input type="text" name="travel" id="travel" value="{{travel}}" class="form-control" placeholder="Attendance Bonus" readonly>
-												{% else %}
-													<label>Travel Allowance</label>
-													<input type="text" name="travel" id="travel" value="" class="form-control" placeholder="Attendance Bonus" readonly>
 												{% endif %}
 											</div>
-										</div>
-										<div class="form-row">
 											<div class="form-group col-md-4">
-												<label>EOY Bonus</label>
-												<input type="text" name="eoy" id="eoy" class="form-control" placeholder="EOY Bonus" readonly>
-											</div>
-											<div class="form-group col-md-4">
-												<label style="color: red;">Loan Repayment</label>
-												<input type="text" name="lrep" id="lrep" class="form-control" placeholder="Loan Repayment" readonly>
+												{% if att %}
+												<label>Attendance Bonus</label>
+												<input type="text" name="atbns2" id="atbns2" value="{{att}}" class="form-control" placeholder="Attendance Bonus" readonly>
+												{% else %}
+												<label>Attendance Bonus</label>
+												<input type="text" name="atbns2" id="atbns2" value="" class="form-control" placeholder="Attendance Bonus" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
 												{% if car %}
@@ -844,58 +898,131 @@
 												<input type="text" name="car" id="car" value="" class="form-control" placeholder="Attendance Bonus" readonly>
 												{% endif %}
 											</div>
+											<!-- <div class="form-group col-md-4">
+												{% if travel %}
+													<label>Travel Allowance</label>
+													<input type="text" name="travel" id="travel" value="{{travel}}" class="form-control" placeholder="Attendance Bonus" readonly>
+												{% else %}
+													<label>Travel Allowance</label>
+													<input type="text" name="travel" id="travel" value="" class="form-control" placeholder="Attendance Bonus" readonly>
+												{% endif %}
+											</div> -->
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
-												<label>Leave Refund</label>
-												<input type="text" name="lref2" id="lref2" class="form-control" placeholder="Leave Refund" readonly>
+												{% if eoy %}
+												<label>EOY Bonus</label>
+												<input type="text" name="eoy" id="eoy" value="{{eoy}}" class="form-control" placeholder="EOY Bonus" readonly>
+												{% else %}
+												<label>EOY Bonus</label>
+												<input type="text" name="eoy" id="eoy" class="form-control" placeholder="EOY Bonus" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
-												<label style="color: red;">PAYE</label>
-												<input type="text" name="paye" id="paye" class="form-control" placeholder="PAYE" readonly>
+												{% if loan %}
+												<label style="color: red;">Loan Repayment</label>
+												<input type="text" name="lrep" id="lrep" value="{{loan}}" class="form-control" placeholder="Loan Repayment" readonly>
+												{% else %}
+												<label style="color: red;">Loan Repayment</label>
+												<input type="text" name="lrep" id="lrep" value="" class="form-control" placeholder="Loan Repayment" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if slevy %}
 												<label>S. Levy</label>
-												<input type="text" name="levy" id="levy" class="form-control" placeholder="S. Levy" readonly>
+												<input type="text" name="levy" id="levy" value="{{slevy}}" class="form-control" placeholder="S. Levy" readonly>
+												{% else %}
+												<label>S. Levy</label>
+												<input type="text" name="levy" id="levy" value="" class="form-control" placeholder="S. Levy" readonly>
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
+												{% if leave %}
+												<label>Leave Refund</label>
+												<input type="text" name="lref2" id="lref2" value="{{leave}}" class="form-control" placeholder="Leave Refund" readonly>
+												{% else %}
+												<label>Leave Refund</label>
+												<input type="text" name="lref2" id="lref2" value="" class="form-control" placeholder="Leave Refund" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if cpaye %}
+												<label style="color: red;">PAYE</label>
+												<input type="text" name="paye" id="paye" value="{{cpaye}}" class="form-control" placeholder="PAYE" readonly>
+												{% else %}
+												<label style="color: red;">PAYE</label>
+												<input type="text" name="paye" id="paye" value="" class="form-control" placeholder="PAYE" readonly>
+												{% endif %}
+											</div>
+											<div class="form-group col-md-4">
+												{% if edurel %}
+													<label>Education Relief</label>
+													<input type="text" name="edu" id="edu" value="{{edurel}}" class="form-control" placeholder="Education Relief" readonly>
+												{% else %}
+													<label>Education Relief</label>
+													<input type="text" name="edu" id="edu" value="" class="form-control" placeholder="Attendance Bonus" readonly>
+												{% endif %}
+												</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												{% if spebns %}
 												<label>Special Bonus</label>
-												<input type="text" name="spbonus2" id="spbonus2" class="form-control" placeholder="Special Bonus" readonly>
+												<input type="text" name="spbonus2" id="spbonus2" value="{{spebns}}" class="form-control" placeholder="Special Bonus" readonly>
+												{% else %}
+												<label>Special Bonus</label>
+												<input type="text" name="spbonus2" id="spbonus2" value="" class="form-control" placeholder="Special Bonus" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if late %}
 												<label style="color: red;">Lateness</label>
-												<input type="text" name="late" id="late" class="form-control" placeholder="Lateness" readonly>
+												<input type="text" name="late" id="late" value="{{late}}" class="form-control" placeholder="Lateness" readonly>
+												{% else %}
+												<label style="color: red;">Lateness</label>
+												<input type="text" name="late" id="late" value="" class="form-control" placeholder="Lateness" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
-											{% if edu %}
-												<label>Education Relief</label>
-												<input type="text" name="edu" id="edu" value="{{edu}}" class="form-control" placeholder="Education Relief" readonly>
-											{% else %}
-												<label>Education Relief</label>
-												<input type="text" name="edu" id="edu" value="" class="form-control" placeholder="Attendance Bonus" readonly>
-											{% endif %}
+												{% if medrel %}
+												<label>Medical Relief</label>
+												<input type="text" name="mrel" id="mrel" value="{{medrel}}" class="form-control" placeholder="Medical Relief" readonly>
+												{% else %}
+												<label>Medical Relief</label>
+												<input type="text" name="mrel" id="mrel" value="" class="form-control" placeholder="Medical Relief" readonly>
+												{% endif%}
 											</div>
 											
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
-												{% if bonus %}
+												{% if speprobns %}
 												<label>Special Pro Bonus</label>
-												<input type="text" name="spbonus3" id="spbonus3" value="{{bonus}}" class="form-control" placeholder="Special Pro Bonus" readonly>
+												<input type="text" name="spbonus3" id="spbonus3" value="{{speprobns}}" class="form-control" placeholder="Special Pro Bonus" readonly>
 												{% else %}
 												<label>Special Pro Bonus</label>
-												<input type="text" name="spbonus3" id="spbonus3" value="{{bonus}}" class="form-control" placeholder="Special Pro Bonus" readonly>
+												<input type="text" name="spbonus3" id="spbonus3" value="" class="form-control" placeholder="Special Pro Bonus" readonly>
 												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if nps %}
 												<label style="color: red;">NPS</label>
-												<input type="text" name="nps" id="nps" class="form-control" placeholder="NPS" readonly>
+												<input type="text" name="nps" id="nps" value="{{nps}}" class="form-control" placeholder="NPS" readonly>
+												{% else %}
+												<label style="color: red;">NPS</label>
+												<input type="text" name="nps" id="nps" value="" class="form-control" placeholder="NPS" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
-												<label>Gross</label>
-												<input type="text" name="grs" id="grs" class="form-control" placeholder="Gross" readonly>
+												{% if pnet %}
+												<label>Net Pay (Paysheet) </label>
+												<input type="text" name="pnet" id="pnet" value="{{pnet}}" class="form-control" placeholder="Medical Relief" readonly>
+												{% else %}
+												<label>Medical Relief</label>
+												<input type="text" name="pnet" id="pnet" value="" class="form-control" placeholder="Medical Relief" readonly>
+												{% endif%}
 											</div>
 											<!-- <div class="form-group col-md-4">
 												<label style="color: red;">IET</label>
@@ -905,16 +1032,31 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-4">
+												{% if payable %}
 												<label style="color: black; font-weight: bolder;">Payable</label>
-												<input type="text" name="pay" id="pay" class="form-control" placeholder="Payable" readonly>
+												<input type="text" name="pay" id="pay" value="{{payable}}" class="form-control" placeholder="Payable" readonly>
+												{% else %}
+												<label style="color: black; font-weight: bolder;">Payable</label>
+												<input type="text" name="pay" id="pay" value="" class="form-control" placeholder="Payable" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if ded %}
 												<label style="color: red;font-weight: bolder;">Deduction</label>
-												<input type="text" name="ded" id="ded" class="form-control" placeholder="Deduction" readonly>
+												<input type="text" name="ded" id="ded" value="{{ded}}" class="form-control" placeholder="Deduction" readonly>
+												{% else %}
+												<label style="color: red;font-weight: bolder;">Deduction</label>
+												<input type="text" name="ded" id="ded" value="" class="form-control" placeholder="Deduction" readonly>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-4">
+												{% if net %}
 												<label style="color: blue; font-weight: bolder;">Net Payable</label>
-												<input type="text" name="npay" id="npay" class="form-control" placeholder="Net Payable" readonly>
+												<input type="text" name="npay" id="npay" value="{{net}}" class="form-control" placeholder="Net Payable" readonly>
+												{% else %}
+												<label style="color: blue; font-weight: bolder;">Net Payable</label>
+												<input type="text" name="npay" id="npay" value="" class="form-control" placeholder="Net Payable" readonly>
+												{% endif %}
 											</div>	
 										</div>
 									
@@ -929,105 +1071,189 @@
 								<p class="mb-0">
 									<div class="form-row">
 										<div class="form-group col-md-4">
-											{% if sal %}
+											{% if basic %}
 												<label>Basic Salary</label>
-												<input type="text" name="bsal2" id="bsal" class="form-control" value="{{sal}}" placeholder="Basic Salary" readonly> 
+												<input type="text" name="bsal2" id="bsal2" class="form-control" value="{{basic}}" placeholder="Basic Salary" readonly> 
 											{% else %}
 												<label>Basic Salary</label>
-												<input type="text" name="bsal" id="bsal" class="form-control" value="" placeholder="Basic Salary" readonly> 
+												<input type="text" name="bsal2" id="bsal2" class="form-control" value="" placeholder="Basic Salary" readonly> 
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
-											<label>Special Bonus</label>
-											<input type="text" name="spbonus3" id="spbonus3" class="form-control" placeholder="Special Bonus" readonly>
+											{% if disc %}
+											<label>Disc Bonus</label>
+											<input type="text" name="dbns3" id="dbns3" value="{{disc}}" class="form-control" placeholder="Disc Bonus" readonly>
+											{% else %}
+											<label>Disc Bonus</label>
+											<input type="text" name="dbns3" id="dbns3" value="" class="form-control" placeholder="Disc Bonus" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if cgross %}
 											<label style="color: black;"> Current Gross</label>
-											<input type="text" name="cgrs" id="cgrs" class="form-control" placeholder="Currect Gross" readonly>
+											<input type="text" name="cgrs" id="cgrs" value="{{cgross}}" class="form-control" placeholder="Currect Gross" readonly>
+											{% else %}
+											<label style="color: black;"> Current Gross</label>
+											<input type="text" name="cgrs" id="cgrs" value="0" class="form-control" placeholder="Currect Gross" readonly>
+											{% endif %}
 										</div>										
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if ot %}
 											<label>Overtime</label>
-											<input type="text" name="ot3" id="ot3" class="form-control" placeholder="Overtime" readonly>
+											<input type="text" name="ot3" id="ot3" value="{{ot}}" class="form-control" placeholder="Overtime" readonly>
+											{% else %}
+											<label>Overtime</label>
+											<input type="text" name="ot3" id="ot3" value="" class="form-control" placeholder="Overtime" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if falw %}
 											<label>Fixed Allow</label>
-											<input type="text" name="falw3" id="falw3" class="form-control" placeholder="Fixed Allowance" readonly>
+											<input type="text" name="falw3" id="falw3" value="{{falw}}" class="form-control" placeholder="Fixed Allowance" readonly>
+											{% else %}
+											<label>Fixed Allow</label>
+											<input type="text" name="falw3" id="falw3" value="" class="form-control" placeholder="Fixed Allowance" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if pgross %}
 											<label style="color: black;"> Previous Gross</label>
-											<input type="text" name="paye" id="paye" value="0" class="form-control" placeholder="Previous Gross" readonly>
+											<input type="text" name="pgrs" id="pgrs" value="{{pgross}}" class="form-control" placeholder="Previous Gross" readonly>
+											{% else %}
+											<label style="color: black;"> Previous Gross</label>
+											<input type="text" name="pgrs" id="pgrs" value="0" class="form-control" placeholder="Previous Gross" readonly>
+											{% endif %}
 										</div>
 										
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if oalw %}
 											<label>Other Allowance</label>
-											<input type="text" name="oalw3" id="oalw3" class="form-control" placeholder="Other Allowance" readonly>
+											<input type="text" name="oalw3" id="oalw3" value="{{oalw}}" class="form-control" placeholder="Other Allowance" readonly>
+											{% else %}
+											<label>Other Allowance</label>
+											<input type="text" name="oalw3" id="oalw3" value="" class="form-control" placeholder="Other Allowance" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
-											<label>Disc Bonus</label>
-											<input type="text" name="dbns3" id="dbns3" class="form-control" placeholder="Disc Bonus" readonly>
+											{% if piet %}
+											<label>Previous IET</label>
+											<input type="text" name="piet" id="piet" value="{{piet}}" class="form-control" placeholder="Special Bonus" readonly>
+											{% else %}
+											<label>Previous IET</label>
+											<input type="text" name="piet" id="piet" value="0" class="form-control" placeholder="Special Bonus" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
-											<label style="color: red;">IET</label>
-											<input type="text" name="iet" id="iet" class="form-control" placeholder="IET" readonly>
+											{% if iet %}
+											<label style="color: red;">Current IET</label>
+											<input type="text" name="iet" id="iet" value="{{iet}}" class="form-control" placeholder="IET" readonly>
+											{% else %}
+											<label style="color: red;"> Current IET</label>
+											<input type="text" name="iet" id="iet" value="0" class="form-control" placeholder="IET" readonly>
+											{% endif %}
 										</div>
-										
 										
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if tran %}
 											<label>Transport</label>
-											<input type="text" name="tran3" id="tran3" class="form-control" placeholder="Transport" readonly>
+											<input type="text" name="tran3" id="tran3" value="{{tran}}" class="form-control" placeholder="Transport" readonly>
+											{% else %}
+											<label>Transport</label>
+											<input type="text" name="tran3" id="tran3" value="" class="form-control" placeholder="Transport" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if tax %}
 											<label>Taxable Allowance</label>
-											<input type="text" name="txdes3" id="txdes3" class="form-control" placeholder="Taxable Allowance" readonly>
+											<input type="text" name="txdes3" id="txdes3" value="{{tax}}" class="form-control" placeholder="Taxable Allowance" readonly>
+											{% else %}
+											<label>Taxable Allowance</label>
+											<input type="text" name="txdes3" id="txdes3" value="" class="form-control" placeholder="Taxable Allowance" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if netch %}
+											<label style="color: blue;">Net Ch</label>
+											<input type="text" name="netch" id="netch" value="{{netch}}" class="form-control" placeholder="Net Ch" readonly>
+											{% else %}
 											<label style="color: blue;">Net Ch</label>
 											<input type="text" name="netch" id="netch" class="form-control" placeholder="Net Ch" readonly>
+											{% endif %}
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if arr %}
 											<label>Arrears</label>
-											<input type="text" name="arr3" id="arr3" class="form-control" placeholder="Arrears" readonly>
+											<input type="text" name="arr3" id="arr3" value="{{arr}}" class="form-control" placeholder="Arrears" readonly>
+											{% else %}
+											<label>Arrears</label>
+											<input type="text" name="arr3" id="arr3" value="" class="form-control" placeholder="Arrears" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
-											{% if bonus %}
+											{% if speprobns %}
 											<label>Special Pro Bonus</label>
-											<input type="text" name="spbonus3" id="spbonus3" value="{{bonus}}" class="form-control" placeholder="Special Pro Bonus" readonly>
+											<input type="text" name="spbonus3" id="spbonus3" value="{{speprobns}}" class="form-control" placeholder="Special Pro Bonus" readonly>
 											{% else %}
 											<label>Special Pro Bonus</label>
 											<input type="text" name="spbonus3" id="spbonus3" value="" class="form-control" placeholder="Special Pro Bonus" readonly>
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if cpaye %}
 											<label style="color: red;"> Current PAYE</label>
-											<input type="text" name="paye2" id="paye2" class="form-control" placeholder="Current PAYE" readonly>
+											<input type="text" name="paye2" id="paye2" value="{{cpaye}}" class="form-control" placeholder="Current PAYE" readonly>
+											{% else %}
+											<label style="color: red;"> Current PAYE</label>
+											<input type="text" name="paye2" id="paye2" value="" class="form-control" placeholder="Current PAYE" readonly>
+											{% endif %}
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if eoy %}
 											<label>EOY Bonus</label>
-											<input type="text" name="eoy2" id="eoy2" class="form-control" placeholder="EOY Bonus" readonly>
+											<input type="text" name="eoy2" id="eoy2" value="{{eoy}}" class="form-control" placeholder="EOY Bonus" readonly>
+											{% else %}
+											<label>EOY Bonus</label>
+											<input type="text" name="eoy2" id="eoy2" value="" class="form-control" placeholder="EOY Bonus" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if att %}
 											<label>Attendance Bonus</label>
-											<input type="text" name="atbns3" id="atbns3" class="form-control" placeholder="Attendance Bonus" readonly>
+											<input type="text" name="atbns3" id="atbns3" value="{{att}}" class="form-control" placeholder="Attendance Bonus" readonly>
+											{% else %}
+											<label>Attendance Bonus</label>
+											<input type="text" name="atbns3" id="atbns3" value="" class="form-control" placeholder="Attendance Bonus" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if ppaye %}
+											<label style="color: red;"> Previous PAYE</label>
+											<input type="text" name="ppaye" id="ppaye" value="{{ppaye}}" class="form-control" placeholder="Previous PAYE" readonly>
+											{% else %}
 											<label style="color: red;"> Previous PAYE</label>
 											<input type="text" name="ppaye" id="ppaye" value="0" class="form-control" placeholder="Previous PAYE" readonly>
+											{% endif %}
 										</div>
 									</div>
 									<div class="form-row">
 										<div class="form-group col-md-4">
+											{% if leave %}
 											<label>Leave Refund</label>
-											<input type="text" name="lref3" id="lref3" class="form-control" placeholder="Leave Refund" readonly>
+											<input type="text" name="lref3" id="lref3" value="{{leave}}" class="form-control" placeholder="Leave Refund" readonly>
+											{% else %}
+											<label>Leave Refund</label>
+											<input type="text" name="lref3" id="lref3" value="" class="form-control" placeholder="Leave Refund" readonly>
+											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
 											{% if car %}
@@ -1039,17 +1265,58 @@
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if paye %}
 											<label style="color: rgb(48, 214, 98);">PAYE Payable</label>
-											<input type="text" name="paye3" id="paye3" class="form-control" placeholder="PAYE Payable" readonly>
+											<input type="text" name="paye3" id="paye3" value="{{paye}}" class="form-control" placeholder="PAYE Payable" readonly>
+											{% else %}
+											<label style="color: rgb(48, 214, 98);">PAYE Payable</label>
+											<input type="text" name="paye3" id="paye3" value="" class="form-control" placeholder="PAYE Payable" readonly>
+											{% endif %}
 										</div>
 									</div>
 									
 								</p>
 							</div>
 							<div class="tab-pane fade" id="pills-emp" role="tabpanel" aria-labelledby="pills-emp-tab">
-								<p class="mb-0">
+								<!-- <p class="mb-0">
 									Employee
-								</p>
+								</p> -->
+								<div class="form-row">
+									<div class="col-md-4"></div>
+									<div class="form-group col-md-4">
+										{% if ecsg %}
+										<label> CSG </label>
+										<input type="text" name="nps2" id="nps2" value="{{ecsg}}" class="form-control" placeholder="National Pension Scheme" readonly>
+										{% else %}
+										<label> CSG </label>
+										<input type="text" name="nps2" id="nps2" value="" class="form-control" placeholder="National Pension Scheme" readonly>
+										{% endif %}
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-4"></div>
+									<div class="form-group col-md-4">
+										{% if ensf %}
+										<label>National Savings Fund</label>
+										<input type="text" name="nsf2" id="nsf2" value="{{ensf}}" class="form-control" placeholder="National Savings Fund" readonly>
+										{% else %}
+										<label>National Savings Fund</label>
+										<input type="text" name="nsf2" id="nsf2" class="form-control" placeholder="National Savings Fund" readonly>
+										{% endif %}
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="col-md-4"></div>
+									<div class="form-group col-md-4">
+										{% if elevy %}
+										<label> Levy</label>
+										<input type="text" name="ivbt" id="ivbt" value="{{elevy}}" class="form-control" placeholder="IVBT" readonly>
+										{% else %}
+										<label> Levy</label>
+										<input type="text" name="ivbt" id="ivbt" value="" class="form-control" placeholder="IVBT" readonly>
+										{% endif %}
+									</div>
+								</div>
 							</div>
 							<div class="tab-pane fade" id="pills-loan" role="tabpanel" aria-labelledby="pills-loan-tab">
 								<p class="mb-0">

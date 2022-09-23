@@ -144,12 +144,12 @@
 	</nav> -->
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark" style="background-color:white; color: black;">
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark"  >
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="{{url_for('dashboard')}}"><span></span></a>
             <a href="{{url_for('dashboard')}}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="../static/images/logo.png" alt="" class="logo" width="150" height="50">
+                <img src="../static/images/logo.png" alt="" class="logo"  >
                 <!-- <img src="../static/images/logo-icon.png" alt="" class="logo-thumb"> -->
                 <!-- <i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>HOME -->
             </a>
@@ -173,7 +173,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" >
-                                   <b style="color:black"> File </b>
+                                   <b> File </b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -187,7 +187,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                    <b style="color:black">Process</b>
+                                    <b>Process</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -203,7 +203,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Reports</b>
+                                   <b> Reports</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -218,7 +218,7 @@
                         <li class="nav-item">
                             <div class="dropdown" >
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" aria-disabled="true">
-                                   <b style="color:black"> Utility</b>
+                                   <b> Utility</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -232,7 +232,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Window</b>
+                                   <b> Window</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -246,7 +246,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Help</b>
+                                   <b> Help</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -423,10 +423,14 @@
                     </div>
                 </div>
             </div>
+            {% if msg %}
+               <h2> {{msg}} </h2>
+            {% endif %}
             <!-- [ breadcrumb ] end -->
             <!-- [ Main Content ] start -->
             <!-- <form action=""> -->
                 <div class="col-md-12">
+                    <form action="process_salary" id="process_salary" method="post">
                     <div class="card">
                         <div class="card-header">
                             <h5>Process Salary</h5>
@@ -436,25 +440,25 @@
                                 <!-- table card-1 start -->
                                 <div class="form-group col-md-6">
                                     <label for="inputState">Month</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>select</option>
-                                        <option>January</option>
-                                        <option>February</option>
-                                        <option>March</option>
-                                        <option>April</option>
-                                        <option>May</option>
-                                        <option>June</option>
-                                        <option>July</option>
-                                        <option>August</option>
-                                        <option>September</option>
-                                        <option>October</option>
-                                        <option>November</option>
-                                        <option>December</option>
+                                    <select id="inputState" name="mon" class="form-control" required>
+                                        <option></option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label> Year </label>
-                                    <input type="text" name="year" id="year" class="form-control" placeholder="Enter Year" >
+                                    <input type="text" name="year" id="year" class="form-control" placeholder="Enter Year" required>
                                 </div>
                                 <!-- <div class="form-group col-md-12">
                                     <label> Year </label>
@@ -464,13 +468,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label> From Date </label>
-                                    <input type="date" name="year" id="year" class="form-control" placeholder="Enter Year" >
+                                    <input type="date" name="fdate" id="fdate" class="form-control" placeholder="Enter From Date" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label> To Date </label>
-                                    <input type="date" name="year" id="year" class="form-control" placeholder="Enter Year" >
+                                    <input type="date" name="tdate" id="tdate" class="form-control" placeholder="Enter To Date" >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -490,13 +494,13 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label> EMP ID </label>
-                                    <input type="text" name="year" id="year" class="form-control" placeholder="Enter Employee ID" >
+                                    <input type="text" name="eid" id="eid" class="form-control" placeholder="Enter Employee ID" >
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label> Name </label>
-                                    <input type="text" name="year" id="year" class="form-control" placeholder="Enter Name" >
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter Name" >
                                 </div>
                             </div>
                             <div class="form-row">
@@ -505,7 +509,8 @@
                                     <div class="slide-progress-bar col-md-12">
                                         <div class="progress-bar" style="width: 0%;" id="progress-bar"> 0% </div> <br>
                                         <center> 
-                                            <button class="btn btn-success" onclick="progressBar()"><i class="fa-solid fa-play" style="margin-right: 0.5rem;"></i>Proceed</button> 
+                                            <!-- <button type="submit" class="btn btn-success" onclick="progressBar()"><i class="fa-solid fa-play" style="margin-right: 0.5rem;"></i>Proceed</button>  -->
+                                            <button type="submit" class="btn btn-success"><i class="fa-solid fa-play" style="margin-right: 0.5rem;"></i>Proceed</button>
                                             <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass" style="margin-right: 0.5rem;"></i>Find</button>
                                         </center>
                                         <!--progress-bar-->
@@ -515,6 +520,7 @@
                             </div>
                         </div>
                     </div>
+                </form>
                 </div>
                 
                 

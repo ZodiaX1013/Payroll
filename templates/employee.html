@@ -181,12 +181,12 @@
 	</nav> -->
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
-	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark" style="background-color:white; color: black;">
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark"  >
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="{{url_for('dashboard')}}"><span></span></a>
             <a href="{{url_for('dashboard')}}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
-                <img src="../static/images/logo.png" alt="" class="logo" width="150" height="50">
+                <img src="../static/images/logo.png" alt="" class="logo"  >
                 <!-- <img src="../static/images/logo-icon.png" alt="" class="logo-thumb"> -->
                 <!-- <i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>HOME -->
             </a>
@@ -210,7 +210,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" >
-                                   <b style="color:black"> File </b>
+                                   <b> File </b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -224,7 +224,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                    <b style="color:black">Process</b>
+                                    <b>Process</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -240,7 +240,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Reports</b>
+                                   <b> Reports</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -255,7 +255,7 @@
                         <li class="nav-item">
                             <div class="dropdown" >
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" aria-disabled="true">
-                                   <b style="color:black"> Utility</b>
+                                   <b> Utility</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -269,7 +269,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Window</b>
+                                   <b> Window</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -283,7 +283,7 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
-                                   <b style="color:black"> Help</b>
+                                   <b> Help</b>
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -663,10 +663,10 @@
 											<div class="col-md-6">
 												<h6>Photo</h6>
 												<div class="input-group mb-3">
-													<div class="custom-file">
+													<!-- <div class="custom-file"> -->
 														<input type="file" class="custom-file-input" id="inputGroupFile02" name="img"  value=""  >
 														<label class="custom-file-label" for="inputGroupFile02" >Choose file</label>
-													</div>
+													<!-- </div> -->
 													<!-- <div class="input-group-append">
 														<span class="input-group-text">Upload</span>
 													</div> -->
@@ -820,6 +820,7 @@
 												<label for="inputState">Department</label>
 
 												<select name="dep" id="dep" class="form-control">
+													<option value=" "> </option>
 													<option value="dep1">dep1</option>
 													<option value="dep2">dep2</option>
 													<option value="dep3">dep3</option>
@@ -850,6 +851,7 @@
 												<label for="inputState">Sub Department</label>
 												
 												<select name="sdep" id="sdep" class="form-control">
+													<option value=" "> </option>
 													<option value="dep1">sub-dep11</option>
 													<option value="dep1">sub-dep12</option>
 													<option value="dep1">sub-dep13</option>
@@ -959,7 +961,6 @@
 													<option value="" selected>select</option>
 													<option value="Bus">Bus</option>
 													<option value="Car">Car</option>
-													<option value="Helicopter">Helicopter</option>
 												</select>
 											</div>
 											<div class="form-group col-md-6">
@@ -978,12 +979,24 @@
 											</div>
 										</div>
 										<div class="form-row">
-												<div class="form-group col-md-1">
+											<div class="form-group col-md -6">
+												<div>
+													<label>Expatriate</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="Yes" >Yes
+												  </label>
+												  <label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="No" checked>No
+												  </label>
+												</lable>
+											</div>
+												<!-- <div class="form-group col-md-1">
 													<label for="vehicle1"> Expatriate</label><br>
 												</div>
 												<div class="form-group col-md-1">
 													<input type="checkbox" id="chk1" name="chk1" value="{{edata[35]}}">
-												</div>
+												</div> -->
 										</div>
 										
 									
@@ -1401,7 +1414,7 @@
 											</div>
 											<div class="form-group col-md-6">
 												<label>Last Working Day</label>
-												<input type="date" name="lwork" id="lwork" class="form-control" onblur="checkDate()" value="2000-09-10" disabled="disabled">
+												<input type="date" name="lwork" id="lwork" class="form-control" onblur="checkDate()" value="0000-00-00" disabled="disabled">
 											</div>
 										</div>
 										<div class="form-row">
@@ -1411,7 +1424,6 @@
 													<option value="" selected>select</option>
 													<option value="Bus">Bus</option>
 													<option value="Car">Car</option>
-													<option value="Helicopter">Helicopter</option>
 												</select>
 											</div>
 											<div class="form-group col-md-6">
@@ -1430,12 +1442,24 @@
 											</div>
 										</div>
 										<div class="form-row">
-												<div class="form-group col-md-1">
+											<div class="form-group col-md -6">
+												<div>
+													<label>Expatriate</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="Yes" >Yes
+												  </label>
+												  <label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="No" checked>No
+												  </label>
+												</lable>
+											</div>
+												<!-- <div class="form-group col-md-1">
 													<label for="vehicle1"> Expatriate</label><br>
 												</div>
 												<div class="form-group col-md-1">
 													<input type="checkbox" id="chk1" name="chk1" value="Expatriate">
-												</div>
+												</div> -->
 										</div>
 										
 									
