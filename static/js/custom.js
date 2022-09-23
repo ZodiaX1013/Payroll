@@ -633,6 +633,12 @@ function calculateSalary(){
   var iet = parseInt(ciet) + parseInt(piet)
 
   var netch = parseInt(gross) - parseInt(iet)
+  if(netch < 0){
+    netch = 0
+  }
+  else{
+    netch = netch
+  }
 
   var nps
   var cpaye
