@@ -1,4 +1,5 @@
 from cmath import pi
+from dis import dis
 import json
 from logging import basicConfig
 import os
@@ -2021,7 +2022,9 @@ def process_salary():
                 # return str1
                 msg = "Processing Complete"
                 return render_template("process.html", msg = msg)
-            
+
+# =================================================================================================================== #
+
             elif eid == "ALL":                 
                 # print(month)
                 if month == "January" or month=="january":
@@ -2315,7 +2318,7 @@ def process_salary():
                     basic = int(tbasic) - int(ab)
                     # Calculations
                     payable = basic + ot + otherAllow + trans + arrears + eoy + leave + speBns + SpeProBns + fixAllow + discBns + tax + ntax + attBns
-                    bonus = speBns + SpeProBns
+                    bonus = speBns + SpeProBns + trans + otherAllow + fixAllow + discBns + attBns
 
                     # For Overseas Amount
                     if overseas > 0:
@@ -2327,8 +2330,12 @@ def process_salary():
 
                     if trans > 20000:
                         cgross = basic + ot + otherAllow + trans + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+                        transTax = trans - 20000
                     else:
                         cgross = basic + ot + otherAllow + arrears + eoy + leave + discBns + fixAllow + speBns + tax + SpeProBns + attBns + car
+                        transTax = 0
+
+                    grossTax = basic + ot + otherAllow + arrears + eoy + leave + discBns + fixAllow + transTax + tax + SpeProBns + attBns + car
 
                     gross = prevGross + cgross
                     medf = round(int(edf) / 13)
@@ -2463,6 +2470,7 @@ def process_salary():
                     NetPay,
                     NetPaysheet,
                     CurrentGross,
+                    cGrossTax,
                     PrevGross,
                     PrevIET,
                     IET,
@@ -2538,10 +2546,11 @@ def process_salary():
                     %s,
                     %s,
                     %s,
+                    %s,
                     %s
                     );
                     """
-                    data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow2, tax, medical, trans, overseas, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, NetPaysheet, cgross, prevGross, piet, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, eprgf, pths, ths, netchar, plevy, slevypay, ab, month, year, UNQ]
+                    data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow2, tax, medical, trans, overseas, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, NetPaysheet, cgross, grossTax,  prevGross, piet, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, eprgf, pths, ths, netchar, plevy, slevypay, ab, month, year, UNQ]
                     cursor.execute(insert_query, data1)
                     print("Process Query Executed")
 
