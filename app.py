@@ -99,26 +99,7 @@ def employee():
 
     # Fetch Data
 
-    if request.method == "POST" and request.form['action'] == 'search':
-        eid = request.form["eid"]
-        try:
-            print("in Search")
-            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
-                                                database='heroku_2454cdb096d1842',
-                                                user='b85c92b4b95561',
-                                                password='3668be4b') # @ZodiaX1013
-            cursor = connection.cursor(buffered=True)                     
-
-            
-
-            return render_template("employee.html")
-        except Error as e:
-                print("Error While connecting to MySQL : ", e)
-        finally:
-            connection.commit()
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")  
+    if request.method == "POST" and request.form['action'] == 'search':      
         return render_template("search.html") 
 
     # Save To Database
