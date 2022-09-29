@@ -2324,7 +2324,7 @@ def process_salary():
                     basic = int(tbasic) - int(ab)
                     # Calculations
                     payable = basic + ot + otherAllow + trans + arrears + eoy + leave + speBns + SpeProBns + fixAllow + discBns + tax + ntax + attBns
-                    bonus = speBns + SpeProBns + trans + otherAllow + fixAllow + discBns + attBns
+                    bonus = speBns + SpeProBns + otherAllow + fixAllow + discBns + attBns
 
                     # For Overseas Amount
                     if overseas > 0:
