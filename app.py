@@ -66,8 +66,46 @@ def login():
 
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dashboard():
-    if request.method == "POST" and request.form['action'] == 'find':
-        print("In If")
+    if request.method == "POST":
+        eid = request.form["search"]
+        data1 = [eid]
+
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                    database='heroku_2454cdb096d1842',
+                                                    user='b85c92b4b95561',
+                                                    password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+
+            query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+            cursor.execute(query1)
+            column_name = cursor.fetchall()
+            heading_data = []
+            data = []
+            print(len(column_name))
+            for i in range(len(column_name)):
+                print("i : " , i)
+                # print("j : ", j)
+                data = ''.join(column_name[i])
+                print("Data :" + data)
+                heading_data.append(data)
+            
+            query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE EmployeeID = %s "
+            cursor.execute(query2, data1)
+            table_data = cursor.fetchall()
+
+            return render_template("dashboard.html", heading = heading_data, data = table_data)
+
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")   
+         
+        
+
     else:
         try:
             connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
