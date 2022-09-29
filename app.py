@@ -294,77 +294,133 @@ def employee():
             hire = hire[0][0]
             
 
-            query19 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            query19 = "SELECT salary From employee WHERE EmployeeID = %s"
             cursor.execute(query19, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            salary = cursor.fetchall()
+            for i in range(len(salary)):
+                salary = ''.join(salary[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            query20 = "SELECT position From employee WHERE EmployeeID = %s"
             cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            position = cursor.fetchall()
+            for i in range(len(position)):
+                position = ''.join(position[i])
             
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query21 = "SELECT department From employee WHERE EmployeeID = %s"
+            cursor.execute(query21, data)
+            dep = cursor.fetchall()
+            for i in range(len(dep)):
+                dep = ''.join(dep[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query22 = "SELECT Subdepartment From employee WHERE EmployeeID = %s"
+            cursor.execute(query22, data)
+            sdep = cursor.fetchall()
+            for i in range(len(sdep)):
+                sdep = ''.join(sdep[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query23 = "SELECT Payescheme From employee WHERE EmployeeID = %s"
+            cursor.execute(query23, data)
+            payes = cursor.fetchall()
+            for i in range(len(payes)):
+                payes = ''.join(payes[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query24 = "SELECT Payepercentage From employee WHERE EmployeeID = %s"
+            cursor.execute(query24, data)
+            payep = cursor.fetchall()
+            for i in range(len(payep)):
+                payep = ''.join(payep[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query25 = "SELECT Localleave From employee WHERE EmployeeID = %s"
+            cursor.execute(query25, data)
+            lleave = cursor.fetchall()
+            for i in range(len(lleave)):
+                lleave = ''.join(lleave[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query26 = "SELECT Sickleave From employee WHERE EmployeeID = %s"
+            cursor.execute(query26, data)
+            sleave = cursor.fetchall()
+            for i in range(len(sleave)):
+                sleave = ''.join(sleave[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query27 = "SELECT Fixedallow From employee WHERE EmployeeID = %s"
+            cursor.execute(query27, data)
+            falw = cursor.fetchall()
+            for i in range(len(falw)):
+                falw = ''.join(falw[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query28 = "SELECT Travelmode From employee WHERE EmployeeID = %s"
+            cursor.execute(query28, data)
+            travelmod = cursor.fetchall()
+            for i in range(len(travelmod)):
+                travelmod = ''.join(travelmod[i])
 
-            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
-            cursor.execute(query20, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            query29 = "SELECT Travelallow From employee WHERE EmployeeID = %s"
+            cursor.execute(query29, data)
+            talw = cursor.fetchall()
+            for i in range(len(talw)):
+                talw = ''.join(talw[i])
 
-            query30 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            query30 = "SELECT EDF From employee WHERE EmployeeID = %s"
             cursor.execute(query30, data)
-            code = cursor.fetchall()
-            for i in range(len(code)):
-                code = ''.join(code[i])
+            edf = cursor.fetchall()
+            for i in range(len(edf)):
+                edf = ''.join(edf[i])
+
+            query31 = "SELECT months From employee WHERE EmployeeID = %s"
+            cursor.execute(query31, data)
+            mon = cursor.fetchall()
+            for i in range(len(mon)):
+                mon = ''.join(mon[i])
+
+            query32 = "SELECT MonthlyEDF From employee WHERE EmployeeID = %s"
+            cursor.execute(query32, data)
+            medf = cursor.fetchall()
+            for i in range(len(medf)):
+                medf = ''.join(medf[i])
+
+            query33 = "SELECT Houseinterest From employee WHERE EmployeeID = %s"
+            cursor.execute(query33, data)
+            house = cursor.fetchall()
+            for i in range(len(house)):
+                house = ''.join(house[i])
+
+            query34 = "SELECT Educationrel From employee WHERE EmployeeID = %s"
+            cursor.execute(query34, data)
+            erel = cursor.fetchall()
+            for i in range(len(erel)):
+                erel = ''.join(erel[i])
+
+            query35 = "SELECT Medicalrel From employee WHERE EmployeeID = %s"
+            cursor.execute(query35, data)
+            mrel = cursor.fetchall()
+            for i in range(len(mrel)):
+                mrel = ''.join(mrel[i])
+
+            query36 = "SELECT Paymentmode From employee WHERE EmployeeID = %s"
+            cursor.execute(query36, data)
+            pay = cursor.fetchall()
+            for i in range(len(pay)):
+                pay = ''.join(pay[i])
+
+            query37 = "SELECT medical From employee WHERE EmployeeID = %s"
+            cursor.execute(query37, data)
+            med = cursor.fetchall()
+            for i in range(len(med)):
+                med = ''.join(med[i])
+
+            query38 = "SELECT Specialbonus From employee WHERE EmployeeID = %s"
+            cursor.execute(query38, data)
+            spbns = cursor.fetchall()
+            for i in range(len(spbns)):
+                spbns = ''.join(spbns[i])
+
+            query39 = "SELECT Workingdays From employee WHERE EmployeeID = %s"
+            cursor.execute(query39, data)
+            work = cursor.fetchall()
+            for i in range(len(work)):
+                work = ''.join(work[i])
+
+            return render_template("employee.html",eid=eid, fname=fname, lname=lname, title=title,dob=dob, add=add, city=city, country=country, phone=phone, mobile=mobile, fax=fax, mail=mail, nic=nic, tax=tax, bank=bank, bannkac =bankac,code=code, car=car, hire=hire, salary=salary, position=position, dep=dep, sdep=sdep, payes=payes, payep=payep, lleave=lleave, sleave=sleave, falw=falw, travelmod = travelmod, talw=talw, edf=edf, mon=mon, medf=medf, house=house, erel=erel, mrel=mrel, pay=pay, med=med, spbns=spbns, work=work )
 
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
