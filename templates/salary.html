@@ -1144,10 +1144,10 @@
 										</div>
 										<div class="form-group col-md-4">
 											{% if pgross %}
-											<label style="color: black;"> Previous Gross</label>
+											<label style="color: black;"> Previous Gross Taxable</label>
 											<input type="text" name="pgrs" id="pgrs" value="{{pgross}}" class="form-control" placeholder="Previous Gross" readonly>
 											{% else %}
-											<label style="color: black;"> Previous Gross</label>
+											<label style="color: black;"> Previous Gross Taxable</label>
 											<input type="text" name="pgrs" id="pgrs" value="" class="form-control" placeholder="Previous Gross" readonly>
 											{% endif %}
 										</div>
@@ -1362,8 +1362,13 @@
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if cgross %}
+											<label style="color: black;"> Gross Amount</label>
+											<input type="text" name="gtax2" id="gtax2" value="{{cgross}}" class="form-control" placeholder="Gross Amount" readonly>
+											{% else %}
 											<label style="color: black;"> Gross Amount</label>
 											<input type="text" name="gtax2" id="gtax2" value="" class="form-control" placeholder="Gross Amount" readonly>
+											{% endif %}
 										</div>										
 									</div>
 									<div class="form-row">
@@ -1386,13 +1391,8 @@
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
-											{% if cgross %}
-											<label style="color: black;"> Current Gross Taxable </label>
-											<input type="text" name="cgrs2" id="cgrs2" value="{{cgross}}" class="form-control" placeholder="Currect Gross Taxable" readonly>
-											{% else %}
 											<label style="color: black;"> Current Gross Taxable</label>
 											<input type="text" name="cgrs2" id="cgrs2" value="" class="form-control" placeholder="Currect Gross Taxable" readonly>
-											{% endif %}
 										</div>
 										
 									</div>
