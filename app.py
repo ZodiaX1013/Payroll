@@ -107,26 +107,19 @@ def employee():
                                                 database='heroku_2454cdb096d1842',
                                                 user='b85c92b4b95561',
                                                 password='3668be4b') # @ZodiaX1013
-            cursor = connection.cursor(buffered=True)
-            query = "SELECT * FROM employee WHERE EmployeeID = %s"
-            data = [eid]
-            cursor.execute(query,data)
-            emp_data = cursor.fetchall()
-            salary = []
-            print(emp_data)
-            # print(emp_data[1])
-            # for i in range(len(emp_data)):
-            #     salary = ''.join(emp_data[i])
-            #     print(salary)
+            cursor = connection.cursor(buffered=True)                     
 
-            return render_template("employee.html", edata = emp_data)
+            
+
+            return render_template("employee.html")
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
             connection.commit()
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")   
+            print("MySQL connection is closed")  
+        return render_template("search.html") 
 
     # Save To Database
 
