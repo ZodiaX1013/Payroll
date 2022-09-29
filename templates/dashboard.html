@@ -258,10 +258,12 @@
                             </div>
                         </li>
                         <li class="nav-item" >
-                            <div align="right" class="dropdown">
-                                <a class="mobile-menu" id="mobile-collapse" href="{{url_for('login')}}" style="text-align: left;">
-                                   <b style="color: black;"> Logout</b>
-                                </a>
+                            <div align="right">
+                                <form action="login">
+                                    <button class="btn btn-danger" type="submit"> Logout </button>    
+                                </form>
+                                <button class="btn btn-danger"> </button>
+                                
                             </div>
                         </li>
                         
