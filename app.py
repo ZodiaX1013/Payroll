@@ -2427,6 +2427,7 @@ def process_salary():
                     NetPaysheet = int(net) - int(slevy)
                     slevypay = slevy - plevy
                     otherAllow2 = int(otherAllow) + int(speBns) + int(SpeProBns)
+                    
 
                     # Payslip Calculation
 
@@ -2437,7 +2438,7 @@ def process_salary():
                     netpay = paygross - totalDeduction
                     # eprgf = 0
                     if basic < 200000:
-                        eprgf = round((int(basic) + int(otherAllow)) * 0.035) # + commission
+                        eprgf = round((int(basic) + int(bonus)) * 0.035) # + commission
                     else:
                         eprgf = 0
 
