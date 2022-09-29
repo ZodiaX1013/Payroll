@@ -3,6 +3,7 @@ from dis import dis
 import json
 from logging import basicConfig
 import os
+import re
 from socket import CMSG_LEN
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from werkzeug.utils import secure_filename
@@ -29,37 +30,6 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
 
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-# @app.route('/login',methods=['GET','POST'])
-# def login():
-#     if request.method=='POST':
-#         session['username']=request.form['email']
-#         session['password']=request.form["password"]
-#         return redirect(url_for('index'))
-#     return render_template('login.html')
-
-# @app.route('/logout')
-# def logout():
-#     session.pop('username',None)
-#     return redirect(url_for('index'))
-
-# @app.route('/')
-# def index():
-#     login=False
-#     if 'username' in session and 'password' in session:
-#         user = session['username']
-#         password = session['password']
-
-#         if user == "admin":
-#             if password == "admin":
-#                 login=True
-#             else:
-#                 msg = "Wrong Password"
-#         else:
-#             msg = "Wrong Username and password"
-
-#     return render_template('login_home.html',login=login, msg=msg)
-
 
 @app.route('/', methods=["GET" , "POST"])
 def home():
@@ -94,18 +64,278 @@ def login():
     return render_template('login.html')
 #     return render_template('login.html')
 
+@app.route("/dashboard", methods=["GET" , "POST"])
+def dashboard():
+    if request.method == "POST" and request.form['action'] == 'find':
+        print("In If")
+    else:
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                    database='heroku_2454cdb096d1842',
+                                                    user='b85c92b4b95561',
+                                                    password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True) 
+
+            # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
+            # cursor.execute(query1)
+            # column_name = cursor.fetchall()
+
+            query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+            cursor.execute(query1)
+            column_name = cursor.fetchall()
+            heading_data = []
+            data = []
+            print(len(column_name))
+            for i in range(len(column_name)):
+                print("i : " , i)
+                # print("j : ", j)
+                data = ''.join(column_name[i])
+                print("Data :" + data)
+                heading_data.append(data)
+            
+            print(column_name)
+            print(heading_data)
+
+            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE EmployeeID = %s "
+            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE FirstName = %s "
+            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE LastName = %s "
+            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE position = %s "
+            query2 = f"SELECT EmployeeID, FirstName, LastName FROM employee"
+            cursor.execute(query2)
+            table_data = cursor.fetchall()
+
+            print(table_data)
+            return render_template("dashboard.html", heading = heading_data, data = table_data)
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+
+        return render_template("dashboard.html")
+
 @app.route("/employee", methods=["GET" , "POST"])
 def employee():
 
     # Back To Employee Page
-    
+
     if request.method == "POST" and request.form['action'] == 'back':      
         return render_template("employee.html")
 
     # Fetch Data
 
-    if request.method == "POST" and request.form['action'] == 'search':      
-        return render_template("search.html") 
+    if request.method == "POST" and request.form['action'] == 'search2': 
+        
+        lname = request.form["lname"]
+        fname = request.form["fname"]
+        position = request.form["pos"]
+        eid = request.form["eid"]
+
+        if eid:
+            return render_template("dashboard.html", eid=eid)
+        
+        
+
+    # Search Employee Page
+    if request.method == "POST" and request.form['action'] == 'search':
+        eid = request.form["eid"]      
+        data = [eid]
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_2454cdb096d1842',
+                                                user='b85c92b4b95561',
+                                                password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+            
+            query1 = "SELECT FirstName From employee WHERE EmployeeID = %s"
+            cursor.execute(query1, data)
+            fname = cursor.fetchall()
+            for i in range(len(fname)):
+                fname = ''.join(fname[i])
+
+            query2 = "SELECT LastName From employee WHERE EmployeeID = %s"
+            cursor.execute(query2, data)
+            lname = cursor.fetchall()
+            for i in range(len(lname)):
+                lname = ''.join(lname[i])
+            
+            query3 = "SELECT Title From employee WHERE EmployeeID = %s"
+            cursor.execute(query3, data)
+            title = cursor.fetchall()
+            for i in range(len(title)):
+                title = ''.join(title[i])
+
+            query4 = "SELECT DOB From employee WHERE EmployeeID = %s"
+            cursor.execute(query4, data)
+            dob = cursor.fetchall()
+            dob = dob[0][0]
+
+            query5 = "SELECT address From employee WHERE EmployeeID = %s"
+            cursor.execute(query5, data)
+            add = cursor.fetchall()
+            for i in range(len(add)):
+                add = ''.join(add[i])
+
+            query6 = "SELECT city From employee WHERE EmployeeID = %s"
+            cursor.execute(query6, data)
+            city = cursor.fetchall()
+            for i in range(len(city)):
+                city = ''.join(city[i])
+
+            query7 = "SELECT country From employee WHERE EmployeeID = %s"
+            cursor.execute(query7, data)
+            country = cursor.fetchall()
+            for i in range(len(country)):
+                country = ''.join(country[i])
+
+            query8 = "SELECT phone From employee WHERE EmployeeID = %s"
+            cursor.execute(query8, data)
+            phone = cursor.fetchall()
+            for i in range(len(phone)):
+                phone = ''.join(phone[i])
+
+            query9 = "SELECT mobile From employee WHERE EmployeeID = %s"
+            cursor.execute(query9, data)
+            mobile = cursor.fetchall()
+            for i in range(len(mobile)):
+                mobile = ''.join(mobile[i])
+
+            query10 = "SELECT fax From employee WHERE EmployeeID = %s"
+            cursor.execute(query10, data)
+            fax = cursor.fetchall()
+            for i in range(len(fax)):
+                fax = ''.join(fax[i])
+
+            query11 = "SELECT email From employee WHERE EmployeeID = %s"
+            cursor.execute(query11, data)
+            mail = cursor.fetchall()
+            for i in range(len(mail)):
+                mail = ''.join(mail[i])
+
+            query12 = "SELECT NICno From employee WHERE EmployeeID = %s"
+            cursor.execute(query12, data)
+            nic = cursor.fetchall()
+            for i in range(len(nic)):
+                nic = ''.join(nic[i])
+
+            query13 = "SELECT TaxAC From employee WHERE EmployeeID = %s"
+            cursor.execute(query13, data)
+            tax = cursor.fetchall()
+            for i in range(len(tax)):
+                tax = ''.join(tax[i])
+
+            query14 = "SELECT Bank From employee WHERE EmployeeID = %s"
+            cursor.execute(query14, data)
+            bank = cursor.fetchall()
+            for i in range(len(bank)):
+                bank = ''.join(bank[i])
+
+            query15 = "SELECT BankAC From employee WHERE EmployeeID = %s"
+            cursor.execute(query15, data)
+            bankac = cursor.fetchall()
+            for i in range(len(bankac)):
+                bankac = ''.join(bankac[i])
+
+            query16 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query16, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+            
+            query17 = "SELECT Carbenefit From employee WHERE EmployeeID = %s"
+            cursor.execute(query17, data)
+            car = cursor.fetchall()
+            for i in range(len(car)):
+                car = ''.join(car[i])
+            
+            query18 = "SELECT hire From employee WHERE EmployeeID = %s"
+            cursor.execute(query18, data)
+            hire = cursor.fetchall()
+            hire = hire[0][0]
+            
+
+            query19 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query19, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+            
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query20 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query20, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+            query30 = "SELECT Bankcode From employee WHERE EmployeeID = %s"
+            cursor.execute(query30, data)
+            code = cursor.fetchall()
+            for i in range(len(code)):
+                code = ''.join(code[i])
+
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+        return render_template("employee.html") 
 
     # Save To Database
 
@@ -1552,52 +1782,6 @@ def salary():
             connection.close()
             print("MySQL connection is closed")
     return render_template("salary.html")
-    
-
-@app.route("/dashboard", methods=["GET" , "POST"])
-def dashboard():
-    try:
-        connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
-                                                database='heroku_2454cdb096d1842',
-                                                user='b85c92b4b95561',
-                                                password='3668be4b') # @ZodiaX1013
-        cursor = connection.cursor(buffered=True) 
-
-        # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
-        # cursor.execute(query1)
-        # column_name = cursor.fetchall()
-
-        query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
-        cursor.execute(query1)
-        column_name = cursor.fetchall()
-        heading_data = []
-        data = []
-        print(len(column_name))
-        for i in range(len(column_name)):
-            print("i : " , i)
-            # print("j : ", j)
-            data = ''.join(column_name[i])
-            print("Data :" + data)
-            heading_data.append(data)
-        
-        print(column_name)
-        print(heading_data)
-
-        query2 = f"SELECT EmployeeID, FirstName, LastName FROM employee"
-        cursor.execute(query2)
-        table_data = cursor.fetchall()
-
-        print(table_data)
-        return render_template("dashboard.html", heading = heading_data, data = table_data)
-    except Error as e:
-            print("Error While connecting to MySQL : ", e)
-    finally:
-        connection.commit()
-        cursor.close()
-        connection.close()
-        print("MySQL connection is closed")
-
-    return render_template("dashboard.html")
 
 @app.route("/leave", methods=["GET" , "POST", "PUT"])
 def leave():
