@@ -2349,7 +2349,7 @@ def process_salary():
                     
                     iet = int(ciet) + int(piet)
 
-                    netch = gross - iet
+                    netch = grossTax - iet
                     if netch < 0:
                         netch = 0
                     else:
@@ -2398,7 +2398,7 @@ def process_salary():
                     slevy = 0
                     tths = round(3000000/13)
                     ths = int(pths) + int(tths)
-                    netchar = int(gross) - int(iet) - int(ths)
+                    netchar = int(grossTax) - int(iet) - int(ths)
                     if netchar < 0 :
                         netchar = 0
                     else:
@@ -2406,7 +2406,7 @@ def process_salary():
 
                     if int(temp) > 3000000:
                         slevy1 = round(netchar * 0.25)
-                        slevy2 = round(cgross * 0.1)
+                        slevy2 = round(grossTax * 0.1)
 
                         if slevy1 > slevy2:
                             slevy = int(slevy2)
