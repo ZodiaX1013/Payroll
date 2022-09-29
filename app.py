@@ -97,6 +97,11 @@ def login():
 @app.route("/employee", methods=["GET" , "POST"])
 def employee():
 
+    # Back To Employee Page
+    
+    if request.method == "POST" and request.form['action'] == 'back':      
+        return render_template("employee.html")
+
     # Fetch Data
 
     if request.method == "POST" and request.form['action'] == 'search':      
