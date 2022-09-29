@@ -1123,8 +1123,13 @@
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if gtax %}
 											<label style="color: black;"> Currect Gross Taxable</label>
-											<input type="text" name="gtax" id="gtax" value="" class="form-control" placeholder="Current Gross Taxable" readonly>
+											<input type="text" name="gtax" id="gtax" value="{{gtax}}" class="form-control" placeholder="Current Gross Taxable" readonly>
+											{% else %}
+											<label style="color: black;"> Currect Gross Taxable</label>
+											<input type="text" name="gtax" id="gtax" value="{{gtax}}" class="form-control" placeholder="Current Gross Taxable" readonly>
+											{% endif %}
 										</div>
 										
 									</div>
@@ -1396,8 +1401,13 @@
 											{% endif %}
 										</div>
 										<div class="form-group col-md-4">
+											{% if gtax %}
 											<label style="color: black;"> Current Gross Taxable</label>
-											<input type="text" name="cgrs2" id="cgrs2" value="" class="form-control" placeholder="Currect Gross Taxable" readonly>
+											<input type="text" name="gtax3" id="gtax3" value="{{gtax}}" class="form-control" placeholder="Currect Gross Taxable" readonly>
+											{% else %}
+											<label style="color: black;"> Current Gross Taxable</label>
+											<input type="text" name="gtax3" id="gtax3" value="" class="form-control" placeholder="Currect Gross Taxable" readonly>
+											{% endif %}
 										</div>
 										
 									</div>
