@@ -3,7 +3,6 @@ import json
 from logging import basicConfig
 import os
 from socket import CMSG_LEN
-from tkinter import E
 from flask import Flask, flash, request, redirect, url_for, render_template, session, send_file
 from werkzeug.utils import secure_filename
 from PIL import Image
