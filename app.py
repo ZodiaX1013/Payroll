@@ -29,57 +29,68 @@ ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif','pdf'])
 def allowed_file(filename):
 	return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/login',methods=['GET','POST'])
-def login():
-    if request.method=='POST':
-        session['username']=request.form['email']
-        session['password']=request.form["password"]
-        return redirect(url_for('index'))
-    return render_template('login.html')
-
-@app.route('/logout')
-def logout():
-    session.pop('username',None)
-    return redirect(url_for('index'))
-
-@app.route('/')
-def index():
-    login=False
-    if 'username' in session and 'password' in session:
-        user = session['username']
-        password = session['password']
-
-        if user == "admin":
-            if password == "admin":
-                login=True
-            else:
-                msg = "Wrong Password"
-        else:
-            msg = "Wrong Username and password"
-
-    return render_template('login_home.html',login=login, msg=msg)
-
-
-# @app.route('/', methods=["GET" , "POST"])
-# def home():
-#     if request.method == "POST":
-#         session['mail'] = request.form["email"]
-#         session['psw'] = request.form["password"]
-#         return redirect(url_for('index'))
-#     return render_template("login.html")
-# 	# return render_template("index.html")
-
-# @app.route('/login', methods=['GET','POST'])
+# @app.route('/login',methods=['GET','POST'])
 # def login():
-#     if request.method == "POST":
-#         mail = request.form["email"]
-#         psw = request.form["password"]
-#         if mail == 'admin' and psw == 'admin':
-#             flash(f'welcome {mail} you are logedin now','success')
-#             return redirect(url_for('dashboard'))
+#     if request.method=='POST':
+#         session['username']=request.form['email']
+#         session['password']=request.form["password"]
+#         return redirect(url_for('index'))
+#     return render_template('login.html')
+
+# @app.route('/logout')
+# def logout():
+#     session.pop('username',None)
+#     return redirect(url_for('index'))
+
+# @app.route('/')
+# def index():
+#     login=False
+#     if 'username' in session and 'password' in session:
+#         user = session['username']
+#         password = session['password']
+
+#         if user == "admin":
+#             if password == "admin":
+#                 login=True
+#             else:
+#                 msg = "Wrong Password"
 #         else:
-#             flash(f'Wrong email and password', 'success')
-#             return redirect(url_for('login'))
+#             msg = "Wrong Username and password"
+
+#     return render_template('login_home.html',login=login, msg=msg)
+
+
+@app.route('/', methods=["GET" , "POST"])
+def home():
+    if request.method == "POST":
+        mail = request.form["email"]
+        psw = request.form["password"]
+        print("IN IF")
+        if mail == "admin" and psw == "admin":
+            print("IN IF2")
+            return redirect(url_for('dashboard'))
+        else:
+            print("IN ELSE")
+            flash(f'Wrong email and password', 'success')
+            return redirect(url_for('login'))
+            flash("Wrong Credentials")
+            # return render_template("login.html")
+    print("OUT IF")
+    return render_template("login.html")
+	# return render_template("index.html")
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    if request.method == "POST":
+        mail = request.form["email"]
+        psw = request.form["password"]
+        if mail == 'admin' and psw == 'admin':
+            flash(f'welcome {mail} you are logedin now','success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash(f'Wrong email and password', 'success')
+            return redirect(url_for('login'))
+    return render_template('login.html')
 #     return render_template('login.html')
 
 @app.route("/employee", methods=["GET" , "POST"])
