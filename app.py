@@ -2470,9 +2470,9 @@ def process_salary():
 
                 # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
                 # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID FROM employee"
-                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID, Lastwork FROM employee"
+                query = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID FROM employee"
                 # cursor.execute(query3, data)
-                cursor.execute(query3)
+                cursor.execute(query)
                 emp_data = cursor.fetchall()
 
                 arrays = {}
@@ -2495,16 +2495,22 @@ def process_salary():
                     medical = 0
                     SpeProBns = int(emp_data2[8])
                     eid = emp_data2[9]
-                    
-                    lwork = emp_data2[10]
-                    print(lwork)
+
+                    # lwork = emp_data2[10]
+                    # print(lwork)
 
                     data = [eid]
                     data2 = [eid,month2]
                     print(month2)
 
-                    query = "SELECT hire, position, NICno FROM employee WHERE EmployeeID = %s"
-                    cursor.execute(query,data)
+                    query1_1 = "SELECT MONTH(Lastwork) AS Month FROM employee WHERE EmployeeID= %s"
+                    cursor.execute(query1_1)
+                    mon = cursor.fetchall()
+                    print(mon)
+                    print(type(mon))
+
+                    query4 = "SELECT hire, position, NICno FROM employee WHERE EmployeeID = %s"
+                    cursor.execute(query4,data)
                     
 
                     query1 = "SELECT FirstName FROM employee WHERE EmployeeID = %s"
