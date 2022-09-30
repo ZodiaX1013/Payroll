@@ -178,9 +178,7 @@ def dashboard():
             connection.commit()
             cursor.close()
             connection.close()
-            print("MySQL connection is closed")   
-         
-        
+            print("MySQL connection is closed")                   
 
     else:
         try:
@@ -228,7 +226,7 @@ def dashboard():
             connection.close()
             print("MySQL connection is closed")
 
-        return render_template("dashboard.html")
+    return render_template("dashboard.html")
 
 @app.route("/employee", methods=["GET" , "POST"])
 def employee():
