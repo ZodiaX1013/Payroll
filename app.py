@@ -2258,8 +2258,8 @@ def process_salary():
 
                 nsf = int(basic * 0.01)
 
-                if nsf > 213:
-                    nsf = 213
+                if nsf > 214:
+                    nsf = 214
                 else:
                     nsf = int(nsf)
 
@@ -2279,8 +2279,8 @@ def process_salary():
                     slevy = 0
 
                 ensf = round(basic * 0.025)
-                if ensf > 531:
-                    ensf = 531
+                if ensf > 536:
+                    ensf = 536
                 else:
                     ensf = round(ensf)
                 levy = round(int(basic) * 0.015)
@@ -2799,8 +2799,8 @@ def process_salary():
 
                         nsf = int(basic * 0.01)
 
-                        if nsf > 213:
-                            nsf = 213
+                        if nsf > 214:
+                            nsf = 214
                         else:
                             nsf = int(nsf)
 
@@ -2826,8 +2826,8 @@ def process_salary():
                             slevy = 0
 
                         ensf = round(basic * 0.025)
-                        if ensf > 531:
-                            ensf = 531
+                        if ensf > 536:
+                            ensf = 536
                         else:
                             ensf = round(ensf)
                         levy = round(int(basic) * 0.015)

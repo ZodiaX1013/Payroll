@@ -322,9 +322,9 @@ function payeCalc(){
 
   } 
   nsf = basic * 0.01
-  if(nsf > 213){
-    nsf = 213
-    document.getElementById('nsf').value = 213
+  if(nsf > 214){
+    nsf = 214
+    document.getElementById('nsf').value = 214
   }
   else{
     document.getElementById('nsf').value = Math.round(nsf)
@@ -714,8 +714,8 @@ function calculateSalary(){
   
   nsf = Math.round(parseInt(basic) * 0.01)
 
-  if(nsf > 213){
-    nsf = 213
+  if(nsf > 214){
+    nsf = 214
   }
   else{
     nsf = parseInt(nsf)
@@ -739,8 +739,8 @@ function calculateSalary(){
     slevy = 0
   }
   var ensf = Math.round(parseInt(basic) * 0.025)
-  if(ensf > 531){
-    ensf = 531
+  if(ensf > 536){
+    ensf = 536
   }
   else{
     ensf = Math.round(ensf)
