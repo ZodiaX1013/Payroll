@@ -1715,7 +1715,7 @@ def salary():
         netchar = request.form["netchar"]
         plevy = request.form["plevy"]
         slevypay = request.form["levypay"]
-
+        cgtax = request.form["gtax3"]
 
         absence = request.form["abs"]
         print(absence)
@@ -1819,6 +1819,7 @@ def salary():
                         NetPay = %s,
                         NetPaysheet = %s,
                         CurrentGross = %s,
+                        cGrossTax = %s,
                         PrevGross = %s,
                         IET = %s,
                         NetCh = %s,
@@ -1837,7 +1838,7 @@ def salary():
                         Absences = %s
                         WHERE 
                         UNQ = %s;"""
-            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw2, tax, medical, transport, overseas, ntax, edf, arrears, attendance, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, NetPaysheet, cgross, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, prgf, pthes, thes, netchar, plevy, slevypay, absence, UNQ ]
+            data1 = [fixedAlw, otherDed, overtime, discBns, NSF, otherAlw2, tax, medical, transport, overseas, ntax, edf, arrears, attendance, eoy, loan, car, leaveRef, slevy, speBns, lateness, educationRel, SpeProBns, NPS, medicalRel, Payable, Deduction, Net, NetPaysheet, cgross, cgtax, pgross, iet, netch, cpaye, ppaye, paye, ecsg, ensf, elevy, prgf, pthes, thes, netchar, plevy, slevypay, absence, UNQ ]
 
             cursor.execute(query1, data1)
             print("Database Updated Successfully")
