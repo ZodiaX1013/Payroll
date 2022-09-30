@@ -53,12 +53,28 @@ def login():
             query1 = "SELECT username FROM cred"
             cursor.execute(query1)
             user = cursor.fetchall()
+            user = user[0][0]
             print(user)
 
             query2 = "SELECT password FROM cred"
             cursor.execute(query2)
             password = cursor.fetchall()
+            password = password[0][0]
 
+            print(mail)
+            print(user)
+            print(psw)
+            print(password)
+
+            if mail == user:
+                if psw == password:
+                    return redirect(url_for('dashboard'))
+                else:
+                    msg = "Wrong Password"
+                    return render_template("login.html", msg = msg)
+            else:
+                msg = "Wrong Username And Password"
+                return render_template("login.html", msg = msg)
 
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
@@ -67,13 +83,6 @@ def login():
             cursor.close()
             connection.close()
             print("MySQL connection is closed")
-
-        if mail == 'admin' and psw == 'admin':
-            flash(f'welcome {mail} you are logedin now','success')
-            return redirect(url_for('dashboard'))
-        else:
-            flash(f'Wrong email and password', 'success')
-            return redirect(url_for('login'))
     return render_template('login.html')
 #     return render_template('login.html')
 

@@ -34,6 +34,9 @@
 
 <!-- [ auth-signin ] start -->
 <div class="auth-wrapper">
+	{% if msg %}
+	<h4>{{msg}}</h4>
+	{% endif %}
 	<div class="auth-content text-center">
 		<img src="../static/images/logo.png" alt="" class="img-fluid mb-4">
 		<div class="card borderless">
