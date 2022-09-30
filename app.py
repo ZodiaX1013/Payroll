@@ -2516,6 +2516,8 @@ def process_salary():
                     print("out If")
                     print("ID ", id)
                     print("mon ", mon)
+                    if mon == 0:
+                        mon = id
                     if id <= mon:
                         print("In If")
 
