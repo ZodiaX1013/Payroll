@@ -551,8 +551,13 @@
 						
 							<div class="form-row">
 								<div class="form-group col-md-6">
+									{% if eid %}
+									<label>Employee ID</label>
+									<input type="text" name="eid" class="form-control" id="eid" value="{{eid}}" placeholder="Enter Employee ID" >
+									{% else %}
 									<label>Employee ID</label>
 									<input type="text" name="eid" class="form-control" id="eid" value="" placeholder="Enter Employee ID" >
+									{% endif %}
 								</div>
 								<div class="form-group col-md-6">
 									<div>
@@ -564,43 +569,56 @@
 									<label class="custom-control custom-radio radio-inline custom-control-inline">
 										<input type="radio" name="optradio" value="Yes">Yes
 									</label>
-									
-									<!-- <div>
-										<label>Clocked</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" disabled>
-										<label class="custom-control-label" for="customRadioInline1">No</label>
-									</div>
-									<div class="custom-control custom-radio custom-control-inline">
-										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" disabled>
-										<label class="custom-control-label" for="customRadioInline2">Yes</label>
-									</div> -->
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
+									{% if lname %}
+									<label>Last Name</label>
+									<input type="text" name="lname" class="form-control" id="lname" value="{{lname}}" placeholder="Enter Last Name" >
+									{% else %}
 									<label>Last Name</label>
 									<input type="text" name="lname" class="form-control" id="lname" value="" placeholder="Enter Last Name" >
+									{% endif %}
 								</div>
 								<div class="form-group col-md-6">
+									{% if title %}
 									<label for="inputState">Title</label>
 									<select id="inputState" class="form-control required" name="title" >
-										<option selected>select</option>
+										<option value="{{title}}" selected></option>
 										<option value="Mr.">Mr.</option>
 										<option value="Mrs.">Mrs.</option>
 										<option value="Ms.">Ms.</option>
 									</select>
+									{% else %}
+									<label for="inputState">Title</label>
+									<select id="inputState" class="form-control required" name="title" >
+										<option value="select" selected></option>
+										<option value="Mr.">Mr.</option>
+										<option value="Mrs.">Mrs.</option>
+										<option value="Ms.">Ms.</option>
+									</select>
+									{% endif %}
 								</div>
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-6">
+									{% if fname %}
+									<label>First Name</label>
+									<input type="text" name="fname" class="form-control" id="fname" value="{{fname}}" placeholder="Enter First Name" >
+									{% else %}
 									<label>First Name</label>
 									<input type="text" name="fname" class="form-control" id="fname" value="" placeholder="Enter First Name" >
+									{% endif %}
 								</div>
 								<div class="form-group col-md-6">
+									{% if dob %}
+									<label>Date Of Birth</label>
+									<input type="date" name="dob" id="dob" value="{{dob}}" class="form-control" >
+									{% else %}
 									<label>Date Of Birth</label>
 									<input type="date" name="dob" id="dob" value="" class="form-control" >
+									{% endif %}
 								</div>
 							</div>
 						<!-- </form> -->
@@ -627,38 +645,73 @@
 									<!-- <form action="/employee" id="emp2" method="post"> -->
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if add %}
+												<label>Address</label>
+												<input type="text" name="add" class="form-control" id="add" value="{{add}}"  placeholder="Enter Address" >
+												{% else %}
 												<label>Address</label>
 												<input type="text" name="add" class="form-control" id="add" value=""  placeholder="Enter Address" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if city %}
+												<label>City</label>
+												<input type="text" name="city" class="form-control" id="city"  value="{{city}}" placeholder="Enter City" >
+												{% else %}
 												<label>City</label>
 												<input type="text" name="city" class="form-control" id="city"  value="" placeholder="Enter City" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if country %}
+												<label>Country</label>
+												<input type="text" name="con" class="form-control" id="con"  value="{{country}}" placeholder="Enter Country" >
+												{% else %}
 												<label>Country</label>
 												<input type="text" name="con" class="form-control" id="con"  value="" placeholder="Enter Country" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if fax %}
+												<label>Fax</label>
+												<input type="text" name="fax" class="form-control" id="fax"  value="{{fax}}" placeholder="Enter Fax" >
+												{% else %}
 												<label>Fax</label>
 												<input type="text" name="fax" class="form-control" id="fax"  value="" placeholder="Enter Fax" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if phone %}
+												<label>Phone</label>
+												<input type="tel" name="phn" class="form-control" id="phn" value="{{phone}}" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Phone Number" >
+												{% else %}
 												<label>Phone</label>
 												<input type="tel" name="phn" class="form-control" id="phn" value="" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Phone Number" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if mobile %}
+												<label>Mobile</label>
+												<input type="tel" name="mob" class="form-control" id="mob" value="{{mobile}}" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Mobile Number" >
+												{% else %}
 												<label>Mobile</label>
 												<input type="tel" name="mob" class="form-control" id="mob" value="" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Mobile Number" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if mail %}
+												<label>Email</label>
+												<input type="email" name="mail" class="form-control" id="mail" value="{{mail}}"  placeholder="Enter Email" >
+												{% else %}
 												<label>Email</label>
 												<input type="email" name="mail" class="form-control" id="mail" value=""  placeholder="Enter Email" >
+												{% endif %}
 											</div>
 											<!-- <div class="input-group cust-file-button mb-3 "> -->												
 											<!-- <div class="form-group col-md-6 cust-file-button">
@@ -697,16 +750,27 @@
 									<!-- <form action="/employee" id="emp3" method="post"> -->
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if nic %}
+												<label>NIC No.</label>
+												<input type="text" name="nic" class="form-control" id="nic" value="{{nic}}"  placeholder="Enter NIC No." >
+												{% else %}
 												<label>NIC No.</label>
 												<input type="text" name="nic" class="form-control" id="nic" value=""  placeholder="Enter NIC No." >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if tax %}
+												<label>Tax Account No.</label>
+												<input type="number" name="tax" class="form-control" id="tax" value="{{tax}}"  placeholder="Enter Tax Account No." >
+												{% else %}
 												<label>Tax Account No.</label>
 												<input type="number" name="tax" class="form-control" id="tax" value=""  placeholder="Enter Tax Account No." >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-12">
+												{% if pay %}
 												<div>
 													<label>Payment Mode</label>
 												</div>
@@ -716,7 +780,17 @@
 												<label class="custom-control custom-radio radio-inline custom-control-inline">
 													<input type="radio" name="optradio5" id="optradiod5" value="Bank" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;">Bank
 												</label>
-												
+												{% else %}
+												<div>
+													<label>Payment Mode</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio5" id="optradiod5" value="Cash" onclick="document.getElementById('bank1').disabled = true;document.getElementById('bac').disabled = true;document.getElementById('code').disabled = true;" checked>Cash
+												</label>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio5" id="optradiod5" value="Bank" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;">Bank
+												</label>
+												{% endif %}
 
 												<!-- <label for="inputState">Mode Of Payment</label>
 												<select id="inputState" name="mop" id="mop" class="form-control required" >
