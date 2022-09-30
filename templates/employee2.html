@@ -585,7 +585,7 @@
 									{% if title %}
 									<label for="inputState">Title</label>
 									<select id="inputState" class="form-control required" name="title" >
-										<option value="{{title}}" selected></option>
+										<option value="{{title}}" selected>{{title}}</option>
 										<option value="Mr.">Mr.</option>
 										<option value="Mrs.">Mrs.</option>
 										<option value="Ms.">Ms.</option>
@@ -1009,7 +1009,7 @@
 											<div class="form-group col-md-6">
 												{% if erel %}
 												<label>Education Relief</label>
-												<input type="number" name="erel" id="erel" class="form-control" min="0"    value="" placeholder="Enter Education Relief" >
+												<input type="number" name="erel" id="erel" class="form-control" min="0"    value="{{erel}}" placeholder="Enter Education Relief" >
 												{% else %}
 												<label>Education Relief</label>
 												<input type="number" name="erel" id="erel" class="form-control" min="0"    value="" placeholder="Enter Education Relief" >
@@ -1053,7 +1053,7 @@
 											<div class="form-group col-md-6">
 												{% if mrel %}
 												<label>Medical Relief</label>
-												<input type="number" name="mrel" id="mrel" class="form-control" min="0"   value="" placeholder="Enter Medical Relief" >
+												<input type="number" name="mrel" id="mrel" class="form-control" min="0"   value="{{mrel}}" placeholder="Enter Medical Relief" >
 												{% else %}
 												<label>Medical Relief</label>
 												<input type="number" name="mrel" id="mrel" class="form-control" min="0"   value="" placeholder="Enter Medical Relief" >
