@@ -1,6 +1,7 @@
 from cmath import pi
 from crypt import methods
 from dis import dis
+import hashlib
 import json
 from logging import basicConfig
 import os
@@ -66,6 +67,11 @@ def login():
             print(user)
             print(psw)
             print(password)
+
+            plaintext = password.encode()
+            d = hashlib.md5(plaintext)
+            hash = d.hexdigest()
+            print(hash)
 
             if mail == user:
                 if psw == password:
