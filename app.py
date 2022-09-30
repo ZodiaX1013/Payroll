@@ -2479,6 +2479,7 @@ def process_salary():
                 for index,lst in enumerate(emp_data):
                     arrays[str(index+1)] = lst
 
+                
                 for i in arrays:
                     print(i)
                     emp_data2 = list(arrays[i])
@@ -2501,16 +2502,18 @@ def process_salary():
 
                     data = [eid]
                     data2 = [eid,month2]
-                    print(month2)
+                    # print(month2)
 
                     query1_1 = "SELECT MONTH(Lastwork) AS Month FROM employee WHERE EmployeeID= %s"
                     cursor.execute(query1_1, data)
                     mon = cursor.fetchall()
-                    print(mon)
-                    print(type(mon))
+                    # print(mon)
+                    # print(type(mon))
                     mon = mon[0][0]
 
                     print("out If")
+                    print("ID ", id)
+                    print("mon ", mon)
                     if id <= mon:
                         print("In If")
 
