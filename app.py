@@ -68,13 +68,13 @@ def login():
             print(psw)
             print(password)
 
-            plaintext = password.encode()
+            plaintext = psw.encode()
             d = hashlib.md5(plaintext)
             hash = d.hexdigest()
             print(hash)
 
             if mail == user:
-                if psw == password:
+                if hash == password:
                     return redirect(url_for('dashboard'))
                 else:
                     msg = "Wrong Password"
@@ -111,7 +111,11 @@ def reset():
             password = cursor.fetchall()
             password = password[0][0]
 
-            if password == old_pass:
+            plaintext = old_pass.encode()
+            d = hashlib.md5(plaintext)
+            hash = d.hexdigest()
+
+            if password == hash:
                 if new_pass == rnew_pass:
                     query2 = """UPDATE cred
                     SET
@@ -119,7 +123,11 @@ def reset():
                     WHERE
                     username= %s
                     """
-                    data = [new_pass,"admin"]
+                    plaintext2 = new_pass.encode()
+                    d = hashlib.md5(plaintext2)
+                    hash2 = d.hexdigest()
+
+                    data = [hash2,"admin"]
                     cursor.execute(query2,data)
                     msg = "Password updated Successfully"
                     return render_template("login.html", msg=msg)
