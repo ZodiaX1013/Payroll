@@ -2475,10 +2475,12 @@ def process_salary():
                 cursor.execute(query)
                 emp_data = cursor.fetchall()
 
+                print(emp_data)
+
                 arrays = {}
                 for index,lst in enumerate(emp_data):
                     arrays[str(index+1)] = lst
-
+                print(arrays)
                 
                 for i in arrays:
                     print(i)
