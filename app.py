@@ -77,7 +77,8 @@ def dashboard():
                                                     password='3668be4b') # @ZodiaX1013
             cursor = connection.cursor(buffered=True)
 
-            query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+            # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+            query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N"employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
             cursor.execute(query1)
             column_name = cursor.fetchall()
             heading_data = []
@@ -90,7 +91,7 @@ def dashboard():
                 print("Data :" + data)
                 heading_data.append(data)
             
-            query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE EmployeeID = %s "
+            query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee WHERE EmployeeID = %s "
             cursor.execute(query2, data1)
             table_data = cursor.fetchall()
 
