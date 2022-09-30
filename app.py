@@ -89,6 +89,48 @@ def login():
 
 @app.route("/reset", methods=["GET","POST"])
 def reset():
+    if request.method == "POST":
+        old_pass = request.form["opass"]
+        new_pass = request.form["npass"]
+        rnew_pass = request.form["rpass"]
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                    database='heroku_2454cdb096d1842',
+                                                    user='b85c92b4b95561',
+                                                    password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+
+            query1 = "SELECT password FROM cred"
+            cursor.execute(query1)
+            password = cursor.fetchall()
+            password = password[0][0]
+
+            if password == old_pass:
+                if new_pass == rnew_pass:
+                    query2 = """UPDATE cred
+                    SET
+                    password = %s
+                    WHERE
+                    username= %s
+                    """
+                    data = [new_pass,"admin"]
+                    cursor.execute(query2,data)
+                    msg = "Password updated Successfully"
+                    return render_template("login.html", msg=msg)
+                else:
+                    msg = "New password and Re-Enter Password not match"
+                    return render_template("reset", msg=msg)
+            else:
+                msg = "Old Password Wrong"
+                return render_template("reset", msg=msg)
+
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
     return render_template("reset.html")
 
 @app.route("/dashboard", methods=["GET" , "POST"])
