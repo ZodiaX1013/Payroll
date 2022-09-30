@@ -1062,7 +1062,7 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												{% payes %}
+												{% if payes %}
 												<label for="inputState">PAYE Scheme</label>
 												<select id="inputState" name="psch" id="psch" class="form-control required" >
 													<option value="{{payes}}"  selected></option>
