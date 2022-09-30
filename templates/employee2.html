@@ -805,7 +805,7 @@
 												{% if bank %}
 												<label for="inputState">Bank</label>
 												<select id="bank1" class="form-control required" name="bank" >
-													<option  value="{{bank}}" selected ></option>
+													<option  value="{{bank}}" selected >{{bank}}</option>
 													<option  value="Bank of Mauritius" >Bank of Mauritius</option>
 													<option  value="ABC Banking Corporation Ltd" > ABC Banking Corporation Ltd</option>
 													<option  value="Absa Bank (Mauritius) Limited" > Absa Bank (Mauritius) Limited</option>
@@ -989,7 +989,7 @@
 												{% if dep %}
 												<label for="inputState">Department</label>
 												<select name="dep" id="dep" class="form-control">
-													<option value="{{dep}}"></option>
+													<option value="{{dep}}">{{dep}}</option>
 													<option value="dep1">dep1</option>
 													<option value="dep2">dep2</option>
 													<option value="dep3">dep3</option>
@@ -1022,7 +1022,7 @@
 												<label for="inputState">Sub Department</label>
 												
 												<select name="sdep" id="sdep" class="form-control">
-													<option value="{{sdep}}"></option>
+													<option value="{{sdep}}">{{sdep}}</option>
 													<option value="dep1">sub-dep11</option>
 													<option value="dep1">sub-dep12</option>
 													<option value="dep1">sub-dep13</option>
@@ -1065,7 +1065,7 @@
 												{% if payes %}
 												<label for="inputState">PAYE Scheme</label>
 												<select id="inputState" name="psch" id="psch" class="form-control required" >
-													<option value="{{payes}}"  selected></option>
+													<option value="{{payes}}"  selected>{{payes}}</option>
 													<option value="Monthly" >Monthly</option>
 													<option value="Quaterly" >Quaterly</option>
 													<option value="Yearly" >Yearly</option>
@@ -1154,7 +1154,7 @@
 												{% if travelmod %}
 												<label for="inputState">Travel Mode</label>
 												<select id="inputState" name="tmode" id="tmode" class="form-control required" >
-													<option value="{{travelmod}}" selected></option>
+													<option value="{{travelmod}}" selected>{{travelmod}}</option>
 													<option value="Bus">Bus</option>
 													<option value="Car">Car</option>
 												</select>
