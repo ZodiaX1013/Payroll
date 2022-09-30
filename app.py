@@ -433,6 +433,134 @@ def employee():
             print("MySQL connection is closed")
         return render_template("employee.html") 
 
+    # Update To Database
+    if request.method == "POST" and request.form['action']== 'update':
+        eid = request.form["eid"]
+        fname = request.form["fname"]
+        lname = request.form["lname"]
+        title = request.form["title"]
+        dob = request.form["dob"]
+        clocked = request.form["optradio"]
+        address = request.form["add"]
+        city = request.form["city"]
+        country = request.form["con"]
+        phone = request.form["phn"]
+        mobile = request.form["mob"]
+        fax = request.form["fax"]
+        mail = request.form["mail"]
+        if request.files["img"]:
+            eimage = request.files["img"]
+        else:
+            eimage = ""
+        nic = request.form["nic"]
+        tax = request.form["tax"]
+        bank = request.form["bank"]
+        bank_ac = request.form["bac"]
+        code = request.form["code"]
+        # report = request.form["rpt"]
+        report = ""
+        nps = request.form["optradio2"]
+        car = request.form["car"]
+        hire = request.form["hire"]
+        salary = request.form["sal"]
+        position = request.form["pos"]
+        dep = request.form["dep"]
+        sdep = request.form["sdep"]
+        paye = request.form["psch"]
+        per = request.form["per"]
+        lleave = request.form["lleave"]
+        sleave = request.form["sleave"]
+        fallow = request.form["falw"]
+        tmode = request.form["tmode"]
+        tallow = request.form["talw"]
+        expatriate = request.form.get("chk1")
+        edf = request.form["edf"]
+        months = request.form["month"]  
+        medf = request.form["medf"]
+        house = request.form["hint"]
+        erel = request.form["erel"]
+        mrel = request.form["mrel"]
+        payment = request.form["optradio5"]
+        medical = request.form["med"]
+        working = request.form["optradio3"]
+        if working == "No":
+            lwork = request.form["lwork"]
+        else:
+            lwork = "0000-00-00"
+        spbonus = request.form["spbonus"]
+        wdays = request.form["wday"]
+
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                database='heroku_2454cdb096d1842',
+                                                user='b85c92b4b95561',
+                                                password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+
+            update_query = """
+            UPDATE employee
+            SET
+            FirstName =%s ,
+            LastName =%s ,
+            Title =%s ,
+            DOB =%s ,
+            address =%s ,
+            city =%s ,
+            country =%s ,
+            phone =%s ,
+            mobile =%s ,
+            fax =%s ,
+            email =%s ,
+            NICno =%s ,
+            TaxAC =%s ,
+            Bank =%s ,
+            BankAC =%s ,
+            Bankcode =%s ,
+            Carbenefit =%s ,
+            hire =%s ,
+            salary =%s ,
+            position =%s ,
+            department =%s ,
+            Subdepartment =%s ,
+            Payescheme =%s ,
+            Payepercentage =%s ,
+            Localleave =%s ,
+            Sickleave =%s ,
+            Fixedallow =%s ,
+            Travelmode =%s ,
+            Travelallow =%s ,
+            expatriate =%s ,
+            EDF =%s ,
+            months =%s ,
+            MonthlyEDF =%s ,
+            Houseinterest =%s ,
+            Educationrel =%s ,
+            Medicalrel =%s ,
+            Paymentmode =%s ,
+            medical =%s ,
+            working =%s ,
+            Lastwork =%s ,
+            Specialbonus =%s ,
+            Workingdays = %s
+            WHERE
+            EmployeeID = %s;
+            """
+
+            data = [fname, lname, title, dob, address, city, country, phone, mobile, fax, mail, nic, tax, bank, bank_ac, code, car, hire, salary, position, dep, sdep, paye, per, lleave, sleave, fallow, tmode, tallow, expatriate, edf, months, medf, house, erel, mrel, payment, medical, working, lwork, spbonus, wdays, eid]
+            cursor.execute(update_query, data)
+
+            msg = "Update Successfully"
+            return render_template("employee.html", msg=msg)    
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+        return render_template("employee.html")         
+        
+
     # Save To Database
 
     if request.method == "POST" and request.form['action']== 'save':
