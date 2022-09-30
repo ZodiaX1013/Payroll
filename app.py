@@ -2469,7 +2469,8 @@ def process_salary():
                 month2 = month2.lower()
 
                 # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
-                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID FROM employee"
+                # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID FROM employee"
+                query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus, EmployeeID, Lastwork FROM employee"
                 # cursor.execute(query3, data)
                 cursor.execute(query3)
                 emp_data = cursor.fetchall()
@@ -2494,6 +2495,9 @@ def process_salary():
                     medical = 0
                     SpeProBns = int(emp_data2[8])
                     eid = emp_data2[9]
+                    
+                    lwork = emp_data2[10]
+                    print(lwork)
 
                     data = [eid]
                     data2 = [eid,month2]
@@ -2946,11 +2950,11 @@ def process_salary():
                     );
                     """
                     data1 = [eid, flname, basic , fixAllow, otherDed, ot, discBns, nsf, otherAllow2, tax, medical, trans, overseas, ntax, edf, arrears, attBns, eoy, loan, car, leave, slevy, speBns, lateness, education, SpeProBns, nps, Medicalrel, payable, deduction, net, NetPaysheet, cgross, grossTax,  prevGross, piet, iet, netch, cpaye, ppaye, paye, enps ,ensf, levy, eprgf, pths, ths, netchar, plevy, slevypay, ab, month, year, UNQ]
-                    cursor.execute(insert_query, data1)
+                    # cursor.execute(insert_query, data1)
                     print("Process Query Executed")
 
                     data3 = [hire, "Demo" , flname, pos, nic, basic, trans, bonus, paygross, paye, nps, nsf, totalDeduction, netpay,netpay, netpay, enps, ensf, levy, eprgf, month ]
-                    cursor.execute(query, data3)
+                    # cursor.execute(query, data3)
                     print("Payslip Query Executed")
 
                 print("Do Something Else")
