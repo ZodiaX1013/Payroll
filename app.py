@@ -2510,8 +2510,9 @@ def process_salary():
                     print(type(mon))
                     mon = mon[0][0]
 
+                    print("out If")
                     if id <= mon:
-
+                        print("In If")
 
                         query4 = "SELECT hire, position, NICno FROM employee WHERE EmployeeID = %s"
                         cursor.execute(query4,data)
