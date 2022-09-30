@@ -775,20 +775,20 @@
 													<label>Payment Mode</label>
 												</div>
 												<label class="custom-control custom-radio radio-inline custom-control-inline">
-													<input type="radio" name="optradio5" id="optradiod5" value="Cash" onclick="document.getElementById('bank1').disabled = true;document.getElementById('bac').disabled = true;document.getElementById('code').disabled = true;" checked>Cash
+													<input type="radio" name="optradio5" id="optradiod5" value="Cash" onclick="document.getElementById('bank1').disabled = true;document.getElementById('bac').disabled = true;document.getElementById('code').disabled = true;" >Cash
 												</label>
 												<label class="custom-control custom-radio radio-inline custom-control-inline">
-													<input type="radio" name="optradio5" id="optradiod5" value="Bank" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;">Bank
+													<input type="radio" name="optradio5" id="optradiod5" value="{{pay}}" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;" checked>Bank
 												</label>
 												{% else %}
 												<div>
 													<label>Payment Mode</label>
 												</div>
 												<label class="custom-control custom-radio radio-inline custom-control-inline">
-													<input type="radio" name="optradio5" id="optradiod5" value="Cash" onclick="document.getElementById('bank1').disabled = true;document.getElementById('bac').disabled = true;document.getElementById('code').disabled = true;" checked>Cash
+													<input type="radio" name="optradio5" id="optradiod5" value="Cash" onclick="document.getElementById('bank1').disabled = true;document.getElementById('bac').disabled = true;document.getElementById('code').disabled = true;" >Cash
 												</label>
 												<label class="custom-control custom-radio radio-inline custom-control-inline">
-													<input type="radio" name="optradio5" id="optradiod5" value="Bank" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;">Bank
+													<input type="radio" name="optradio5" id="optradiod5" value="Bank" onclick="document.getElementById('bank1').disabled = false;document.getElementById('bac').disabled = false;document.getElementById('code').disabled = false;" checked>Bank
 												</label>
 												{% endif %}
 
@@ -802,8 +802,32 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-12">
+												{% if bank %}
 												<label for="inputState">Bank</label>
-												<select id="bank1" class="form-control required" name="bank" disabled="disabled" >
+												<select id="bank1" class="form-control required" name="bank" >
+													<option  value="{{bank}}" selected ></option>
+													<option  value="Bank of Mauritius" >Bank of Mauritius</option>
+													<option  value="ABC Banking Corporation Ltd" > ABC Banking Corporation Ltd</option>
+													<option  value="Absa Bank (Mauritius) Limited" > Absa Bank (Mauritius) Limited</option>
+													<option  value="AfrAsia Bank Limited" >AfrAsia Bank Limited</option>
+													<option  value="Bank of Baroda" > Bank of Baroda</option>
+													<option  value="Bank One Limited" > Bank One Limited</option>
+													<option  value="BanyanTree Bank Limited" > BanyanTree Bank Limited</option>
+													<option  value="BCP Bank (Mauritius) Ltd" >BCP Bank (Mauritius) Ltd</option>
+													<option  value="Century Banking Corporation Ltd" >Century Banking Corporation Ltd</option>
+													<option  value="Habib Bank Limited" >Habib Bank Limited</option>
+													<option  value="Investec Bank (Mauritius) Ltd" >Investec Bank (Mauritius) Ltd</option>
+													<option  value="MauBank Ltd" >MauBank Ltd</option>
+													<option  value="SBI (Mauritius) Limited" >SBI (Mauritius) Limited</option>
+													<option  value="Standard Bank (Mauritius) Limited" >Standard Bank (Mauritius) Limited</option>
+													<option  value="Standard Chartered Bank (Mauritius) Ltd" >Standard Chartered Bank (Mauritius) Ltd</option>
+													<option  value="SBM Bank (Mauritius) Ltd" >SBM Bank (Mauritius) Ltd</option>
+													<option  value="The Hongkong and Shanghai Banking Corporation Limited" >The Hongkong and Shanghai Banking Corporation Limited</option>
+													<option  value="The Mauritius Commercial Bank Ltd" >The Mauritius Commercial Bank Ltd</option>
+												</select>
+												{% else %}
+												<label for="inputState">Bank</label>
+												<select id="bank1" class="form-control required" name="bank" >
 													<option  value="" selected >select</option>
 													<option  value="Bank of Mauritius" >Bank of Mauritius</option>
 													<option  value="ABC Banking Corporation Ltd" > ABC Banking Corporation Ltd</option>
@@ -824,16 +848,27 @@
 													<option  value="The Hongkong and Shanghai Banking Corporation Limited" >The Hongkong and Shanghai Banking Corporation Limited</option>
 													<option  value="The Mauritius Commercial Bank Ltd" >The Mauritius Commercial Bank Ltd</option>
 												</select>
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if bankac %}
 												<label>Bank Account No.</label>
-												<input type="number" name="bac" class="form-control" id="bac" value=""  placeholder="Enter Bank Account No." disabled="disabled">
+												<input type="number" name="bac" class="form-control" id="bac" value="{{bankac}}"  placeholder="Enter Bank Account No." >
+												{% else %}
+												<label>Bank Account No.</label>
+												<input type="number" name="bac" class="form-control" id="bac" value=""  placeholder="Enter Bank Account No." >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if code %}
 												<label>Bank Code</label>
-												<input type="text" name="code" class="form-control" id="code"  value="" placeholder="Enter Bank Code" disabled="disabled">
+												<input type="text" name="code" class="form-control" id="code"  value="{{code}}" placeholder="Enter Bank Code" >
+												{% else %}
+												<label>Bank Code</label>
+												<input type="text" name="code" class="form-control" id="code"  value="" placeholder="Enter Bank Code" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
@@ -854,23 +889,15 @@
 													<input type="radio" name="optradio2"  value="Not Paid" >Not Paid
 												  </label>
 												</lable>
-
-												<!-- <div>
-													<label>NPS</label>
-												</div>
-												<div class="custom-control custom-radio custom-control-inline">
-													<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
-													<label class="custom-control-label" for="customRadioInline1">Paid</label>
-												</div>
-												<div class="custom-control custom-radio custom-control-inline">
-													<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
-													<label class="custom-control-label" for="customRadioInline2">Not Paid</label>
-												</div> -->
-												
 											</div>
 											<div class="form-group col-md-6">
+												{% if car %}
+												<label>Car Benefit</label>
+												<input type="number" name="car" class="form-control" id="car" min="0" value="{{car}}" placeholder="Enter Car Benefit" >
+												{% else %}
 												<label>Car Benefit</label>
 												<input type="number" name="car" class="form-control" id="car" min="0"   value="" placeholder="Enter Car Benefit" >
+												{% endif %}
 											</div>
 										</div>
 									<!-- </form> -->
@@ -885,76 +912,117 @@
 									<!-- <form action="/employee" id="emp4" method="post"> -->
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if hire %}
+												<label>Hire Date</label>
+												<input type="date" name="hire" id="hire"  value="{{hire}}" class="form-control" >
+												{% else %}
 												<label>Hire Date</label>
 												<input type="date" name="hire" id="hire"  value="" class="form-control" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if edf %}
+												<label>EDF Value</label>
+												<input type="number" name="edf" id="edf" class="form-control" min="0" value="{{edf}}" placeholder="Enter EDF value" >
+												{% else %}
 												<label>EDF Value</label>
 												<input type="number" name="edf" id="edf" class="form-control" min="0" value="" placeholder="Enter EDF value" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if salary %}
+												<label>Basic Salary</label>
+												<input type="number" name="sal" id="sal" class="form-control" min="0" value="{{salary}}" placeholder="Enter Basic Monthly Salary" >
+												{% else %}
 												<label>Basic Salary</label>
 												<input type="number" name="sal" id="sal" class="form-control" min="0" value="" placeholder="Enter Basic Monthly Salary" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if mon and medf %}
 												<label > No Of Months</label>
 												<div class="form-row">
 													<div class="form-group col-md-6">
-														<input type="number" class="form-control" name="month" id="month" min="0" onblur="calculate()" placeholder="Enter Month" >
+														<input type="number" class="form-control" value="{{mon}}" name="month" id="month" min="0" onblur="calculate()" placeholder="Enter Month" >
 													</div>
 													<div class="form-group col-md-6">
-														<input type="number" class="form-control" name="medf" id="medf" placeholder="Monthly EDF" readonly>
+														<input type="number" class="form-control" value="{{medf}}" name="medf" id="medf" placeholder="Monthly EDF" readonly>
 													</div>
 												</div>
+												{% else %}
+												<label > No Of Months</label>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<input type="number" class="form-control" value="" name="month" id="month" min="0" onblur="calculate()" placeholder="Enter Month" >
+													</div>
+													<div class="form-group col-md-6">
+														<input type="number" class="form-control" value="" name="medf" id="medf" placeholder="Monthly EDF" readonly>
+													</div>
+												</div>
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if position %}
+												<label>Position</label>
+												<input type="text" name="pos" id="pos" class="form-control"  value="{{position}}" placeholder="Enter Position" >
+												{% else %}
 												<label>Position</label>
 												<input type="text" name="pos" id="pos" class="form-control"  value="" placeholder="Enter Position" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if house %}
+												<label>Housing Interest</label>
+												<input type="number" name="hint" id="hint" class="form-control" min="0"  value="{{house}}" placeholder="Enter Housing Interest" >
+												{% else %}
 												<label>Housing Interest</label>
 												<input type="number" name="hint" id="hint" class="form-control" min="0"  value="" placeholder="Enter Housing Interest" >
+												{%  endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if dep %}
 												<label for="inputState">Department</label>
-
 												<select name="dep" id="dep" class="form-control">
+													<option value="{{dep}}"></option>
 													<option value="dep1">dep1</option>
 													<option value="dep2">dep2</option>
 													<option value="dep3">dep3</option>
 													<option value="dep4">dep4</option>
 												</select>
-												
-
-												<!-- <select name="dep" id="dep" class="form-control required"  required>
-													<option value="" selected="selected" >Select Department</option>
-												</select> -->
-												<!-- <select id="inputState" name="dep" id="dep" class="form-control">
-													<option value=""  selected>select</option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-												</select> -->
+												{% else %}
+												<label for="inputState">Department</label>
+												<select name="dep" id="dep" class="form-control">
+													<option value=""></option>
+													<option value="dep1">dep1</option>
+													<option value="dep2">dep2</option>
+													<option value="dep3">dep3</option>
+													<option value="dep4">dep4</option>
+												</select>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if erel %}
 												<label>Education Relief</label>
 												<input type="number" name="erel" id="erel" class="form-control" min="0"    value="" placeholder="Enter Education Relief" >
+												{% else %}
+												<label>Education Relief</label>
+												<input type="number" name="erel" id="erel" class="form-control" min="0"    value="" placeholder="Enter Education Relief" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if sdep %}
 												<label for="inputState">Sub Department</label>
 												
 												<select name="sdep" id="sdep" class="form-control">
+													<option value="{{sdep}}"></option>
 													<option value="dep1">sub-dep11</option>
 													<option value="dep1">sub-dep12</option>
 													<option value="dep1">sub-dep13</option>
@@ -965,55 +1033,93 @@
 													<option value="dep3">sub-dep32</option>
 													<option value="dep4">sub-dep41<option>
 												</select>
+												{% else %}
+												<label for="inputState">Sub Department</label>
 												
-												<!-- <select name="sdep" id="sdep" class="form-control required" required>
-													<option value="" selected="selected">Please select sub-department</option>
-												</select> -->
-												<!-- <select id="inputState" name="sdep" id="sdep" class="form-control">
-													<option value=""  selected>select</option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-													<option value="" ></option>
-												</select> -->
+												<select name="sdep" id="sdep" class="form-control">
+													<option value=""></option>
+													<option value="dep1">sub-dep11</option>
+													<option value="dep1">sub-dep12</option>
+													<option value="dep1">sub-dep13</option>
+													<option value="dep2">sub-dep21</option>
+													<option value="dep2">sub-dep22</option>
+													<option value="dep2">sub-dep23</option>
+													<option value="dep3">sub-dep31</option>
+													<option value="dep3">sub-dep32</option>
+													<option value="dep4">sub-dep41<option>
+												</select>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if mrel %}
 												<label>Medical Relief</label>
 												<input type="number" name="mrel" id="mrel" class="form-control" min="0"   value="" placeholder="Enter Medical Relief" >
+												{% else %}
+												<label>Medical Relief</label>
+												<input type="number" name="mrel" id="mrel" class="form-control" min="0"   value="" placeholder="Enter Medical Relief" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% payes %}
 												<label for="inputState">PAYE Scheme</label>
 												<select id="inputState" name="psch" id="psch" class="form-control required" >
-													<option value=""  selected>select</option>
+													<option value="{{payes}}"  selected></option>
 													<option value="Monthly" >Monthly</option>
 													<option value="Quaterly" >Quaterly</option>
 													<option value="Yearly" >Yearly</option>
 												</select>
+												{% else %}
+												<label for="inputState">PAYE Scheme</label>
+												<select id="inputState" name="psch" id="psch" class="form-control required" >
+													<option value=""  selected> select</option>
+													<option value="Monthly" >Monthly</option>
+													<option value="Quaterly" >Quaterly</option>
+													<option value="Yearly" >Yearly</option>
+												</select>
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if payep %}
+												<label> Percentage (%) </label>
+												<input type="number" name="per" id="per" value="{{payep}}" class="form-control" max="100" min="0" placeholder="Percentage" >
+												{% else %}
 												<label> Percentage (%) </label>
 												<input type="number" name="per" id="per" class="form-control" max="100" min="0" placeholder="Percentage" >
+												{% endif %}
 											</div>
 											
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if lleave %}
+												<label>Local Leave (Per Year)</label>
+												<input type="number" name="lleave" id="lleave" class="form-control" min="0"    value="{{lleave}}" placeholder="Enter Local Leave" >
+												{% else %}
 												<label>Local Leave (Per Year)</label>
 												<input type="number" name="lleave" id="lleave" class="form-control" min="0"    value="" placeholder="Enter Local Leave" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if med %}
+												<label>Medical</label>
+												<input type="number" name="med" id="med" class="form-control" min="0"    value="{{med}}" placeholder="Enter Medical" >
+												{% else %}
 												<label>Medical</label>
 												<input type="number" name="med" id="med" class="form-control" min="0"    value="" placeholder="Enter Medical" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if sleave %}
+												<label>Sick Leave (Per Year)</label>
+												<input type="number" name="sleave" id="sleave" class="form-control" min="0"    value="{{sleave}}" onblur="leave()" placeholder="Enter Sick Leave" >
+												{% else %}
 												<label>Sick Leave (Per Year)</label>
 												<input type="number" name="sleave" id="sleave" class="form-control" min="0"    value="" onblur="leave()" placeholder="Enter Sick Leave" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
 												<div>
@@ -1026,24 +1132,17 @@
 													<input type="radio" name="optradio3" id="optradiod3" onclick="document.getElementById('lwork').disabled = false;" value="No">No
 												  </label>
 												</lable>
-												
-												<!-- <div>
-													<label>NPS</label>
-												</div>
-												<div class="custom-control custom-radio custom-control-inline">
-													<input type="radio" id="yes" name="yes" class="custom-control-input">
-													<label class="custom-control-label" for="customRadioInline1">Yes</label>
-												</div>
-												<div class="custom-control custom-radio custom-control-inline">
-													<input type="radio" id="No" name="No" class="custom-control-input">
-													<label class="custom-control-label" for="customRadioInline2">No</label>
-												</div> -->
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if falw %}
+												<label>Fixed Allow</label>
+												<input type="number" name="falw" id="falw" class="form-control" min="0"    value="{{falw}}" placeholder="Enter Fixed Allow" >
+												{% else %}
 												<label>Fixed Allow</label>
 												<input type="number" name="falw" id="falw" class="form-control" min="0"    value="" placeholder="Enter Fixed Allow" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
 												<label>Last Working Day</label>
@@ -1052,26 +1151,50 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if travelmod %}
+												<label for="inputState">Travel Mode</label>
+												<select id="inputState" name="tmode" id="tmode" class="form-control required" >
+													<option value="{{travelmod}}" selected></option>
+													<option value="Bus">Bus</option>
+													<option value="Car">Car</option>
+												</select>
+												{% else %}
 												<label for="inputState">Travel Mode</label>
 												<select id="inputState" name="tmode" id="tmode" class="form-control required" >
 													<option value="" selected>select</option>
 													<option value="Bus">Bus</option>
 													<option value="Car">Car</option>
 												</select>
+												{% endif%}
 											</div>
 											<div class="form-group col-md-6">
+												{% if spbns %}
+												<label>Special Project Bonus</label>
+												<input type="number" name="spbonus" id="spbonus" class="form-control" min="0"    value="{{spbns}}" placeholder="Enter Special Project Bonus" >
+												{% else %}
 												<label>Special Project Bonus</label>
 												<input type="number" name="spbonus" id="spbonus" class="form-control" min="0"    value="" placeholder="Enter Special Project Bonus" >
+												{% endif %}
 											</div>
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-6">
+												{% if talw %}
+												<label>Travel Allowance</label>
+												<input type="number" name="talw" id="talw" class="form-control" min="0"    value="{{talw}}" placeholder="Enter Travel Allowance" >
+												{% else %}
 												<label>Travel Allowance</label>
 												<input type="number" name="talw" id="talw" class="form-control" min="0"    value="" placeholder="Enter Travel Allowance" >
+												{% endif %}
 											</div>
 											<div class="form-group col-md-6">
+												{% if work %}
+												<label>Working Days / Month </label>
+												<input type="number" name="wday" id="wday" class="form-control" min="0"    value="{{work}}" onblur="days()" placeholder="Enter Days" >
+												{% else %}
 												<label>Working Days / Month </label>
 												<input type="number" name="wday" id="wday" class="form-control" min="0"    value="" onblur="days()" placeholder="Enter Days" >
+												{% endif%}
 											</div>
 										</div>
 										<div class="form-row">
@@ -1087,12 +1210,6 @@
 												  </label>
 												</lable>
 											</div>
-												<!-- <div class="form-group col-md-1">
-													<label for="vehicle1"> Expatriate</label><br>
-												</div>
-												<div class="form-group col-md-1">
-													<input type="checkbox" id="chk1" name="chk1" value="Expatriate">
-												</div> -->
 										</div>
 										
 									
