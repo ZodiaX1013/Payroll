@@ -2974,8 +2974,8 @@ def process_salary():
                         print("Payslip Query Executed")
 
                     # print("Do Something Else")
-                    msg = "Processing Complete"
-                    return render_template("process.html", msg = msg)
+                msg = "Processing Complete"
+                return render_template("process.html", msg = msg)
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
         finally:
