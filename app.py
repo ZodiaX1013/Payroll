@@ -1,4 +1,5 @@
 from cmath import pi
+from crypt import methods
 from dis import dis
 import json
 from logging import basicConfig
@@ -85,6 +86,10 @@ def login():
             print("MySQL connection is closed")
     return render_template('login.html')
 #     return render_template('login.html')
+
+@app.route("/reset", methods=["GET","POST"])
+def reset():
+    return render_template("reset.html")
 
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dashboard():
