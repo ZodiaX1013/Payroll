@@ -2461,11 +2461,11 @@ def process_salary():
                     print("In Else")
                     msg = "Enter Month Correctly"
                     return render_template("process.html", msg = msg)
-                id = id-1
-                if id == 0:
-                    id = 12
+                mid = id-1
+                if mid == 0:
+                    mid = 12
                 # print(calendar.month_name[id])
-                month2 = calendar.month_name[id]
+                month2 = calendar.month_name[mid]
                 month2 = month2.lower()
 
                 # query3 = "SELECT Carbenefit, salary, Fixedallow, Travelallow, EDF, Educationrel, Medicalrel, medical, Specialbonus FROM employee WHERE EmployeeID = %s "
