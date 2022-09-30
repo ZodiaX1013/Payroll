@@ -291,6 +291,7 @@ def employee():
             query18 = "SELECT hire From employee WHERE EmployeeID = %s"
             cursor.execute(query18, data)
             hire = cursor.fetchall()
+            print(hire)
             hire = hire[0][0]
             
             print(hire)
