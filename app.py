@@ -119,10 +119,10 @@ def reset():
                     return render_template("login.html", msg=msg)
                 else:
                     msg = "New password and Re-Enter Password not match"
-                    return render_template("reset", msg=msg)
+                    return render_template("reset.html", msg=msg)
             else:
                 msg = "Old Password Wrong"
-                return render_template("reset", msg=msg)
+                return render_template("reset.html", msg=msg)
 
         except Error as e:
                 print("Error While connecting to MySQL : ", e)
