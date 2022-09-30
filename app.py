@@ -33,20 +33,7 @@ def allowed_file(filename):
 
 @app.route('/', methods=["GET" , "POST"])
 def home():
-    if request.method == "POST":
-        mail = request.form["email"]
-        psw = request.form["password"]
-        print("IN IF")
-        if mail == "admin" and psw == "admin":
-            print("IN IF2")
-            return redirect(url_for('dashboard'))
-        else:
-            print("IN ELSE")
-            flash(f'Wrong email and password', 'success')
-            return redirect(url_for('login'))
-            flash("Wrong Credentials")
-            # return render_template("login.html")
-    print("OUT IF")
+    
     return render_template("login.html")
 	# return render_template("index.html")
 
@@ -55,6 +42,32 @@ def login():
     if request.method == "POST":
         mail = request.form["email"]
         psw = request.form["password"]
+
+        try:
+            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                    database='heroku_2454cdb096d1842',
+                                                    user='b85c92b4b95561',
+                                                    password='3668be4b') # @ZodiaX1013
+            cursor = connection.cursor(buffered=True)
+
+            query1 = "SELECT username FROM cred"
+            cursor.execute(query1)
+            user = cursor.fetchall()
+            print(user)
+
+            query2 = "SELECT password FROM cred"
+            cursor.execute(query2)
+            password = cursor.fetchall()
+
+
+        except Error as e:
+                print("Error While connecting to MySQL : ", e)
+        finally:
+            connection.commit()
+            cursor.close()
+            connection.close()
+            print("MySQL connection is closed")
+
         if mail == 'admin' and psw == 'admin':
             flash(f'welcome {mail} you are logedin now','success')
             return redirect(url_for('dashboard'))
