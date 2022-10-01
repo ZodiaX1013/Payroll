@@ -230,7 +230,7 @@ def dashboard():
             # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE position = %s "
             # query2 = f"SELECT EmployeeID, FirstName, LastName FROM employee"
             query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee"
-            cursor.execute(query2,data1)
+            cursor.execute(query2)
             table_data = cursor.fetchall()
 
             print(table_data)
