@@ -151,95 +151,96 @@ def reset():
 def dashboard():
     if request.method == "POST":
         eid = request.form["search"]
-        data1 = [eid]
+        if eid:
+            data1 = [eid]
 
-        try:
-            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
-                                                    database='heroku_2454cdb096d1842',
-                                                    user='b85c92b4b95561',
-                                                    password='3668be4b') # @ZodiaX1013
-            cursor = connection.cursor(buffered=True)
+            try:
+                connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                        database='heroku_2454cdb096d1842',
+                                                        user='b85c92b4b95561',
+                                                        password='3668be4b') # @ZodiaX1013
+                cursor = connection.cursor(buffered=True)
 
-            # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
-            query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N"employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
-            cursor.execute(query1)
-            column_name = cursor.fetchall()
-            print(column_name)
-            heading_data = []
-            data = []
-            print(len(column_name))
-            for i in range(len(column_name)):
-                print("i : " , i)
-                # print("j : ", j)
-                data = ''.join(column_name[i])
-                print("Data :" + data)
-                heading_data.append(data)
-            
-            query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee WHERE EmployeeID = %s "
-            cursor.execute(query2, data1)
-            table_data = cursor.fetchall()
-            print(table_data)
-            return render_template("dashboard.html", heading = heading_data, data = table_data)
+                # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+                query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N"employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
+                cursor.execute(query1)
+                column_name = cursor.fetchall()
+                print(column_name)
+                heading_data = []
+                data = []
+                print(len(column_name))
+                for i in range(len(column_name)):
+                    print("i : " , i)
+                    # print("j : ", j)
+                    data = ''.join(column_name[i])
+                    print("Data :" + data)
+                    heading_data.append(data)
+                
+                query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee WHERE EmployeeID = %s "
+                cursor.execute(query2, data1)
+                table_data = cursor.fetchall()
+                print(table_data)
+                return render_template("dashboard.html", heading = heading_data, data = table_data)
 
-        except Error as e:
-                print("Error While connecting to MySQL : ", e)
-        finally:
-            connection.commit()
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")                   
+            except Error as e:
+                    print("Error While connecting to MySQL : ", e)
+            finally:
+                connection.commit()
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")                   
 
-    else:
-        eid = request.form["search"]
-        data1 = [eid]
-        try:
-            connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
-                                                    database='heroku_2454cdb096d1842',
-                                                    user='b85c92b4b95561',
-                                                    password='3668be4b') # @ZodiaX1013
-            cursor = connection.cursor(buffered=True) 
+        else:
+            # eid = request.form["search"]
+            # data1 = [eid]
+            try:
+                connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
+                                                        database='heroku_2454cdb096d1842',
+                                                        user='b85c92b4b95561',
+                                                        password='3668be4b') # @ZodiaX1013
+                cursor = connection.cursor(buffered=True) 
 
-            # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
-            # cursor.execute(query1)
-            # column_name = cursor.fetchall()
+                # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee'"
+                # cursor.execute(query1)
+                # column_name = cursor.fetchall()
 
-            print("Before Query1")
-            query1 = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'employee' AND COLUMN_NAME = 'EmployeeID' OR COLUMN_NAME = 'working' OR COLUMN_NAME = 'FirstName' OR COLUMN_NAME = 'LastName';"
-            # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
-            cursor.execute(query1)
-            print("Query1 Executed")
-            column_name = cursor.fetchall()
-            heading_data = []
-            data = []
-            print(len(column_name))
-            for i in range(len(column_name)):
-                print("i : " , i)
-                # print("j : ", j)
-                data = ''.join(column_name[i])
-                print("Data :" + data)
-                heading_data.append(data)
-            
-            print(column_name)
-            print(heading_data)
+                print("Before Query1")
+                query1 = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'employee' AND COLUMN_NAME = 'EmployeeID' OR COLUMN_NAME = 'working' OR COLUMN_NAME = 'FirstName' OR COLUMN_NAME = 'LastName';"
+                # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
+                cursor.execute(query1)
+                print("Query1 Executed")
+                column_name = cursor.fetchall()
+                heading_data = []
+                data = []
+                print(len(column_name))
+                for i in range(len(column_name)):
+                    print("i : " , i)
+                    # print("j : ", j)
+                    data = ''.join(column_name[i])
+                    print("Data :" + data)
+                    heading_data.append(data)
+                
+                print(column_name)
+                print(heading_data)
 
-            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE EmployeeID = %s "
-            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE FirstName = %s "
-            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE LastName = %s "
-            # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE position = %s "
-            # query2 = f"SELECT EmployeeID, FirstName, LastName FROM employee"
-            query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee WHERE EmployeeID = %s "
-            cursor.execute(query2,data1)
-            table_data = cursor.fetchall()
+                # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE EmployeeID = %s "
+                # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE FirstName = %s "
+                # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE LastName = %s "
+                # query2 = "SELECT EmployeeID, FirstName, LastName FROM employee WHERE position = %s "
+                # query2 = f"SELECT EmployeeID, FirstName, LastName FROM employee"
+                query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee"
+                cursor.execute(query2,data1)
+                table_data = cursor.fetchall()
 
-            print(table_data)
-            return render_template("dashboard.html", heading = heading_data, data = table_data)
-        except Error as e:
-                print("Error While connecting to MySQL : ", e)
-        finally:
-            connection.commit()
-            cursor.close()
-            connection.close()
-            print("MySQL connection is closed")
+                print(table_data)
+                return render_template("dashboard.html", heading = heading_data, data = table_data)
+            except Error as e:
+                    print("Error While connecting to MySQL : ", e)
+            finally:
+                connection.commit()
+                cursor.close()
+                connection.close()
+                print("MySQL connection is closed")
 
     return render_template("dashboard.html")
 
