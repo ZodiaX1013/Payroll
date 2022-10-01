@@ -164,6 +164,7 @@ def dashboard():
             query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N"employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
             cursor.execute(query1)
             column_name = cursor.fetchall()
+            print(column_name)
             heading_data = []
             data = []
             print(len(column_name))
@@ -177,7 +178,7 @@ def dashboard():
             query2 = "SELECT EmployeeID, FirstName, LastName, working FROM employee WHERE EmployeeID = %s "
             cursor.execute(query2, data1)
             table_data = cursor.fetchall()
-
+            print(table_data)
             return render_template("dashboard.html", heading = heading_data, data = table_data)
 
         except Error as e:
