@@ -242,7 +242,7 @@ def dashboard():
                 cursor.close()
                 connection.close()
                 print("MySQL connection is closed")
-
+    print("Before Return")
     return render_template("dashboard.html")
 
 @app.route("/employee", methods=["GET" , "POST"])
