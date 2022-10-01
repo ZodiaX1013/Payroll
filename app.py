@@ -153,7 +153,7 @@ def dashboard():
         eid = request.form["search"]
         if eid:
             data1 = [eid]
-
+            print("In If")
             try:
                 connection = mysql.connector.connect(host='us-cdbr-east-06.cleardb.net',
                                                         database='heroku_2454cdb096d1842',
@@ -162,7 +162,7 @@ def dashboard():
                 cursor = connection.cursor(buffered=True)
 
                 # query1 = f"SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'employee' AND ORDINAL_POSITION between 2 AND 4;"
-                query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N"employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
+                query1 = f'SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = "employee" AND COLUMN_NAME = "EmployeeID" OR COLUMN_NAME = "working" OR COLUMN_NAME = "FirstName" OR COLUMN_NAME = "LastName";'
                 cursor.execute(query1)
                 column_name = cursor.fetchall()
                 print(column_name)
@@ -191,6 +191,7 @@ def dashboard():
                 print("MySQL connection is closed")                   
 
         else:
+            print("In Else")
             # eid = request.form["search"]
             # data1 = [eid]
             try:
