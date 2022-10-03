@@ -181,12 +181,20 @@
 	</nav> -->
 	<!-- [ navigation menu ] end -->
 	<!-- [ Header ] start -->
+<<<<<<< HEAD
 	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark" style="background-color: white;" >
+=======
+	<header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark"  >
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
         <div class="m-header">
             <a class="mobile-menu" id="mobile-collapse" href="{{url_for('dashboard')}}"><span></span></a>
             <a href="{{url_for('dashboard')}}" class="b-brand">
                 <!-- ========   change your logo hear   ============ -->
+<<<<<<< HEAD
                 <img src="../static/images/logo.png" alt="" class="logo" style="height: 50px; width: 150px;" >
+=======
+                <img src="../static/images/logo.png" alt="" class="logo"  >
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                 <!-- <img src="../static/images/logo-icon.png" alt="" class="logo-thumb"> -->
                 <!-- <i class="fa-solid fa-house" style="margin-right: 0.5rem;"></i>HOME -->
             </a>
@@ -210,7 +218,11 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" >
+<<<<<<< HEAD
                                    <b style="color: black;"> File </b>
+=======
+                                   <b> File </b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -224,7 +236,11 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+<<<<<<< HEAD
                                     <b style="color: black;">Process</b>
+=======
+                                    <b>Process</b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -240,7 +256,11 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+<<<<<<< HEAD
                                    <b style="color: black;"> Reports</b>
+=======
+                                   <b> Reports</b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -255,7 +275,11 @@
                         <li class="nav-item">
                             <div class="dropdown" >
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown" aria-disabled="true">
+<<<<<<< HEAD
                                    <b style="color: black;"> Utility</b>
+=======
+                                   <b> Utility</b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -269,7 +293,11 @@
                         <!-- <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+<<<<<<< HEAD
                                    <b style="color: black;"> Window</b>
+=======
+                                   <b> Window</b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -283,7 +311,11 @@
                         <li class="nav-item">
                             <div class="dropdown">
                                 <a class="dropdown-toggle h-drop" href="#" data-toggle="dropdown">
+<<<<<<< HEAD
                                    <b style="color: black;"> Help</b>
+=======
+                                   <b> Help</b>
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
                                 </a>
                                 <div class="dropdown-menu profile-notification ">
                                     <ul class="pro-body">
@@ -548,7 +580,476 @@
 					<div class="card-body"> 
 						
 						<!-- Common Form -->
+<<<<<<< HEAD
 						
+=======
+						{% if edata %}
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label>Employee ID</label>
+									<input type="text" name="eid" class="form-control" id="eid" value="{{edata[1]}}" placeholder="Enter Employee ID" >
+								</div>
+								<div class="form-group col-md-6">
+									<div>
+										<label>Clocked</label>
+									</div>
+									<label class="custom-control custom-radio radio-inline custom-control-inline">
+										<input type="radio" name="optradio" value="No" checked>No
+									</label>
+									<label class="custom-control custom-radio radio-inline custom-control-inline">
+										<input type="radio" name="optradio" value="Yes">Yes
+									</label>
+									
+									<!-- <div>
+										<label>Clocked</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input" disabled>
+										<label class="custom-control-label" for="customRadioInline1">No</label>
+									</div>
+									<div class="custom-control custom-radio custom-control-inline">
+										<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input" disabled>
+										<label class="custom-control-label" for="customRadioInline2">Yes</label>
+									</div> -->
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label>Last Name</label>
+									<input type="text" name="lname" class="form-control" id="lname" value="{{edata[3]}}" placeholder="Enter Last Name" >
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputState">Title</label>
+									<select id="inputState" class="form-control required" name="title" >
+										<option selected>select</option>
+										<option value="Mr.">Mr.</option>
+										<option value="Mrs.">Mrs.</option>
+										<option value="Ms.">Ms.</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label>First Name</label>
+									<input type="text" name="fname" class="form-control" id="fname" value="{{edata[2]}}" placeholder="Enter First Name" >
+								</div>
+								<div class="form-group col-md-6">
+									<label>Date Of Birth</label>
+									<input type="date" name="dob" id="dob" value="{{edata[5]}}" class="form-control" >
+								</div>
+							</div>
+						<!-- </form> -->
+						<!-- End Common Form -->
+
+						<ul class="nav nav-pills mb-3 justify-content-md-center" id="pills-tab" role="tablist">
+							<li class="nav-item">
+								<a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fa-solid fa-user" style="margin-right: 0.5rem;"></i>Personal</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa-solid fa-shield" style="margin-right: 0.5rem;"></i>Legal</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa-solid fa-briefcase" style="margin-right: 0.5rem;"></i>Employment</a>
+							</li>
+						</ul>
+					
+						<div class="tab-content" id="pills-tabContent">
+							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+								<p class="mb-0">
+
+									<!-- Personal Form -->
+									
+									<!-- <form action="/employee" id="emp2" method="post"> -->
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Address</label>
+												<input type="text" name="add" class="form-control" id="add" value="{{edata[7]}}"  placeholder="Enter Address" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>City</label>
+												<input type="text" name="city" class="form-control" id="city"  value="{{edata[8]}}" placeholder="Enter City" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Country</label>
+												<input type="text" name="con" class="form-control" id="con"  value="{{edata[9]}}" placeholder="Enter Country" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Fax</label>
+												<input type="text" name="fax" class="form-control" id="fax"  value="{{edata[12]}}" placeholder="Enter Fax" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Phone</label>
+												<input type="tel" name="phn" class="form-control" id="phn" value="{{edata[10]}}" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Phone Number" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Mobile</label>
+												<input type="tel" name="mob" class="form-control" id="mob" value="{{edata[11]}}" pattern="[1-9]{1}[0-9]{6}|[1-9]{1}[0-9]{7}" placeholder="Enter Mobile Number" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Email</label>
+												<input type="email" name="mail" class="form-control" id="mail" value="{{edata[13]}}"  placeholder="Enter Email" >
+											</div>
+											<!-- <div class="input-group cust-file-button mb-3 "> -->												
+											<!-- <div class="form-group col-md-6 cust-file-button">
+												
+												<label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+												<div class="custom-file">
+													<input type="file" class="custom-file-input" id="inputGroupFile03">
+												</div>
+											</div> -->
+											
+											<!-- <br> -->
+											<div class="col-md-6">
+												<h6>Photo</h6>
+												<div class="input-group mb-3">
+													<!-- <div class="custom-file"> -->
+														<input type="file" class="custom-file-input" id="inputGroupFile02" name="img"  value=""  >
+														<label class="custom-file-label" for="inputGroupFile02" >Choose file</label>
+													<!-- </div> -->
+													<!-- <div class="input-group-append">
+														<span class="input-group-text">Upload</span>
+													</div> -->
+												</div>
+											</div>
+										</div>
+									<!-- </form> -->
+
+									<!-- End Personal Form -->
+
+								</p>
+							</div>
+							<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+								<p class="mb-0">
+
+									<!-- Legal Form -->
+									
+									<!-- <form action="/employee" id="emp3" method="post"> -->
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>NIC No.</label>
+												<input type="text" name="nic" class="form-control" id="nic" value="{{edata[15]}}"  placeholder="Enter NIC No." >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Tax Account No.</label>
+												<input type="number" name="tax" class="form-control" id="tax" value="{{edata[16]}}"  placeholder="Enter Tax Account No." >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<label for="inputState">Bank</label>
+												<select id="inputState" class="form-control required" name="bank">
+													<option  value=""  selected>select</option>
+													<option  value="Bank of Mauritius" >Bank of Mauritius</option>
+													<option  value="ABC Banking Corporation Ltd" > ABC Banking Corporation Ltd</option>
+													<option  value="Absa Bank (Mauritius) Limited" > Absa Bank (Mauritius) Limited</option>
+													<option  value="AfrAsia Bank Limited" >AfrAsia Bank Limited</option>
+													<option  value="Bank of Baroda" > Bank of Baroda</option>
+													<option  value="Bank One Limited" > Bank One Limited</option>
+													<option  value="BanyanTree Bank Limited" > BanyanTree Bank Limited</option>
+													<option  value="BCP Bank (Mauritius) Ltd" >BCP Bank (Mauritius) Ltd</option>
+													<option  value="Century Banking Corporation Ltd" >Century Banking Corporation Ltd</option>
+													<option  value="Habib Bank Limited" >Habib Bank Limited</option>
+													<option  value="Investec Bank (Mauritius) Ltd" >Investec Bank (Mauritius) Ltd</option>
+													<option  value="MauBank Ltd" >MauBank Ltd</option>
+													<option  value="SBI (Mauritius) Limited" >SBI (Mauritius) Limited</option>
+													<option  value="Standard Bank (Mauritius) Limited" >Standard Bank (Mauritius) Limited</option>
+													<option  value="Standard Chartered Bank (Mauritius) Ltd" >Standard Chartered Bank (Mauritius) Ltd</option>
+													<option  value="SBM Bank (Mauritius) Ltd" >SBM Bank (Mauritius) Ltd</option>
+													<option  value="The Hongkong and Shanghai Banking Corporation Limited" >The Hongkong and Shanghai Banking Corporation Limited</option>
+													<option  value="The Mauritius Commercial Bank Ltd" >The Mauritius Commercial Bank Ltd</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Bank Account No.</label>
+												<input type="number" name="bac" class="form-control" id="bac" value="{{edata[18]}}"  placeholder="Enter Bank Account No." >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Bank Code</label>
+												<input type="text" name="code" class="form-control" id="code"  value="{{edata[19]}}" placeholder="Enter Bank Code" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<label for="inputState">Report To</label>
+												<input type="text" name="rpt" class="form-control" id="rpt" value="{{edata[20]}}"  placeholder="Report To" disabled>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<div>
+													<label>NPS</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio2" value="Paid"  checked>Paid
+												  </label>
+												  <label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio2"  value="Not Paid" >Not Paid
+												  </label>
+												</lable>
+
+												<!-- <div>
+													<label>NPS</label>
+												</div>
+												<div class="custom-control custom-radio custom-control-inline">
+													<input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+													<label class="custom-control-label" for="customRadioInline1">Paid</label>
+												</div>
+												<div class="custom-control custom-radio custom-control-inline">
+													<input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+													<label class="custom-control-label" for="customRadioInline2">Not Paid</label>
+												</div> -->
+												
+											</div>
+											<div class="form-group col-md-6">
+												<label>Car Benefit</label>
+												<input type="number" name="car" class="form-control" id="car"  value="{{edata[22]}}" placeholder="Enter Car Benefit" >
+											</div>
+										</div>
+									<!-- </form> -->
+
+									<!-- End Legal Form -->
+
+								</p>
+							</div>
+							<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+								<p class="mb-0">
+									<!-- Employment Form -->
+									<!-- <form action="/employee" id="emp4" method="post"> -->
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Hire Date</label>
+												<input type="date" name="hire" id="hire"  value="{{edata[23]}}" class="form-control" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>EDF Value</label>
+												<input type="text" name="edf" id="edf" class="form-control" value="{{edata[36]}}" placeholder="Enter EDF value" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Basic Salary</label>
+												<input type="text" name="sal" id="sal" class="form-control"  value="{{edata[24]}}" placeholder="Enter Basic Monthly Salary" >
+											</div>
+											<div class="form-group col-md-6">
+												<label > No Of Months</label>
+												<div class="form-row">
+													<div class="form-group col-md-6">
+														<input type="text" class="form-control" name="month" id="month" value="{{edata[37]}}" onblur="calculate()" placeholder="Enter Month" >
+													</div>
+													<div class="form-group col-md-6">
+														<input type="text" class="form-control" name="medf" id="medf" value="{{edata[38]}}" placeholder="Monthly EDF" >
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Position</label>
+												<input type="text" name="pos" id="pos" class="form-control"  value="{{edata[25]}}" placeholder="Enter Position" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Housing Interest</label>
+												<input type="text" name="hint" id="hint" class="form-control"  value="{{edata[39]}}" placeholder="Enter Housing Interest" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="inputState">Department</label>
+
+												<select name="dep" id="dep" class="form-control">
+													<option value=" "> </option>
+													<option value="dep1">dep1</option>
+													<option value="dep2">dep2</option>
+													<option value="dep3">dep3</option>
+													<option value="dep4">dep4</option>
+												</select>
+												
+
+												<!-- <select name="dep" id="dep" class="form-control required"  required>
+													<option value="" selected="selected" >Select Department</option>
+												</select> -->
+												<!-- <select id="inputState" name="dep" id="dep" class="form-control">
+													<option value=""  selected>select</option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+												</select> -->
+											</div>
+											<div class="form-group col-md-6">
+												<label>Education Relief</label>
+												<input type="text" name="erel" id="erel" class="form-control"  value="{{edata[40]}}" placeholder="Enter Education Relief" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="inputState">Sub Department</label>
+												
+												<select name="sdep" id="sdep" class="form-control">
+													<option value=" "> </option>
+													<option value="dep1">sub-dep11</option>
+													<option value="dep1">sub-dep12</option>
+													<option value="dep1">sub-dep13</option>
+													<option value="dep2">sub-dep21</option>
+													<option value="dep2">sub-dep22</option>
+													<option value="dep2">sub-dep23</option>
+													<option value="dep3">sub-dep31</option>
+													<option value="dep3">sub-dep32</option>
+													<option value="dep4">sub-dep41<option>
+												</select>
+												
+												<!-- <select name="sdep" id="sdep" class="form-control required" required>
+													<option value="" selected="selected">Please select sub-department</option>
+												</select> -->
+												<!-- <select id="inputState" name="sdep" id="sdep" class="form-control">
+													<option value=""  selected>select</option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+													<option value="" ></option>
+												</select> -->
+											</div>
+											<div class="form-group col-md-6">
+												<label>Medical Relief</label>
+												<input type="text" name="mrel" id="mrel" class="form-control"  value="{{edata[41]}}" placeholder="Enter Medical Relief" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-4">
+												<label for="inputState">PAYE Scheme</label>
+												<select id="inputState" name="psch" id="psch" class="form-control required" >
+													<option value=""  selected>select</option>
+													<option value="Monthly" >Monthly</option>
+													<option value="Quaterly" >Quaterly</option>
+													<option value="Yearly" >Yearly</option>
+												</select>
+											</div>
+											<div class="form-group col-md-2">
+												<label> Percentage (%) </label>
+												<input type="number" name="per" id="per" class="form-control" max="100" min="0"  value="{{edata[29]}}" onblur="percentage()" placeholder="Percentage" >
+											</div>
+											<div class="form-group col-md-6">
+												<label for="inputState">Mode Of Payment</label>
+												<select id="inputState" name="mop" id="mop" class="form-control required" >
+													<option value=""  selected>select</option>
+													<option value="Bank" >Bank</option>
+													<option value="Cash" >Cash</option>
+												</select>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Local Leave (Per Year)</label>
+												<input type="number" name="lleave" id="lleave" class="form-control"  value="{{edata[30]}}" placeholder="Enter Local Leave" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Medical</label>
+												<input type="text" name="med" id="med" class="form-control" value="{{edata[43]}}" placeholder="Enter Medical" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Sick Leave (Per Year)</label>
+												<input type="number" name="sleave" id="sleave" class="form-control" value="{{edata[31]}}" onblur="leave()" placeholder="Enter Sick Leave" >
+											</div>
+											<div class="form-group col-md-6">
+												<div>
+													<label>Working</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio3" id="optradiod3" value="Yes" onclick="document.getElementById('lwork').disabled = true;" checked>Yes
+												  </label>
+												  <label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio3" id="optradiod3" onclick="document.getElementById('lwork').disabled = false;" value="No">No
+												  </label>
+												</lable>
+												
+												<!-- <div>
+													<label>NPS</label>
+												</div>
+												<div class="custom-control custom-radio custom-control-inline">
+													<input type="radio" id="yes" name="yes" class="custom-control-input">
+													<label class="custom-control-label" for="customRadioInline1">Yes</label>
+												</div>
+												<div class="custom-control custom-radio custom-control-inline">
+													<input type="radio" id="No" name="No" class="custom-control-input">
+													<label class="custom-control-label" for="customRadioInline2">No</label>
+												</div> -->
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Fixed Allow</label>
+												<input type="text" name="falw" id="falw" class="form-control" value="{{edata[32]}}" placeholder="Enter Fixed Allow" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Last Working Day</label>
+												<input type="date" name="lwork" id="lwork" class="form-control" onblur="checkDate()" value="{{edata[45]}}" disabled="disabled">
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="inputState">Travel Mode</label>
+												<select id="inputState" name="tmode" id="tmode" class="form-control required" >
+													<option value="" selected>select</option>
+													<option value="Bus">Bus</option>
+													<option value="Car">Car</option>
+												</select>
+											</div>
+											<div class="form-group col-md-6">
+												<label>Special Project Bonus</label>
+												<input type="text" name="spbonus" id="spbonus" class="form-control" value="{{edata[46]}}" placeholder="Enter Special Project Bonus" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>Travel Allowance</label>
+												<input type="text" name="talw" id="talw" class="form-control" value="{{edata[34]}}" placeholder="Enter Travel Allowance" >
+											</div>
+											<div class="form-group col-md-6">
+												<label>Working Days / Month </label>
+												<input type="number" name="wday" id="wday" class="form-control" value="{{edata[47]}}" onblur="days()" placeholder="Enter Days" >
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md -6">
+												<div>
+													<label>Expatriate</label>
+												</div>
+												<label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="Yes" >Yes
+												  </label>
+												  <label class="custom-control custom-radio radio-inline custom-control-inline">
+													<input type="radio" name="optradio4" id="optradiod3" value="No" checked>No
+												  </label>
+												</lable>
+											</div>
+												<!-- <div class="form-group col-md-1">
+													<label for="vehicle1"> Expatriate</label><br>
+												</div>
+												<div class="form-group col-md-1">
+													<input type="checkbox" id="chk1" name="chk1" value="{{edata[35]}}">
+												</div> -->
+										</div>
+										
+									
+									<!-- End Employment Form -->
+								</p>	
+							</div>
+							{% else %}
+>>>>>>> f196d842f34d33279a48f881def481e6acd40c39
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label>Employee ID</label>
