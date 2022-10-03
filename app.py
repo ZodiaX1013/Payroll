@@ -41,6 +41,7 @@ def home():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    global connection
     if request.method == "POST":
         mail = request.form["email"]
         psw = request.form["password"]
@@ -95,6 +96,7 @@ def login():
 
 @app.route("/reset", methods=["GET","POST"])
 def reset():
+    global connection
     if request.method == "POST":
         old_pass = request.form["opass"]
         new_pass = request.form["npass"]
@@ -149,6 +151,7 @@ def reset():
 
 @app.route("/dashboard", methods=["GET" , "POST"])
 def dashboard():
+    global connection
     if request.method == "POST":
         eid = request.form["search"]
         if eid:
@@ -247,7 +250,7 @@ def dashboard():
 
 @app.route("/employee", methods=["GET" , "POST"])
 def employee():
-
+    global connection
     # Back To Employee Page
 
     if request.method == "POST" and request.form['action'] == 'back':      
@@ -1308,7 +1311,7 @@ def employee():
 
 @app.route("/salary", methods=["GET" , "POST"])
 def salary():
-
+    global connection
     # Search Data
     if request.method == "POST" and request.form['action'] == 'search':
         eid = request.form["eid"]
@@ -2101,6 +2104,7 @@ def salary():
 
 @app.route("/leave", methods=["GET" , "POST", "PUT"])
 def leave():
+    global connection
     if request.method == 'POST':
         eid = request.form['eid']
         try:
@@ -2181,6 +2185,7 @@ def lock_salary():
 
 @app.route("/process_salary", methods=["GET" , "POST"])
 def process_salary():
+    global connection
     if request.method == "POST":
         eid = request.form["eid"]
         month = request.form["mon"]
@@ -3108,6 +3113,7 @@ def process_salary():
 
 @app.route("/payslip", methods=["GET" , "POST"])
 def payslip():
+    global connection
     if request.method == "POST" and request.form['action'] == 'word':
         month = request.form["mon"]
         try:
@@ -3169,7 +3175,7 @@ def payslip():
 
 @app.route("/paysheet", methods=["GET" , "POST"])
 def paysheet():
-
+    global connection
     # For Pdf Generate
     if request.method == "POST" and request.form['action'] == 'pdf':
         month = request.form["mon"]
@@ -3303,6 +3309,7 @@ def paysheet():
 
 @app.route('/download')
 def download():
+    
     if "data" in session:
         data = session["data"]
     rendered = render_template('paysheet2.html',filename='css/style.css', data=data)
